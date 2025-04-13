@@ -4,11 +4,11 @@ export default function PricingPage() {
   return (
     <main className="min-h-screen mt-10 pt-24">
       <div className="container mx-auto px-4 max-w-4xl">
-        <h1 className="text-4xl font-serif text-center mb-16">PRICE-LIST</h1>
+        <h1 className="text-4xl text-center mb-16">PRICE-LIST</h1>
         
         {/* Vak tjenester */}
         <section className="mb-16">
-          <h2 className="text-2xl font-serif mb-8">VÅR TJENESTER</h2>
+          <h2 className="text-2xl  mb-8">VÅR TJENESTER</h2>
           <div className="grid md:grid-cols-3 gap-x-12 gap-y-4">
             {priceCategories.map((category) => (
               <div key={category.title}>
@@ -29,7 +29,7 @@ export default function PricingPage() {
         {/* Other categories */}
         {categories.map((category) => (
           <section key={category.title} className="mb-16">
-            <h2 className="text-2xl font-serif mb-8">{category.title}</h2>
+            <h2 className="text-2xl  mb-8">{category.title}</h2>
             <div className="grid md:grid-cols-3 gap-x-12 gap-y-4">
               {category.sections.map((section) => (
                 <div key={section.title}>
