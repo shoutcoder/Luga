@@ -25,16 +25,16 @@ export default function MobileNav() {
             <Link href="#services" className="text-lg font-medium py-2 w-full block text-center" onClick={() => setIsOpen(false)}>
               Services
             </Link>
-            <Link href="#pricing" className="text-lg font-medium py-2 w-full block text-center" onClick={() => setIsOpen(false)}>
+            <Link href="/pricing" className="text-lg font-medium py-2 w-full block text-center" onClick={() => setIsOpen(false)}>
               Pricing
             </Link>
             <Link href="#hours" className="text-lg font-medium py-2 w-full block text-center" onClick={() => setIsOpen(false)}>
               Opening Hours
             </Link>
-            <Link href="#about" className="text-lg font-medium py-2 w-full block text-center" onClick={() => setIsOpen(false)}>
+            <Link href="/about" className="text-lg font-medium py-2 w-full block text-center" onClick={() => setIsOpen(false)}>
               About us
             </Link>
-            <Link href="#contact" className="text-lg font-medium py-2 w-full block text-center" onClick={() => setIsOpen(false)}>
+            <Link href="/contact" className="text-lg font-medium py-2 w-full block text-center" onClick={() => setIsOpen(false)}>
               Contact
             </Link>
           </div>
