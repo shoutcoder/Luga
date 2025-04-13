@@ -69,7 +69,7 @@ export default function HeroSlider() {
               priority={index === 0}
             />
           </div>
-          <div className="relative z-10 flex flex-col justify-end h-full pb-16 px-8 text-white">
+          <div className="relative z-10 flex flex-col justify-end h-full pb-16 px-6 md:px-8 text-white">
             <div className="max-w-2xl">
               <h2 className="text-3xl md:text-4xl font-bold mb-4">{slide.title}</h2>
               <p className="text-xs mb-6 md:text-lg">{slide.description}</p>
