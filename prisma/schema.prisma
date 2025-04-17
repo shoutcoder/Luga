@@ -1,0 +1,132 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+// Looking for ways to speed up your queries, or scale easily with your serverless or edge functions?
+// Try Prisma Accelerate: https://pris.ly/cli/accelerate-init
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider  = "postgresql"
+  url       = env("DATABASE_URL")
+  directUrl = env("DIRECT_URL")
+}
+
+model User {
+  id            String             @id @default(cuid())
+  name          String?
+  email         String             @unique
+  password      String?
+  role          Role      @default(USER)
+  isVerified    Boolean            @default(false)
+  otp           String?
+  otpExpires    DateTime?
+  createdAt     DateTime           @default(now())
+  updatedAt     DateTime           @updatedAt
+}
+enum Role {
+  USER
+  ADMIN
+}
+model HeroBanner {
+  id          String   @id @default(cuid())
+  title       String
+  description String
+  url         String
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+}
+
+model Service {
+  id        String   @id @default(cuid())
+  title     String
+  url       String
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+}
+
+model Testimonial {
+  id        String   @id @default(cuid())
+  name      String
+  avatar    String   // URL to the avatar image
+  text      String   // The testimonial text
+  rating    Int      // Rating out of 5
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+}
+
+model Location {
+  id            String   @id @default(cuid())
+  area          String
+  address       String
+  weekdayHours  String
+  saturdayHours String
+  phone         String
+  createdAt     DateTime @default(now())
+  updatedAt     DateTime @updatedAt
+}
+model Faq {
+  id        String   @id @default(cuid())
+  question  String
+  answer    String
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+}
+model TeamMember {
+  id        String   @id @default(cuid())
+  name      String
+  role      String
+  imageUrl  String   // Image of the team member
+  bio       String?  // Optional: short description or bio
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+}
+model Gallery {
+  id        String   @id @default(cuid())
+  title     String?
+  imageUrl  String
+  caption   String?   // Optional: for a short image description
+  createdAt DateTime  @default(now())
+  updatedAt DateTime  @updatedAt
+}
+
+model PriceCategory {
+  id      String      @id @default(cuid())
+  title   String
+  items   PriceItem[] // One-to-many relationship
+}
+
+model PriceItem {
+  id               String         @id @default(cuid())
+  name             String
+  price            String
+  categoryId       String
+  category         PriceCategory  @relation(fields: [categoryId], references: [id])
+}
+
+model Category {
+  id        String     @id @default(cuid())
+  title     String
+  sections  Section[]  // One-to-many relationship with Section
+}
+
+model Section {
+  id          String     @id @default(cuid())
+  title       String
+  categoryId  String
+  category    Category   @relation(fields: [categoryId], references: [id])
+  items       Item[]     // One-to-many relationship with Item
+}
+
+model Item {
+  id         String   @id @default(cuid())
+  name       String
+  price      String
+  sectionId  String
+  section    Section  @relation(fields: [sectionId], references: [id])
+}
+
+
+
