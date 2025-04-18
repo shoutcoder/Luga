@@ -1,5 +1,5 @@
 'use client';
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import {
@@ -14,9 +14,60 @@ import {
 
 import HeroSlider from "@/components/hero-slider";
 import AutoScrollLogos from "@/components/auto-scroll-logos";
+import { FaqDetails, LocationsDetails, OurServices, TestimonialDetails } from "@/utils";
 
 export default function Home() {
   const [openFaq, setOpenFaq] = useState<number | null>(null);
+  const [services, setServices] = useState<ServicesSlide[]>([])
+  const [testimonials, setTestimonials] = useState<TestimonialData[]>([])
+  const [locations, setLocations] = useState<Locations[]>([])
+  const [faqs, setFaqs] = useState<Faqs[]>([])
+  useEffect(() => {
+    fetchServices()
+    fetchTestimonial()
+    fetchLocation()
+    fetchFaqs()
+  }, [])
+  const fetchServices = async () => {
+    try {
+      const services = await OurServices();
+      setServices(services);
+    }
+    catch (err) {
+      setServices([]);
+    }
+
+  }
+  const fetchTestimonial = async () => {
+    try {
+      const testimonials = await TestimonialDetails();
+      setTestimonials(testimonials);
+    }
+    catch (err) {
+      setTestimonials([]);
+    }
+
+  }
+  const fetchLocation = async () => {
+    try {
+      const locations = await LocationsDetails()
+      setLocations(locations);
+    }
+    catch (err) {
+      setLocations([]);
+    }
+
+  }
+  const fetchFaqs = async () => {
+    try {
+      const faqs = await FaqDetails()
+      setFaqs(faqs);
+    }
+    catch (err) {
+      setFaqs([]);
+    }
+
+  }
 
   return (
     <div>
@@ -42,17 +93,15 @@ export default function Home() {
             {services.map((service, index) => (
               <div
                 key={index}
-                className={`bg-[#1e291e] rounded-lg overflow-hidden relative ${
-                  index === services.length - 1 ? "h-[600px]" : ""
-                }`}
+                className={`bg-[#1e291e] rounded-lg overflow-hidden relative ${index === services.length - 1 ? "h-[600px]" : ""
+                  }`}
               >
                 <div
-                  className={`relative ${
-                    index === services.length - 1 ? "h-[100%]" : "h-[300px]"
-                  }`}
+                  className={`relative ${index === services.length - 1 ? "h-[100%]" : "h-[300px]"
+                    }`}
                 >
                   <Image
-                    src={service.image || "/placeholder.svg"}
+                    src={service.url || "/placeholder.svg"}
                     alt={service.title}
                     fill
                     className="object-cover h-full"
@@ -110,7 +159,12 @@ export default function Home() {
                       {[...Array(5)].map((_, i) => (
                         <Star
                           key={i}
-                          className="w-4 h-4 fill-yellow-400 text-yellow-400"
+                          className={`w-4 h-4 ${i < Math.floor(testimonial.rating)
+                            ? "fill-yellow-400 text-yellow-400"
+                            : i < testimonial.rating
+                              ? "fill-yellow-400 text-yellow-200"
+                              : "text-gray-300"
+                            }`}
                         />
                       ))}
                     </div>
@@ -238,7 +292,7 @@ export default function Home() {
           <div className="max-w-3xl mx-auto">
             {faqs.map((faq, index) => (
               <div key={index} className="border-b border-gray-200 py-4">
-                <button 
+                <button
                   onClick={() => setOpenFaq(openFaq === index ? null : index)}
                   className="flex items-center justify-between w-full text-left"
                 >
@@ -258,24 +312,24 @@ export default function Home() {
 }
 
 // Data
-const services = [
-  {
-    title: "Alteration and repair",
-    image: "https://ik.imagekit.io/vv/Frame%204.jpg?updatedAt=1744566578020",
-  },
-  {
-    title: "Dry cleaning",
-    image: "https://ik.imagekit.io/vv/Frame%204.jpg?updatedAt=1744566578020",
-  },
-  {
-    title: "Suit making",
-    image: "https://ik.imagekit.io/vv/Frame%204.jpg?updatedAt=1744566578020",
-  },
-  {
-    title: "Uniform Production",
-    image: "https://ik.imagekit.io/vv/Frame%206.jpg?updatedAt=1744566578154",
-  },
-];
+// const services = [
+//   {
+//     title: "Alteration and repair",
+//     image: "https://ik.imagekit.io/vv/Frame%204.jpg?updatedAt=1744566578020",
+//   },
+//   {
+//     title: "Dry cleaning",
+//     image: "https://ik.imagekit.io/vv/Frame%204.jpg?updatedAt=1744566578020",
+//   },
+//   {
+//     title: "Suit making",
+//     image: "https://ik.imagekit.io/vv/Frame%204.jpg?updatedAt=1744566578020",
+//   },
+//   {
+//     title: "Uniform Production",
+//     image: "https://ik.imagekit.io/vv/Frame%206.jpg?updatedAt=1744566578154",
+//   },
+// ];
 
 const clients = [
   { name: "Google", logo: "https://ik.imagekit.io/vv/Vector%20(4).png?updatedAt=1744566734991" },
@@ -288,83 +342,83 @@ const clients = [
   { name: "Netflix", logo: "https://ik.imagekit.io/vv/Group%2013%20(2).png?updatedAt=1744566735026" }
 ];
 
-const testimonials = [
-  {
-    name: "Mathias Danielsson",
-    avatar: "/placeholder.svg?height=48&width=48",
-    text: "Amazing service! Chatted with a lovely attendant and they took several days to sort out the bag and were online all during the process.",
-  },
-  {
-    name: "Mathias Danielsson",
-    avatar: "/placeholder.svg?height=48&width=48",
-    text: "Amazing service! Chatted with a lovely attendant and they took several days to sort out the bag and were online all during the process.",
-  },
-  {
-    name: "Mathias Danielsson",
-    avatar: "/placeholder.svg?height=48&width=48",
-    text: "Amazing service! Chatted with a lovely attendant and they took several days to sort out the bag and were online all during the process.",
-  },
-  {
-    name: "Mathias Danielsson",
-    avatar: "/placeholder.svg?height=48&width=48",
-    text: "Amazing service! Chatted with a lovely attendant and they took several days to sort out the bag and were online all during the process.",
-  },
-  {
-    name: "Mathias Danielsson",
-    avatar: "/placeholder.svg?height=48&width=48",
-    text: "Amazing service! Chatted with a lovely attendant and they took several days to sort out the bag and were online all during the process.",
-  },
-  {
-    name: "Mathias Danielsson",
-    avatar: "/placeholder.svg?height=48&width=48",
-    text: "Amazing service! Chatted with a lovely attendant and they took several days to sort out the bag and were online all during the process.",
-  },
-];
+// const testimonials = [
+//   {
+//     name: "Mathias Danielsson",
+//     avatar: "/placeholder.svg?height=48&width=48",
+//     text: "Amazing service! Chatted with a lovely attendant and they took several days to sort out the bag and were online all during the process.",
+//   },
+//   {
+//     name: "Mathias Danielsson",
+//     avatar: "/placeholder.svg?height=48&width=48",
+//     text: "Amazing service! Chatted with a lovely attendant and they took several days to sort out the bag and were online all during the process.",
+//   },
+//   {
+//     name: "Mathias Danielsson",
+//     avatar: "/placeholder.svg?height=48&width=48",
+//     text: "Amazing service! Chatted with a lovely attendant and they took several days to sort out the bag and were online all during the process.",
+//   },
+//   {
+//     name: "Mathias Danielsson",
+//     avatar: "/placeholder.svg?height=48&width=48",
+//     text: "Amazing service! Chatted with a lovely attendant and they took several days to sort out the bag and were online all during the process.",
+//   },
+//   {
+//     name: "Mathias Danielsson",
+//     avatar: "/placeholder.svg?height=48&width=48",
+//     text: "Amazing service! Chatted with a lovely attendant and they took several days to sort out the bag and were online all during the process.",
+//   },
+//   {
+//     name: "Mathias Danielsson",
+//     avatar: "/placeholder.svg?height=48&width=48",
+//     text: "Amazing service! Chatted with a lovely attendant and they took several days to sort out the bag and were online all during the process.",
+//   },
+// ];
 
-const locations = [
-  {
-    area: "Stockholm",
-    address: "Sveavägen 98, 113 50 Stockholm",
-    weekdayHours: "10:00-18:00",
-    saturdayHours: "11:00-16:00",
-    phone: "08-31 55 55",
-  },
-  {
-    area: "Stockholm",
-    address: "Sveavägen 98, 113 50 Stockholm",
-    weekdayHours: "10:00-18:00",
-    saturdayHours: "11:00-16:00",
-    phone: "08-31 55 55",
-  },
-  {
-    area: "Stockholm",
-    address: "Sveavägen 98, 113 50 Stockholm",
-    weekdayHours: "10:00-18:00",
-    saturdayHours: "11:00-16:00",
-    phone: "08-31 55 55",
-  },
-];
+// const locations = [
+//   {
+//     area: "Stockholm",
+//     address: "Sveavägen 98, 113 50 Stockholm",
+//     weekdayHours: "10:00-18:00",
+//     saturdayHours: "11:00-16:00",
+//     phone: "08-31 55 55",
+//   },
+//   {
+//     area: "Stockholm",
+//     address: "Sveavägen 98, 113 50 Stockholm",
+//     weekdayHours: "10:00-18:00",
+//     saturdayHours: "11:00-16:00",
+//     phone: "08-31 55 55",
+//   },
+//   {
+//     area: "Stockholm",
+//     address: "Sveavägen 98, 113 50 Stockholm",
+//     weekdayHours: "10:00-18:00",
+//     saturdayHours: "11:00-16:00",
+//     phone: "08-31 55 55",
+//   },
+// ];
 
-const faqs = [
-  {
-    question: "Who should use Luga?",
-    answer:
-      "Anyone looking for high-quality tailoring and dry cleaning services.",
-  },
-  {
-    question: "What's required to use Luga?",
-    answer: "Just bring your garments to our location or schedule a pickup.",
-  },
-  {
-    question: "What's required to use Luga?",
-    answer: "Just bring your garments to our location or schedule a pickup.",
-  },
-  {
-    question: "What's required to use Luga?",
-    answer: "Just bring your garments to our location or schedule a pickup.",
-  },
-  {
-    question: "What's required to use Luga?",
-    answer: "Just bring your garments to our location or schedule a pickup.",
-  },
-];
+// const faqs = [
+//   {
+//     question: "Who should use Luga?",
+//     answer:
+//       "Anyone looking for high-quality tailoring and dry cleaning services.",
+//   },
+//   {
+//     question: "What's required to use Luga?",
+//     answer: "Just bring your garments to our location or schedule a pickup.",
+//   },
+//   {
+//     question: "What's required to use Luga?",
+//     answer: "Just bring your garments to our location or schedule a pickup.",
+//   },
+//   {
+//     question: "What's required to use Luga?",
+//     answer: "Just bring your garments to our location or schedule a pickup.",
+//   },
+//   {
+//     question: "What's required to use Luga?",
+//     answer: "Just bring your garments to our location or schedule a pickup.",
+//   },
+// ];

@@ -4,34 +4,30 @@ import { useState, useEffect, useCallback } from "react"
 import Image from "next/image"
 import Link from "next/link"
 import { ChevronRight, ChevronLeft } from "lucide-react"
+import { HeroBannerDetails } from "@/utils"
 
 interface HeroSlide {
-  image: string
+  id:string,
+  url: string
   title: string
   description: string
 }
 
 export default function HeroSlider() {
-  const slides: HeroSlide[] = [
-    {
-      image: "https://ik.imagekit.io/vv/Section%20(1).jpg?updatedAt=1744566223910",
-      title: "Tailoring and dry cleaning",
-      description:
-        "We accept small and large orders from individuals, companies and institutions. Our skilled tailor has over 25 years of experience in the profession and has sewn everything that can be sewn from ready-to-wear. With us you can get custom-made clothes for a perfect fit.",
-    },
-    {
-      image: "https://ik.imagekit.io/vv/Section%20(1).jpg?updatedAt=1744566223910",
-      title: "Professional suit making",
-      description:
-        "Get a perfectly tailored suit that fits your body and style. Our expert tailors create custom suits with premium fabrics and meticulous attention to detail.",
-    },
-    {
-      image: "https://ik.imagekit.io/vv/Section%20(1).jpg?updatedAt=1744566223910",
-      title: "Eco-friendly dry cleaning",
-      description:
-        "Our environmentally conscious dry cleaning services use safe, non-toxic solutions that are gentle on your clothes and the planet.",
-    },
-  ]
+  const [slides,setSlides]=useState<HeroSlide[]>([])
+  useEffect(()=>{
+    fetchHeroBanner()
+  },[])
+  const fetchHeroBanner =  async() => {
+    try{
+      const heroData = await HeroBannerDetails();
+      setSlides(heroData);
+    }
+    catch(err){
+      setSlides([]);
+    }
+    
+  }
 
   const [currentSlide, setCurrentSlide] = useState(0)
 
@@ -62,7 +58,7 @@ export default function HeroSlider() {
         >
           <div className="absolute inset-0 z-0">
             <Image
-              src={slide.image || "/placeholder.svg"}
+              src={slide.url || "/placeholder.svg"}
               alt={slide.title}
               fill
               className="object-cover brightness-75"

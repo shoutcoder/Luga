@@ -1,6 +1,10 @@
+import { CategoryDetails, PlanPriceDetails } from '@/utils'
 import Link from 'next/link'
 
-export default function PricingPage() {
+export default async function PricingPage() {
+  const priceCategories = await PlanPriceDetails()
+  const categories = await CategoryDetails()
+
   return (
     <main className="min-h-screen mt-10 pt-24">
       <div className="container mx-auto px-4 max-w-4xl">
@@ -52,49 +56,49 @@ export default function PricingPage() {
   )
 }
 
-const priceCategories = [
-  {
-    title: "Dress",
-    items: [
-      { name: "Legg opp/ned", price: "450" },
-      { name: "Innsying enkel", price: "450" },
-      { name: "Innsying krevende", price: "600" },
-      { name: "Legge inn/ut", price: "450" },
-    ]
-  },
-  {
-    title: "Bukser",
-    items: [
-      { name: "Legg opp/ned", price: "250" },
-      { name: "Innsying", price: "250" },
-      { name: "Legge ut", price: "250" },
-      { name: "Skifte glidelås", price: "250" },
-    ]
-  },
-  {
-    title: "Skjorter",
-    items: [
-      { name: "Innsying", price: "350" },
-      { name: "Forkorte ermer", price: "250" },
-      { name: "Legge ut", price: "250" },
-    ]
-  }
-]
+// const priceCategories = [
+//   {
+//     title: "Dress",
+//     items: [
+//       { name: "Legg opp/ned", price: "450" },
+//       { name: "Innsying enkel", price: "450" },
+//       { name: "Innsying krevende", price: "600" },
+//       { name: "Legge inn/ut", price: "450" },
+//     ]
+//   },
+//   {
+//     title: "Bukser",
+//     items: [
+//       { name: "Legg opp/ned", price: "250" },
+//       { name: "Innsying", price: "250" },
+//       { name: "Legge ut", price: "250" },
+//       { name: "Skifte glidelås", price: "250" },
+//     ]
+//   },
+//   {
+//     title: "Skjorter",
+//     items: [
+//       { name: "Innsying", price: "350" },
+//       { name: "Forkorte ermer", price: "250" },
+//       { name: "Legge ut", price: "250" },
+//     ]
+//   }
+// ]
 
-const categories = [
-  {
-    title: "UNDERTØY",
-    sections: [
-      {
-        title: "BH",
-        items: [
-          { name: "Stramme stropper", price: "150" },
-          { name: "Skifte spenne", price: "200" },
-          { name: "Innsying", price: "250" },
-        ]
-      },
-      // Add more sections and items based on the image
-    ]
-  },
-  // Add more categories based on the image
-]
+// const categories = [
+//   {
+//     title: "UNDERTØY",
+//     sections: [
+//       {
+//         title: "BH",
+//         items: [
+//           { name: "Stramme stropper", price: "150" },
+//           { name: "Skifte spenne", price: "200" },
+//           { name: "Innsying", price: "250" },
+//         ]
+//       },
+//       // Add more sections and items based on the image
+//     ]
+//   },
+//   // Add more categories based on the image
+// ]

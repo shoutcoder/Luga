@@ -1,6 +1,9 @@
+import { GallaryDetails, TeamMemberDetails } from "@/utils"
 import Image from "next/image"
 
-export default function AboutPage() {
+export default async function AboutPage() {
+  const teamMember = await TeamMemberDetails()
+  const gallary = await GallaryDetails()
   return (
     <main className="min-h-screen mt-10 pt-24 text-white">
       <div className="container mx-auto px-4 text-black">
@@ -45,10 +48,10 @@ export default function AboutPage() {
         <section className="my-24">
           <h2 className="text-3xl font-bold mb-12 text-center">Our Gallary</h2>
           <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
-            {['workshop1.jpg', 'workshop2.jpg', 'workshop3.jpg', 'workshop4.jpg'].map((img, index) => (
+            {gallary.map((img, index) => (
               <div key={index} className="relative h-[200px]">
                 <Image
-                  src={`/placeholder.svg`}
+                  src={img.imageUrl}
                   alt={`Workshop image ${index + 1}`}
                   fill
                   className="object-cover rounded-lg hover:opacity-90 transition-opacity"
@@ -103,16 +106,11 @@ export default function AboutPage() {
         <section className="my-24">
           <h2 className="text-3xl font-bold mb-12 text-center">Meet Our Team</h2>
           <div className="grid md:grid-cols-3 lg:grid-cols-4 gap-8">
-            {[
-              { name: 'John Doe', role: 'Master Tailor', image: '/placeholder.svg' },
-              { name: 'Jane Smith', role: 'Design Lead', image: '/placeholder.svg' },
-              { name: 'Mike Johnson', role: 'Pattern Maker', image: '/placeholder.svg' },
-              { name: 'Sarah Williams', role: 'Quality Control', image: '/placeholder.svg' },
-            ].map((member, index) => (
+            {teamMember.map((member, index) => (
               <div key={index} className="text-center">
                 <div className="relative h-[300px] mb-4">
                   <Image
-                    src={member.image}
+                    src={member.imageUrl}
                     alt={member.name}
                     fill
                     className="object-cover rounded-lg"
