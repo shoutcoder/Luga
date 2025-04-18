@@ -22,3 +22,20 @@ export const OurServices = async ():Promise<ServicesSlide[]>=>{
         return []
     }
 }
+
+export const updateService = async (
+    id: string,
+    data: { title: string; url: string }
+  ): Promise<{ success: boolean; error?: any }> => {
+    try {
+      await prisma.service.update({
+        where: { id },
+        data: { title: data.title, url: data.url },
+      })
+      return { success: true }
+    } catch (error) {
+      console.error("update service error", error)
+      return { success: false, error }
+    }
+  }
+  

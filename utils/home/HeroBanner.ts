@@ -24,3 +24,18 @@ export const HeroBannerDetails = async ():Promise<HeroSlide[]>=>{
         return []
     }
 }
+export const updateHeroBanner = async (id: string, updatedSlide: { title: string; description: string; url: string }) => {
+    try {
+      await prisma.heroBanner.update({
+        where: { id },
+        data: {
+          title: updatedSlide.title,
+          description: updatedSlide.description,
+          url: updatedSlide.url,
+        },
+      })
+      return { success: true }
+    } catch (error) {
+      return { success: false, error }
+    }
+  }

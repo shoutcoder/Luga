@@ -28,3 +28,31 @@ export const LocationsDetails = async ():Promise<Locations[]>=>{
         return []
     }
 }
+
+export const updateLocation = async (
+    id: string,
+    data: {
+      area: string
+      address: string
+      weekdayHours: string
+      saturdayHours: string
+      phone: string
+    }
+  ): Promise<{ success: boolean; error?: any }> => {
+    try {
+      await prisma.location.update({
+        where: { id },
+        data: {
+          area: data.area,
+          address: data.address,
+          weekdayHours: data.weekdayHours,
+          saturdayHours: data.saturdayHours,
+          phone: data.phone,
+        },
+      })
+      return { success: true }
+    } catch (error) {
+      console.error("update location error", error)
+      return { success: false, error }
+    }
+  }

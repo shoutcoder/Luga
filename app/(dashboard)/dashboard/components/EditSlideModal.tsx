@@ -2,7 +2,7 @@
 import React,{useEffect,useRef} from "react";
 
 interface Slide {
-  image: string;
+  url: string;
   title: string;
   description: string;
 }
@@ -38,7 +38,7 @@ const EditSlideModal: React.FC<EditSlideModalProps> = ({ isOpen, slide, onClose,
           <label className="block text-sm font-medium text-gray-600 mb-1">Image URL</label>
           <input
             type="text"
-            value={slide.image}
+            value={slide.url}
             onChange={(e) => onChange("image", e.target.value)}
             placeholder="https://example.com/image.jpg"
             className="w-full border rounded p-2"
