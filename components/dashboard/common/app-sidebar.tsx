@@ -22,8 +22,13 @@ import {
 
 const items = [
   {
-    title: "Hero Banner",
+    title: "Contact Details",
     url: "/dashboard",
+    icon: FileImage,
+  },
+  {
+    title: "Hero Banner",
+    url: "/heroBanner",
     icon: FileImage,
   },
   {

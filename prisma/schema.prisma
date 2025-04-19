@@ -1,9 +1,3 @@
-// This is your Prisma schema file,
-// learn more about it in the docs: https://pris.ly/d/prisma-schema
-
-// Looking for ways to speed up your queries, or scale easily with your serverless or edge functions?
-// Try Prisma Accelerate: https://pris.ly/cli/accelerate-init
-
 generator client {
   provider = "prisma-client-js"
 }
@@ -15,21 +9,18 @@ datasource db {
 }
 
 model User {
-  id            String             @id @default(cuid())
-  name          String?
-  email         String             @unique
-  password      String?
-  role          Role      @default(USER)
-  isVerified    Boolean            @default(false)
-  otp           String?
-  otpExpires    DateTime?
-  createdAt     DateTime           @default(now())
-  updatedAt     DateTime           @updatedAt
+  id         String    @id @default(cuid())
+  name       String?
+  email      String    @unique
+  password   String?
+  role       Role      @default(USER)
+  isVerified Boolean   @default(false)
+  otp        String?
+  otpExpires DateTime?
+  createdAt  DateTime  @default(now())
+  updatedAt  DateTime  @updatedAt
 }
-enum Role {
-  USER
-  ADMIN
-}
+
 model HeroBanner {
   id          String   @id @default(cuid())
   title       String
@@ -50,9 +41,9 @@ model Service {
 model Testimonial {
   id        String   @id @default(cuid())
   name      String
-  avatar    String   // URL to the avatar image
-  text      String   // The testimonial text
-  rating    Int      // Rating out of 5
+  avatar    String
+  text      String
+  rating    Int
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
 }
@@ -67,6 +58,7 @@ model Location {
   createdAt     DateTime @default(now())
   updatedAt     DateTime @updatedAt
 }
+
 model Faq {
   id        String   @id @default(cuid())
   question  String
@@ -74,59 +66,72 @@ model Faq {
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
 }
+
 model TeamMember {
   id        String   @id @default(cuid())
   name      String
   role      String
-  imageUrl  String   // Image of the team member
-  bio       String?  // Optional: short description or bio
+  imageUrl  String
+  bio       String?
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
 }
+
 model Gallery {
   id        String   @id @default(cuid())
   title     String?
   imageUrl  String
-  caption   String?   // Optional: for a short image description
-  createdAt DateTime  @default(now())
-  updatedAt DateTime  @updatedAt
+  caption   String?
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
 }
 
 model PriceCategory {
-  id      String      @id @default(cuid())
-  title   String
-  items   PriceItem[] // One-to-many relationship
+  id    String      @id @default(cuid())
+  title String
+  items PriceItem[]
 }
 
 model PriceItem {
-  id               String         @id @default(cuid())
-  name             String
-  price            String
-  categoryId       String
-  category         PriceCategory  @relation(fields: [categoryId], references: [id])
+  id         String        @id @default(cuid())
+  name       String
+  price      String
+  categoryId String
+  category   PriceCategory @relation(fields: [categoryId], references: [id])
 }
 
 model Category {
-  id        String     @id @default(cuid())
-  title     String
-  sections  Section[]  // One-to-many relationship with Section
+  id       String    @id @default(cuid())
+  title    String
+  sections Section[]
 }
 
 model Section {
-  id          String     @id @default(cuid())
-  title       String
-  categoryId  String
-  category    Category   @relation(fields: [categoryId], references: [id])
-  items       Item[]     // One-to-many relationship with Item
+  id         String   @id @default(cuid())
+  title      String
+  categoryId String
+  items      Item[]
+  category   Category @relation(fields: [categoryId], references: [id])
 }
 
 model Item {
-  id         String   @id @default(cuid())
-  name       String
-  price      String
-  sectionId  String
-  section    Section  @relation(fields: [sectionId], references: [id])
+  id        String  @id @default(cuid())
+  name      String
+  price     String
+  sectionId String
+  section   Section @relation(fields: [sectionId], references: [id])
 }
 
+model Contact {
+  id        String   @id @default(cuid())
+  name      String
+  email     String
+  message   String
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+}
 
-
+enum Role {
+  USER
+  ADMIN
+}

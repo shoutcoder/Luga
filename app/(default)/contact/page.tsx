@@ -1,4 +1,7 @@
+"use client"
+import { useState, useTransition } from "react";
 import { Mail, MapPin, Phone } from "lucide-react"
+import { CreateDetails } from "@/utils";
 
 const stores = [
   {
@@ -25,6 +28,29 @@ const stores = [
 ]
 
 export default function ContactPage() {
+  const [form, setForm] = useState({
+    name: "",
+    email: "",
+    message: "",
+  });
+
+  const [isPending, startTransition] = useTransition();
+  const [success, setSuccess] = useState<boolean | null>(null);
+
+  const handleSubmit = (e: React.FormEvent) => {
+    e.preventDefault();
+
+    startTransition(async () => {
+      const result = await CreateDetails(form);
+      setSuccess(result);
+      if (result) {
+        setForm({ name: "", email: "", message: "" });
+      }
+      setTimeout(() => {
+        setSuccess(null);
+      }, 2000);
+    });
+  };
   return (
     <main className="min-h-screen pt-16">
       {/* Hero Section */}
@@ -36,61 +62,74 @@ export default function ContactPage() {
         </div>
       </div>
 
-{/* Contact Form Section */}
-<div className="grid md:grid-cols-2 gap-12 mb-12 px-4">
-          <div className="bg-gradient-to-br from-[#1a231a] to-[#141914] p-8 rounded-lg shadow-xl border border-[#2d3c2d]/20">
-            <h2 className="text-2xl font-bold mb-6 text-white">Send us a message</h2>
-            <form className="space-y-6">
-              <div>
-                <label className="block mb-2 text-gray-300">Name</label>
-                <input
-                  type="text"
-                  className="w-full p-3 rounded-lg bg-[#2d3c2d]/50 border border-[#4a5f4a]/50 focus:border-[#6a8f6a] transition-colors outline-none text-white"
-                  placeholder="Your name"
-                />
+      {/* Contact Form Section */}
+      <div className="grid md:grid-cols-2 gap-12 mb-12 px-4">
+        <div className="bg-gradient-to-br from-[#1a231a] to-[#141914] p-8 rounded-lg shadow-xl border border-[#2d3c2d]/20">
+          <h2 className="text-2xl font-bold mb-6 text-white">Send us a message</h2>
+          <form className="space-y-6" onSubmit={handleSubmit}>
+            <div>
+              <label className="block mb-2 text-gray-300">Name</label>
+              <input
+                type="text"
+                className="w-full p-3 rounded-lg bg-[#2d3c2d]/50 border border-[#4a5f4a]/50 focus:border-[#6a8f6a] transition-colors outline-none text-white"
+                placeholder="Your name"
+                required
+                value={form.name}
+                onChange={(e) => setForm({ ...form, name: e.target.value })}
+              />
+            </div>
+            <div>
+              <label className="block mb-2 text-gray-300">Email</label>
+              <input
+                type="email"
+                className="w-full p-3 rounded-lg bg-[#2d3c2d]/50 border border-[#4a5f4a]/50 focus:border-[#6a8f6a] transition-colors outline-none text-white"
+                placeholder="your@email.com"
+                required
+                value={form.email}
+                onChange={(e) => setForm({ ...form, email: e.target.value })}
+              />
+            </div>
+            <div>
+              <label className="block mb-2 text-gray-300">Message</label>
+              <textarea
+                rows={4}
+                className="w-full p-3 rounded-lg bg-[#2d3c2d]/50 border border-[#4a5f4a]/50 focus:border-[#6a8f6a] transition-colors outline-none text-white"
+                placeholder="Your message"
+                required
+                value={form.message}
+                onChange={(e) => setForm({ ...form, message: e.target.value })}
+              ></textarea>
+            </div>
+            <button
+              type="submit"
+              disabled={isPending}
+              className="bg-gradient-to-r from-[#4a5f4a] to-[#3d4f3d] px-8 py-3 rounded-lg text-white font-semibold hover:from-[#5a7f5a] hover:to-[#4d6f4d] transition-all duration-300 shadow-lg hover:shadow-xl"
+            >
+              {isPending ? "Sending..." : "Send Message"}
+            </button>
+            {success === true && <p className="text-green-400">Message sent successfully!</p>}
+            {success === false && <p className="text-red-400">Something went wrong.</p>}
+
+          </form>
+        </div>
+
+        <div className="p-8 flex flex-col justify-center">
+          <h2 className="text-2xl font-bold mb-6 text-black">Quick Contact</h2>
+          <div className="space-y-6 text-gray-300">
+            <p className="text-lg text-black">Need immediate assistance? Reach out to us directly:</p>
+            <div className="space-y-4">
+              <div className="flex items-center space-x-4">
+                <Phone className="w-6 h-6 text-black" />
+                <p className="text-black">+1 800 123 4567 (Toll-free)</p>
               </div>
-              <div>
-                <label className="block mb-2 text-gray-300">Email</label>
-                <input
-                  type="email"
-                  className="w-full p-3 rounded-lg bg-[#2d3c2d]/50 border border-[#4a5f4a]/50 focus:border-[#6a8f6a] transition-colors outline-none text-white"
-                  placeholder="your@email.com"
-                />
-              </div>
-              <div>
-                <label className="block mb-2 text-gray-300">Message</label>
-                <textarea
-                  rows={4}
-                  className="w-full p-3 rounded-lg bg-[#2d3c2d]/50 border border-[#4a5f4a]/50 focus:border-[#6a8f6a] transition-colors outline-none text-white"
-                  placeholder="Your message"
-                ></textarea>
-              </div>
-              <button
-                type="submit"
-                className="bg-gradient-to-r from-[#4a5f4a] to-[#3d4f3d] px-8 py-3 rounded-lg text-white font-semibold hover:from-[#5a7f5a] hover:to-[#4d6f4d] transition-all duration-300 shadow-lg hover:shadow-xl"
-              >
-                Send Message
-              </button>
-            </form>
-          </div>
-          
-          <div className="p-8 flex flex-col justify-center">
-            <h2 className="text-2xl font-bold mb-6 text-black">Quick Contact</h2>
-            <div className="space-y-6 text-gray-300">
-              <p className="text-lg text-black">Need immediate assistance? Reach out to us directly:</p>
-              <div className="space-y-4">
-                <div className="flex items-center space-x-4">
-                  <Phone className="w-6 h-6 text-black" />
-                  <p className="text-black">+1 800 123 4567 (Toll-free)</p>
-                </div>
-                <div className="flex items-center space-x-4">
-                  <Mail className="w-6 h-6 text-black" />
-                  <p className="text-black">support@example.com</p>
-                </div>
+              <div className="flex items-center space-x-4">
+                <Mail className="w-6 h-6 text-black" />
+                <p className="text-black">support@example.com</p>
               </div>
             </div>
           </div>
         </div>
+      </div>
       <div className="container mx-auto px-4">
         {/* Store Locations Grid */}
         <div className="grid md:grid-cols-3 gap-6 mb-12">
@@ -134,7 +173,7 @@ export default function ContactPage() {
           </div>
         </div>
 
-        
+
       </div>
     </main>
   )
