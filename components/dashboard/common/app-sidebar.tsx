@@ -7,7 +7,9 @@ import {
   LayoutDashboard,
   MessageCircleHeart,
   HelpCircle,
-  CoinsIcon
+  CoinsIcon,
+  ChartColumnStacked,
+  Navigation
 } from "lucide-react";
 
 import {
@@ -44,7 +46,7 @@ const items = [
   {
     title: "Visit Us",
     url: "/visit-us",
-    icon: HelpCircle,
+    icon: Navigation ,
   },
   {
     title: "Faq",
@@ -55,6 +57,11 @@ const items = [
     title: "Pricing",
     url: "/edit-pricing",
     icon: CoinsIcon,
+  },
+  {
+    title: "Category",
+    url: "/edit-category",
+    icon: ChartColumnStacked,
   },
 ];
 
