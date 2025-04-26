@@ -1,10 +1,60 @@
+"use client"
+import { useState } from "react"
 import Image from "next/image"
 import Link from "next/link"
 import { Checkbox } from "@/components/ui/checkbox"
 import { Input } from "@/components/ui/input"
 import LoginPageImg from "@/public/LoginPageImg.png"
+import { toast } from "@/components/ui/use-toast"
 
 export default function page() {
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+  const [rememberMe, setRememberMe] = useState(false);
+  const [loading, setLoading] = useState(false);
+
+  const handleLogin = async (e: React.FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+    setLoading(true);
+
+    try {
+      const response = await fetch("/api/auth/login", {  // <-- your API route
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({ email, password,rememberMe }),
+      });
+
+      const data = await response.json();
+      console.log("data",data)
+      if (response.ok) {
+        // Login success
+        console.log("Login Success", data);
+        toast({
+          variant: "success",
+          description: "Login Success"
+        })
+        // Redirect to homepage or dashboard
+        window.location.href = "/";
+      } else {
+        // Handle error
+        console.error("Login failed", data.message);
+        toast({
+          variant: "destructive",
+          description: data.message || "Login failed"
+        })
+      }
+    } catch (error) {
+      console.error("Something went wrong", error);
+      toast({
+        variant: "destructive",
+        description: "Something went wrong. Please try again."
+      })
+    } finally {
+      setLoading(false);
+    }
+  };
   return (
     <div className="flex min-h-screen">
       {/* Left side - Login Form */}
@@ -15,7 +65,7 @@ export default function page() {
             <p className="text-gray-700">Enter your Credentials to access your account</p>
           </div>
 
-          <form className="space-y-6">
+          <form className="space-y-6" onSubmit={handleLogin}>
             <div className="space-y-2">
               <label htmlFor="email" className="block font-medium">
                 Email address
@@ -25,6 +75,8 @@ export default function page() {
                 type="email"
                 placeholder="Enter your email"
                 className="w-full border border-[#d9d9d9] rounded-md"
+                value={email}
+                onChange={(e) => setEmail(e.target.value)}
               />
             </div>
 
@@ -37,18 +89,28 @@ export default function page() {
                   forgot password
                 </Link>
               </div>
-              <Input id="password" type="password" className="w-full border border-[#d9d9d9] rounded-md" />
+              <Input id="password"
+                type="password"
+                placeholder="Enter your password"
+                className="w-full border border-[#d9d9d9] rounded-md"
+                value={password}
+                onChange={(e) => setPassword(e.target.value)}
+                />
             </div>
 
             <div className="flex items-center space-x-2">
-              <Checkbox id="remember" />
+            <Checkbox id="remember" checked={rememberMe} onCheckedChange={() => setRememberMe(!rememberMe)} />
               <label htmlFor="remember" className="text-sm">
                 Remember for 30 days
               </label>
             </div>
 
-            <button type="submit"  className="w-full bg-[#3a5b22] text-white py-3 rounded-md font-medium">
-              <Link href={"/"}>Login</Link>
+            <button
+              type="submit"
+              disabled={loading}
+              className="w-full bg-[#3a5b22] text-white py-3 rounded-md font-medium"
+            >
+              {loading ? "Logging in..." : "Login"}
             </button>
           </form>
 
@@ -98,7 +160,7 @@ export default function page() {
       <div className="hidden lg:block lg:w-1/2 rounded-l-[2rem]">
         <div className="h-full w-full relative ">
           <Image
-          className="object-fit rounded-l-[2rem]"
+            className="object-fit rounded-l-[2rem]"
             src={LoginPageImg}
             alt="Decorative plant leaves"
             fill

@@ -1,10 +1,69 @@
+"use client"
+import { useState } from "react"
 import Image from "next/image"
 import Link from "next/link"
 import { Checkbox } from "@/components/ui/checkbox"
 import { Input } from "@/components/ui/input"
 import LoginPageImg from "@/public/LoginPageImg.png"
-
+import { toast } from '@/components/ui/use-toast';
 export default function page() {
+  const [formData, setFormData] = useState<User>({
+    name: "",
+    email: "",
+    password: "",
+    termsAccepted: false,
+  })
+  const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const { id, value, type, checked } = e.target
+    setFormData((prev) => ({
+      ...prev,
+      [id]: type === "checkbox" ? checked : value,
+    }))
+  }
+  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
+    e.preventDefault()
+    console.log("form data",formData)
+    if(!formData.name || !formData.email || !formData.password){
+      toast({
+        variant:"destructive",
+        description: "All fields are mandatory.",
+      })
+      return;
+    }
+    if(!formData.termsAccepted){
+      toast({
+        variant:"destructive",
+        description: "Accept Terms and Conditions.",
+      })
+      return;
+    }
+    try {
+      const res = await fetch("/api/auth/signup", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(formData),
+      })
+
+      if (!res.ok) {
+        const errorData = await res.json()
+        toast({
+          variant:"destructive",
+          description: errorData.message||`Something went wrong!`,
+        })
+        throw new Error(errorData.message || "Something went wrong!")
+      }
+      toast({
+        variant:"success",
+        description: "Signup successful! Redirecting to login page..",
+      })
+      window.location.href = "/login"
+    } catch (error: any) {
+      toast({
+        variant:"destructive",
+        description: error.message||`Something went wrong!`,
+      })
+    }
+  }
   return (
     <div className="flex h-screen max-h-screen">
       {/* Left side - Signup Form */}
@@ -15,7 +74,7 @@ export default function page() {
             <p className="text-gray-700">Enter your details to create your account</p>
           </div>
 
-          <form className="space-y-6">
+          <form onSubmit={handleSubmit} className="space-y-6">
             <div className="space-y-1.5">
               <label htmlFor="name" className="block font-medium">
                 Full Name
@@ -25,6 +84,8 @@ export default function page() {
                 type="text"
                 placeholder="Enter your full name"
                 className="w-full border border-[#d9d9d9] rounded-md"
+                value={formData.name}
+                onChange={handleChange}
               />
             </div>
 
@@ -37,6 +98,8 @@ export default function page() {
                 type="email"
                 placeholder="Enter your email"
                 className="w-full border border-[#d9d9d9] rounded-md"
+                value={formData.email}
+                onChange={handleChange}
               />
             </div>
 
@@ -49,11 +112,18 @@ export default function page() {
                 type="password"
                 placeholder="Enter your password"
                 className="w-full border border-[#d9d9d9] rounded-md"
+                value={formData.password}
+                onChange={handleChange}
               />
             </div>
 
             <div className="flex items-center space-x-2">
-              <Checkbox id="terms" />
+              <Checkbox id="terms"
+               checked={formData.termsAccepted}
+               onCheckedChange={(checked) =>
+                 setFormData((prev) => ({ ...prev, termsAccepted: checked as boolean }))
+               }
+              />
               <label htmlFor="terms" className="text-sm">
                 I agree to the <span className="text-[#1976d2]">Terms and Conditions</span>
               </label>
