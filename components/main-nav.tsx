@@ -39,9 +39,7 @@ export default function MainNav() {
         <Link href="/contact" className="text-sm font-medium">
           Contact
         </Link>
-        <Link href="/dashboard" className="text-sm font-medium">
-          Dashboard
-        </Link>
+        <Role/>
       </div>
       <MobileNav />
     </nav>

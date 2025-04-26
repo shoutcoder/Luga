@@ -262,9 +262,9 @@ export default function Home() {
                   <Phone className="w-4 h-4 mr-2" />
                   <p className="text-sm">{location.phone}</p>
                 </div>
-                <button className="w-max border border-white px-10 rounded-full py-2 text-sm">
+                <Link href={location.redirection} target="_blank" className="w-max border border-white px-10 rounded-full py-2 text-sm">
                   Get Directions
-                </button>
+                </Link>
               </div>
             ))}
           </div>

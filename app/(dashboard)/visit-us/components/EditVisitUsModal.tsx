@@ -9,6 +9,7 @@ export type Location = {
   weekdayHours: string
   saturdayHours: string
   phone: string
+  redirection:string
 }
 
 type Props = {
@@ -45,9 +46,9 @@ const EditVisitUsModal: React.FC<Props> = ({ isOpen, location, onClose, onSave }
   return (
     <div className="fixed text-black inset-0 bg-black/50 flex justify-center items-center z-50">
       <div ref={modalRef} className="bg-white p-6 rounded-lg w-full max-w-lg">
-        <h2 className="text-2xl mb-4">Edit Location</h2>
+        <h2 className="text-2xl mb-4">{location.id ? "Edit Location" : "Add New Location"}</h2>
 
-        {(["area", "address", "phone", "weekdayHours", "saturdayHours"] as (keyof Location)[]).map((field) => (
+        {(["area", "address", "phone", "weekdayHours", "saturdayHours","redirection"] as (keyof Location)[]).map((field) => (
           <div key={field} className="mb-4">
             <label className="block text-sm font-medium mb-1">{field === "weekdayHours" ? "Weekday Hours" : field === "saturdayHours" ? "Saturday Hours" : field.charAt(0).toUpperCase() + field.slice(1)}</label>
             <input

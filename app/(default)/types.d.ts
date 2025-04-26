@@ -17,6 +17,7 @@ interface TestimonialData {
     weekdayHours: string
     saturdayHours: string
     phone: string
+    redirection:string,
 }
 interface Faqs {
     id:string,
