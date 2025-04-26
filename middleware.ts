@@ -1,5 +1,6 @@
 import { NextResponse } from "next/server";
 import type { NextRequest } from "next/server";
+import { toast } from "./components/ui/use-toast";
 
 // Your admin-only routes
 const adminRoutes = [
@@ -50,7 +51,8 @@ export function middleware(req: NextRequest) {
     if (!decoded || decoded.role !== "ADMIN") {
       // No role or wrong role
     //   console.log("No ADMIN role or wrong role, redirecting...");
-      return NextResponse.redirect(new URL("/", req.url));
+      return NextResponse.redirect(new URL("/login", req.url));
+     
     }
 
     // Role verified
@@ -63,7 +65,6 @@ export function middleware(req: NextRequest) {
 
 export const config = {
   matcher: [
-    "/",
     "/dashboard",
     "/faq",
     "/edit-pricing",

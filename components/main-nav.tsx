@@ -24,7 +24,7 @@ export default function MainNav() {
         </Link>
       </div>
       <Link href="/" className="md:absolute md:left-1/2 md:-translate-x-1/2">
-        <Image 
+        <Image
           src="/logo.png"
           width={130}
           height={70}
@@ -39,7 +39,9 @@ export default function MainNav() {
         <Link href="/contact" className="text-sm font-medium">
           Contact
         </Link>
-       <Role/>
+        <Link href="/dashboard" className="text-sm font-medium">
+          Dashboard
+        </Link>
       </div>
       <MobileNav />
     </nav>
