@@ -14,6 +14,9 @@ export const FaqDetails = async ():Promise<FaqData[]>=>{
                 id:true,
                 question:true,
                 answer:true,
+            },
+            orderBy:{
+                createdAt:"asc"
             }
         })
         return Faqs;

@@ -18,6 +18,9 @@ export const TestimonialDetails = async ():Promise<TestimonialData[]>=>{
                 avatar:true,
                 text:true,
                 rating:true,
+            },
+            orderBy:{
+                createdAt:"asc"
             }
         })
         return TestimonialData;

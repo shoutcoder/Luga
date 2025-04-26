@@ -17,6 +17,9 @@ export const TeamMemberDetails = async ():Promise<TeamMembers[]>=>{
                 name:true,
                 role:true,
                 imageUrl:true,
+            },
+            orderBy:{
+                createdAt:"asc"
             }
         })
         return teamDetails;

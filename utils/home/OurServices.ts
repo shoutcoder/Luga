@@ -14,6 +14,9 @@ export const OurServices = async ():Promise<ServicesSlide[]>=>{
                 id:true,
                 title:true,
                 url:true,
+            },
+            orderBy:{
+                createdAt:"asc"
             }
         })
         return OurServices;

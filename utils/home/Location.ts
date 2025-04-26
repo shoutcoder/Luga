@@ -22,6 +22,9 @@ export const LocationsDetails = async ():Promise<Locations[]>=>{
                 saturdayHours:true,
                 phone:true,
                 redirection:true,
+            },
+            orderBy:{
+                createdAt:"asc"
             }
         })
         return Locations;

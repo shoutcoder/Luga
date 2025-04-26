@@ -16,6 +16,9 @@ export const HeroBannerDetails = async ():Promise<HeroSlide[]>=>{
                 title:true,
                 description:true,
                 url:true,
+            },
+            orderBy:{
+                createdAt:"asc"
             }
         })
         return hereBannerData;
