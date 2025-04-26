@@ -57,13 +57,25 @@ export default function HeroSlider() {
           }`}
         >
           <div className="absolute inset-0 z-0">
+          {slide.url && (/\.(jpg|jpeg|png|gif|webp|svg)$/i.test(slide.url) ? (
             <Image
-              src={slide.url || "/placeholder.svg"}
+              src={slide.url}
               alt={slide.title}
               fill
               className="object-cover brightness-75"
               priority={index === 0}
             />
+          ) : (
+            <video
+              src={slide.url}
+              autoPlay
+              loop
+              muted
+              playsInline
+              className="object-cover brightness-75"
+            />
+          ))}
+
           </div>
           <div className="relative z-10 flex flex-col justify-end h-full pb-16 px-6 md:px-8 text-white">
             <div className="max-w-2xl">
