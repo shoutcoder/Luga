@@ -22,7 +22,7 @@ const EditContact = () => {
   useEffect(() => {
     const fetchContacts = async () => {
       const result = await ContactDetails();
-      console.log('result', result);
+
       setContacts(result);
       setLoading(false);
     };

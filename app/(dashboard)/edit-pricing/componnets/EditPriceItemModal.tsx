@@ -33,7 +33,7 @@ const EditPriceItemModal: React.FC<EditPriceItemModalProps> = ({ isOpen, item, o
     }, [onClose])
 
     if (!isOpen) return null
-    console.log("item-",item)
+   
     return (
         <div className="fixed inset-0 bg-black/50 flex items-center justify-center z-50">
             <div ref={modalRef} className="bg-white p-6 rounded-lg shadow-lg w-full max-w-md">

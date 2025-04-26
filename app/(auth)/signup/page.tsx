@@ -22,7 +22,7 @@ export default function page() {
   }
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault()
-    console.log("form data",formData)
+  
     if(!formData.name || !formData.email || !formData.password){
       toast({
         variant:"destructive",
@@ -134,7 +134,7 @@ export default function page() {
             </button>
           </form>
 
-          <div className="my-6 flex items-center">
+          {/* <div className="my-6 flex items-center">
             <div className="flex-grow border-t border-gray-300"></div>
             <span className="px-4 text-gray-500 text-sm">Or</span>
             <div className="flex-grow border-t border-gray-300"></div>
@@ -162,7 +162,7 @@ export default function page() {
               </svg>
               <span>Sign up with Google</span>
             </button>
-          </div>
+          </div> */}
 
           <div className="mt-7 text-center">
             <p className="text-sm">

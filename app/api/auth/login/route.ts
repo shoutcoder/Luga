@@ -8,23 +8,21 @@ const JWT_SECRET = process.env.JWT_SECRET!;
 export async function POST(req: Request) {
     try{
         const { email, password,rememberMe } = await req.json();
-        console.log("email",email)
-        console.log("password",password)
-        console.log("rememberMe",rememberMe)
+
       const user = await prisma.user.findUnique({ where: { email } });
-      console.log("user",user);
+
       if (!user || !user.password) {
         return NextResponse.json({ error: "Invalid credentials",message:"No User Found." }, { status: 401 });
       }
     
       const match = await bcrypt.compare(password, user.password);
-      console.log("match",match)
+
       if (!match) {
         return NextResponse.json({ error: "Invalid credentials",message:"Wrong Password" }, { status: 401 });
       }
       const maxAge = rememberMe ? 30 * 24 * 60 * 60 : 7 * 24 * 60 * 60; // seconds
       const token = jwt.sign({ userId:user.id,role:user.role}, JWT_SECRET, { expiresIn: maxAge });
-      console.log("token",token)
+    
       const res = NextResponse.json({ message: "Login successful" });
       res.cookies.set("token", token, {
         httpOnly: true,

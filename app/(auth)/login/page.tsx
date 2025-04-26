@@ -27,10 +27,9 @@ export default function page() {
       });
 
       const data = await response.json();
-      console.log("data",data)
+     
       if (response.ok) {
         // Login success
-        console.log("Login Success", data);
         toast({
           variant: "success",
           description: "Login Success"
@@ -85,9 +84,9 @@ export default function page() {
                 <label htmlFor="password" className="block font-medium">
                   Password
                 </label>
-                <Link href="/forgot-password" className="text-[#1976d2] text-sm">
+                {/* <Link href="/forgot-password" className="text-[#1976d2] text-sm">
                   forgot password
-                </Link>
+                </Link> */}
               </div>
               <Input id="password"
                 type="password"
@@ -114,7 +113,7 @@ export default function page() {
             </button>
           </form>
 
-          <div className="my-6 flex items-center">
+          {/* <div className="my-6 flex items-center">
             <div className="flex-grow border-t border-gray-300"></div>
             <span className="px-4 text-gray-500 text-sm">Or</span>
             <div className="flex-grow border-t border-gray-300"></div>
@@ -143,7 +142,7 @@ export default function page() {
               <span>Sign in with Google</span>
             </button>
 
-          </div>
+          </div> */}
 
           <div className="mt-8 text-center">
             <p className="text-sm">

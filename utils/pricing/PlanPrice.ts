@@ -69,7 +69,7 @@ export const deletePriceCategory = async (
   id: string
 ): Promise<{ success: boolean; error?: any }> => {
   try {
-    console.log("id-",id)
+
     await prisma.priceItem.deleteMany({
       where: { categoryId: id },
     })

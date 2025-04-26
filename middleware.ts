@@ -26,12 +26,12 @@ function decodePayload(token: string) {
 
 export function middleware(req: NextRequest) {
   const { pathname } = req.nextUrl;
-    console.log("pathname",pathname)
+
     const token = req.cookies.get("token")?.value;
 
     if (!token) {
       // No token: redirect to login
-      console.log("No token found, redirecting to login..");
+
       return NextResponse.redirect(new URL("/login", req.url));
     }
   // Check if it's an admin protected route
@@ -40,16 +40,16 @@ export function middleware(req: NextRequest) {
 
     if (!token) {
       // No token: redirect to login
-      console.log("No token found, redirecting to login...");
+    //   console.log("No token found, redirecting to login...");
       return NextResponse.redirect(new URL("/login", req.url));
     }
 
     const decoded = decodePayload(token);
-    console.log("decoded",decoded)
+    // console.log("decoded",decoded)
 
     if (!decoded || decoded.role !== "ADMIN") {
       // No role or wrong role
-      console.log("No ADMIN role or wrong role, redirecting...");
+    //   console.log("No ADMIN role or wrong role, redirecting...");
       return NextResponse.redirect(new URL("/", req.url));
     }
 
