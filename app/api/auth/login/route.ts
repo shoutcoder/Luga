@@ -31,6 +31,7 @@ export async function POST(req: Request) {
         path: "/",
         maxAge,
       });
+      
     
       return res;
     }
