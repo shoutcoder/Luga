@@ -1,18 +1,22 @@
-'use client'
-import Link from "next/link"
-import Image from "next/image"
-import { usePathname } from "next/navigation"
-import MobileNav from "@/components/mobile-nav"
-import Cookies from 'js-cookie';
-import jwt from 'jsonwebtoken';
-import Role from "./dashboard/common/Role"
+"use client";
+import Link from "next/link";
+import Image from "next/image";
+import { usePathname } from "next/navigation";
+import MobileNav from "@/components/mobile-nav";
+import Cookies from "js-cookie";
+import jwt from "jsonwebtoken";
+import Role from "./dashboard/common/Role";
 
 export default function MainNav() {
-  const pathname = usePathname()
-  const isHome = pathname === "/"
+  const pathname = usePathname();
+  const isHome = pathname === "/";
   return (
-    <nav className={`fixed top-0 left-0 right-0 z-50 flex items-center justify-between px-4 py-3 md:px-10 md:py-6 backdrop-blur-sm ${isHome ? '' : 'bg-[#2d3c2d]'}`}>
-      <div className="hidden md:flex items-center space-x-6 text-white">
+    <nav
+      className={`fixed  top-0  left-0 right-0 z-50 flex items-center justify-between px-4 py-3 md:px-16 md:py-6 backdrop-blur-md ${
+        isHome ? "" : "bg-[#2d3c2d]"
+      }`}
+    >
+      <div className="  hidden md:flex items-center space-x-6 text-white">
         <Link href="/" className="text-sm font-medium">
           Hjem
         </Link>
@@ -39,9 +43,9 @@ export default function MainNav() {
         <Link href="/contact" className="text-sm font-medium">
           Kontakt
         </Link>
-        <Role/>
+        <Role />
       </div>
       <MobileNav />
     </nav>
-  )
+  );
 }

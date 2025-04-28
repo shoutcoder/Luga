@@ -1,4 +1,4 @@
-'use client';
+"use client";
 import { useEffect, useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
@@ -10,64 +10,62 @@ import {
   Leaf,
   ThumbsUp,
   ChevronDown,
+  Car,
 } from "lucide-react";
 
 import HeroSlider from "@/components/hero-slider";
 import AutoScrollLogos from "@/components/auto-scroll-logos";
-import { FaqDetails, LocationsDetails, OurServices, TestimonialDetails } from "@/utils";
+import {
+  FaqDetails,
+  LocationsDetails,
+  OurServices,
+  TestimonialDetails,
+} from "@/utils";
 
 export default function Home() {
   const [openFaq, setOpenFaq] = useState<number | null>(null);
-  const [services, setServices] = useState<ServicesSlide[]>([])
-  const [testimonials, setTestimonials] = useState<TestimonialData[]>([])
-  const [locations, setLocations] = useState<Locations[]>([])
-  const [faqs, setFaqs] = useState<Faqs[]>([])
+  const [services, setServices] = useState<ServicesSlide[]>([]);
+  const [testimonials, setTestimonials] = useState<TestimonialData[]>([]);
+  const [locations, setLocations] = useState<Locations[]>([]);
+  const [faqs, setFaqs] = useState<Faqs[]>([]);
   useEffect(() => {
-    fetchServices()
-    fetchTestimonial()
-    fetchLocation()
-    fetchFaqs()
-  }, [])
+    fetchServices();
+    fetchTestimonial();
+    fetchLocation();
+    fetchFaqs();
+  }, []);
   const fetchServices = async () => {
     try {
       const services = await OurServices();
       setServices(services);
-    }
-    catch (err) {
+    } catch (err) {
       setServices([]);
     }
-
-  }
+  };
   const fetchTestimonial = async () => {
     try {
       const testimonials = await TestimonialDetails();
       setTestimonials(testimonials);
-    }
-    catch (err) {
+    } catch (err) {
       setTestimonials([]);
     }
-
-  }
+  };
   const fetchLocation = async () => {
     try {
-      const locations = await LocationsDetails()
+      const locations = await LocationsDetails();
       setLocations(locations);
-    }
-    catch (err) {
+    } catch (err) {
       setLocations([]);
     }
-
-  }
+  };
   const fetchFaqs = async () => {
     try {
-      const faqs = await FaqDetails()
+      const faqs = await FaqDetails();
       setFaqs(faqs);
-    }
-    catch (err) {
+    } catch (err) {
       setFaqs([]);
     }
-
-  }
+  };
 
   return (
     <div>
@@ -75,41 +73,47 @@ export default function Home() {
       <HeroSlider />
 
       {/* Services Section */}
-      <section id="services" className="py-5 md:py-16 bg-[#2d3c2d] text-white">
+      <section id="services" className="py-5 md:py-16  bg-[#2d3c2d] text-white">
         <div className="container mx-auto px-4">
           <div className="md:mb-[-200px]">
-            <h2 className="text-2xl md:text-3xl font-bold mb-3 md:mb-12">
+            <h2 className="text-2xl md:text-3xl font-bold mb-3 md:mb-5">
               VÅRE TJENESTER
             </h2>
             <p className="max-w-3xl mb-12 text-sm">
-            Hos LUGA forlenger vi levetiden på klærne dine med skreddersøm, miljøvennlig rens, tilpasninger, redesign og spesialtilpassede plagg.
-            Vi bevarer favorittene dine og realiserer nye idéer med håndverk, omsorg og bærekraft i hvert eneste sting.
+              Hos LUGA forlenger vi levetiden på klærne dine med skreddersøm,
+              miljøvennlig rens, tilpasninger, redesign og spesialtilpassede
+              plagg. Vi bevarer favorittene dine og realiserer nye idéer med
+              håndverk, omsorg og bærekraft i hvert eneste sting.
             </p>
           </div>
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 items-end">
             {services.map((service, index) => (
-              <div
-                key={index}
-                className={`bg-[#1e291e] rounded-lg overflow-hidden relative ${index === services.length - 1 ? "h-[600px]" : ""
-                  }`}
-              >
+              <Link href={`/${service?.title.toLocaleLowerCase()}`}>
                 <div
-                  className={`relative ${index === services.length - 1 ? "h-[100%]" : "h-[300px]"
-                    }`}
+                  key={index}
+                  className={`bg-[#1e291e] rounded-lg overflow-hidden relative ${
+                    index === services.length - 1 ? "h-full lg:h-[600px]" : ""
+                  }`}
                 >
-                  <Image
-                    src={service.url || "/placeholder.svg"}
-                    alt={service.title}
-                    fill
-                    className="object-cover h-full"
-                  />
+                  <div
+                    className={`relative ${
+                      index === services.length - 1 ? "h-[100%]" : "h-[300px]"
+                    }`}
+                  >
+                    <Image
+                      src={service.url || "/placeholder.svg"}
+                      alt={service.title}
+                      fill
+                      className="object-cover h-full"
+                    />
+                  </div>
+                  <div className="absolute w-full h-[100px] p-4 bottom-0 left-0 flex items-end bg-gradient-to-b from-black/0 to-black/90 z-10">
+                    <h3 className="text-lg md:text-xl font-medium">
+                      {service.title}
+                    </h3>
+                  </div>
                 </div>
-                <div className="absolute w-full h-[100px] p-4 bottom-0 left-0 flex items-end bg-gradient-to-b from-black/0 to-black/90 z-10">
-                  <h3 className="text-lg md:text-xl font-medium">
-                    {service.title}
-                  </h3>
-                </div>
-              </div>
+              </Link>
             ))}
           </div>
         </div>
@@ -118,11 +122,12 @@ export default function Home() {
       {/* Clients Section with Auto-Scrolling Logos */}
       <section className="py-5 md:py-16 bg-[#2d3c2d] text-white">
         <div className="container mx-auto px-4">
-          <h2 className="text-2xl md:text-3xl font-bold mb-3 md:mb-6 text-center">
+          <h2 className="text-2xl md:text-3xl font-bold mb-3  text-center">
             Kunder og partnere
           </h2>
           <p className="px-2 md:px-4 mb-12 mx-auto text-center">
-          Sammen skaper vi skreddersydde løsninger og førsteklasses rensetjenester.
+            Sammen skaper vi skreddersydde løsninger og førsteklasses
+            rensetjenester.
           </p>
           <AutoScrollLogos clients={clients} />
         </div>
@@ -136,7 +141,7 @@ export default function Home() {
           </h2>
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
             {testimonials.map((testimonial, index) => (
-              <div key={index} className="bg-white p-6 rounded-lg">
+              <div key={index} className=" border bg-white p-6 rounded">
                 <div className="flex items-center mb-4">
                   <div className="w-12 h-12 rounded-full overflow-hidden mr-4">
                     <Image
@@ -155,18 +160,19 @@ export default function Home() {
                       {[...Array(5)].map((_, i) => (
                         <Star
                           key={i}
-                          className={`w-4 h-4 ${i < Math.floor(testimonial.rating)
-                            ? "fill-yellow-400 text-yellow-400"
-                            : i < testimonial.rating
+                          className={`w-4 h-4 ${
+                            i < Math.floor(testimonial.rating)
+                              ? "fill-yellow-400 text-yellow-400"
+                              : i < testimonial.rating
                               ? "fill-yellow-400 text-yellow-200"
                               : "text-gray-300"
-                            }`}
+                          }`}
                         />
                       ))}
                     </div>
                   </div>
                 </div>
-                <p className="text-sm text-black">{testimonial.text}</p>
+                <p className="text-sm text-black mt-5">{testimonial.text}</p>
               </div>
             ))}
           </div>
@@ -179,31 +185,33 @@ export default function Home() {
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
             <div className="flex flex-col items-center text-center">
               <div className="w-16 h-16 flex items-center justify-center mb-4 text-[#2d3c2d]">
-                <Truck className="w-10 h-10" />
+                {/* <Truck className="w-10 h-10" />{" "} */}
+                <Car className="w-10 h-10" fill="#2d3c2d" />
               </div>
               <h3 className="text-xl font-bold mb-3">HENTING OG LEVERING</h3>
-              <p className="text-gray-600">
-              Vi tilbyr henting og levering for dere som har en travel timeplan eller er for opptatt med hverdagen til å hente selv.
+              <p className="text-gray-600 text-sm">
+                Vi tilbyr henting og levering for dere som har en travel
+                timeplan eller er for opptatt med hverdagen til å hente selv.
               </p>
             </div>
             <div className="flex flex-col items-center text-center">
-              <div className="w-16 h-16 flex items-center justify-center mb-4 text-[#2d3c2d]">
-                <Leaf className="w-10 h-10" />
+              <div className="w-16 h-16 flex items-center justify-center  mb-4 text-[#2d3c2d]">
+                <Leaf className="w-10 h-10" fill="#2d3c2d" />
               </div>
-              <h3 className="text-xl font-bold mb-3">
-                MILJØVENNLIG
-              </h3>
-              <p className="text-gray-600">
-              Vi tar miljøet på alvor i våre standarder. Vi har faset ut alle skadelige vaskemidler så mye som mulig.
+              <h3 className="text-xl font-bold mb-3">MILJØVENNLIG</h3>
+              <p className="text-gray-600 text-sm">
+                Vi tar miljøet på alvor i våre standarder. Vi har faset ut alle
+                skadelige vaskemidler så mye som mulig.
               </p>
             </div>
             <div className="flex flex-col items-center text-center">
               <div className="w-16 h-16 flex items-center justify-center mb-4 text-[#2d3c2d]">
-                <ThumbsUp className="w-10 h-10" />
+                <ThumbsUp className="w-10 h-10" fill="#2d3c2d" />
               </div>
               <h3 className="text-xl font-bold mb-3">FORNØYDGARANTI</h3>
               <p className="text-gray-600">
-                Vi kan ikke forklare hvorfor så mange besøker våre kunder og velger den samme Luga-avdelingen igjen og igjen.
+                Vi kan ikke forklare hvorfor så mange besøker våre kunder og
+                velger den samme Luga-avdelingen igjen og igjen.
               </p>
             </div>
           </div>
@@ -220,7 +228,8 @@ export default function Home() {
             Besøk oss i nærheten
           </h3>
           <p className="text-center max-w-3xl mx-auto mb-12">
-          Opplev våre tjenester personlig på en av våre praktiske lokasjoner. Vårt ekspertteam er klare til å ønske deg velkommen og hjelpe deg.
+            Opplev våre tjenester personlig på en av våre praktiske lokasjoner.
+            Vårt ekspertteam er klare til å ønske deg velkommen og hjelpe deg.
           </p>
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
             {locations.map((location, index) => (
@@ -242,7 +251,7 @@ export default function Home() {
                   <MapPin className="w-5 h-5 mr-2" />
                   <p className="text-sm">{location.address}</p>
                 </div>
-                <div className="border border-white/70 rounded-[15px] py-3 mb-4 w-70">
+                <div className=" bg-[#608160] rounded-[15px] py-3 mb-4 w-70">
                   <h4 className="text-sm font-bold mb-2">Åpningstider</h4>
                   <p className="text-sm">
                     Mandag-Fredag: {location.weekdayHours}
@@ -253,7 +262,11 @@ export default function Home() {
                   <Phone className="w-4 h-4 mr-2" />
                   <p className="text-sm">{location.phone}</p>
                 </div>
-                <Link href={location.redirection} target="_blank" className="w-max border border-white px-10 rounded-full py-2 text-sm">
+                <Link
+                  href={location.redirection}
+                  target="_blank"
+                  className="w-max border border-white px-10 rounded-full py-2 text-sm"
+                >
                   Få veibeskrivelse
                 </Link>
               </div>
@@ -269,7 +282,8 @@ export default function Home() {
             Ofte stilte spørsmål
           </h2>
           <p className="text-xs md:text-base text-center max-w-3xl mx-auto mb-12">
-            Har du et spørsmål om Luga? Se listen nedenfor for våre mest stilte spørsmål. Hvis spørsmålet ditt ikke står her, vennligst {" "}
+            Har du et spørsmål om Luga? Se listen nedenfor for våre mest stilte
+            spørsmål. Hvis spørsmålet ditt ikke står her, vennligst{" "}
             <Link href="/contact" className="text-[#2d3c2d] underline">
               kontakt oss
             </Link>
@@ -283,10 +297,18 @@ export default function Home() {
                   className="flex items-center justify-between w-full text-left"
                 >
                   <h4 className="text-lg font-medium">{faq.question}</h4>
-                  <ChevronDown className={`w-5 h-5 transition-transform duration-200 ${openFaq === index ? 'rotate-180' : ''}`} />
+                  <ChevronDown
+                    className={`w-5 h-5 transition-transform duration-200 ${
+                      openFaq === index ? "rotate-180" : ""
+                    }`}
+                  />
                 </button>
-                <div className={`transition-all duration-200 overflow-hidden ${openFaq === index ? 'max-h-40 mt-4' : 'max-h-0'}`}>
-                  <p className="text-gray-600">{faq.answer}</p>
+                <div
+                  className={`transition-all duration-200 overflow-hidden ${
+                    openFaq === index ? "max-h-40 mt-4" : "max-h-0"
+                  }`}
+                >
+                  <p className="text-gray-600 text-sm">{faq.answer}</p>
                 </div>
               </div>
             ))}
@@ -318,14 +340,38 @@ export default function Home() {
 // ];
 
 const clients = [
-  { name: "Google", logo: "https://ik.imagekit.io/vv/Vector%20(4).png?updatedAt=1744566734991" },
-  { name: "Netflix", logo: "https://ik.imagekit.io/vv/Group%2013%20(2).png?updatedAt=1744566735026" },
-  { name: "Google", logo: "https://ik.imagekit.io/vv/Vector%20(4).png?updatedAt=1744566734991" },
-  { name: "Netflix", logo: "https://ik.imagekit.io/vv/Group%2013%20(2).png?updatedAt=1744566735026" },
-  { name: "Google", logo: "https://ik.imagekit.io/vv/Vector%20(4).png?updatedAt=1744566734991" },
-  { name: "Netflix", logo: "https://ik.imagekit.io/vv/Group%2013%20(2).png?updatedAt=1744566735026" },
-  { name: "Google", logo: "https://ik.imagekit.io/vv/Vector%20(4).png?updatedAt=1744566734991" },
-  { name: "Netflix", logo: "https://ik.imagekit.io/vv/Group%2013%20(2).png?updatedAt=1744566735026" }
+  {
+    name: "Google",
+    logo: "https://ik.imagekit.io/vv/Vector%20(4).png?updatedAt=1744566734991",
+  },
+  {
+    name: "Netflix",
+    logo: "https://ik.imagekit.io/vv/Group%2013%20(2).png?updatedAt=1744566735026",
+  },
+  {
+    name: "Google",
+    logo: "https://ik.imagekit.io/vv/Vector%20(4).png?updatedAt=1744566734991",
+  },
+  {
+    name: "Netflix",
+    logo: "https://ik.imagekit.io/vv/Group%2013%20(2).png?updatedAt=1744566735026",
+  },
+  {
+    name: "Google",
+    logo: "https://ik.imagekit.io/vv/Vector%20(4).png?updatedAt=1744566734991",
+  },
+  {
+    name: "Netflix",
+    logo: "https://ik.imagekit.io/vv/Group%2013%20(2).png?updatedAt=1744566735026",
+  },
+  {
+    name: "Google",
+    logo: "https://ik.imagekit.io/vv/Vector%20(4).png?updatedAt=1744566734991",
+  },
+  {
+    name: "Netflix",
+    logo: "https://ik.imagekit.io/vv/Group%2013%20(2).png?updatedAt=1744566735026",
+  },
 ];
 
 // const testimonials = [
