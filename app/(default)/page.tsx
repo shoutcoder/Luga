@@ -75,7 +75,7 @@ export default function Home() {
       {/* Services Section */}
       <section id="services" className="py-5 md:py-16  bg-[#2d3c2d] text-white">
         <div className="container mx-auto px-4">
-          <div className="md:mb-[-200px]">
+          <div className="lg:mb-[-200px]">
             <h2 className="text-2xl md:text-3xl font-bold mb-3 md:mb-5">
               VÅRE TJENESTER
             </h2>
@@ -91,8 +91,10 @@ export default function Home() {
               <Link href={`/${service?.title.toLocaleLowerCase()}`}>
                 <div
                   key={index}
-                  className={`bg-[#1e291e] rounded-lg overflow-hidden relative ${
-                    index === services.length - 1 ? "h-full lg:h-[600px]" : ""
+                  className={`bg-[#1e291e] border border-gray-500 rounded overflow-hidden relative ${
+                    index === services.length - 1
+                      ? "h-[300px] lg:h-[600px]"
+                      : ""
                   }`}
                 >
                   <div
