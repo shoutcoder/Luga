@@ -40,12 +40,12 @@ export default function HeroSlider() {
   }, [slides.length])
 
   useEffect(() => {
-    const interval = setInterval(() => {
-      nextSlide()
-    }, 5000)
-
-    return () => clearInterval(interval)
+    // const interval = setInterval(() => {
+    //   nextSlide()
+    // }, 5000)
+    // return () => clearInterval(interval)
   }, [nextSlide])
+  
 
   return (
     <section className="relative h-screen pt-20">
@@ -57,7 +57,7 @@ export default function HeroSlider() {
           }`}
         >
           <div className="absolute inset-0 z-0">
-          {slide.url && (/\.(jpg|jpeg|png|gif|webp|svg)$/i.test(slide.url) ? (
+          {slide.url && (/\.(jpg|jpeg|png|gif|webp|svg)$/i.test(slide.url.split("?")[0]) ? (
             <Image
               src={slide.url}
               alt={slide.title}
@@ -72,10 +72,9 @@ export default function HeroSlider() {
               loop
               muted
               playsInline
-              className="object-cover brightness-75"
+              className="object-cover brightness-75 h-full w-full"
             />
           ))}
-
           </div>
           <div className="relative z-10 flex flex-col justify-end h-full pb-16 px-6 md:px-8 text-white">
             <div className="max-w-2xl">

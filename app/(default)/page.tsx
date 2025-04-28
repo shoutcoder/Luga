@@ -79,14 +79,11 @@ export default function Home() {
         <div className="container mx-auto px-4">
           <div className="md:mb-[-200px]">
             <h2 className="text-2xl md:text-3xl font-bold mb-3 md:mb-12">
-              Our Services
+              VÅRE TJENESTER
             </h2>
             <p className="max-w-3xl mb-12 text-sm">
-              We accept small and large orders from individuals, companies and
-              institutions. Our skilled tailor has over 25 years of experience
-              in the profession and has sewn everything that can be sewn from
-              ready-to-wear. With us you can get custom-made clothes for a
-              perfect fit.
+            Hos LUGA forlenger vi levetiden på klærne dine med skreddersøm, miljøvennlig rens, tilpasninger, redesign og spesialtilpassede plagg.
+            Vi bevarer favorittene dine og realiserer nye idéer med håndverk, omsorg og bærekraft i hvert eneste sting.
             </p>
           </div>
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 items-end">
@@ -122,11 +119,10 @@ export default function Home() {
       <section className="py-5 md:py-16 bg-[#2d3c2d] text-white">
         <div className="container mx-auto px-4">
           <h2 className="text-2xl md:text-3xl font-bold mb-3 md:mb-6 text-center">
-            Clients and Partners
+            Kunder og partnere
           </h2>
           <p className="px-2 md:px-4 mb-12 mx-auto text-center">
-            Come aboard and join the maintainers and contributors of the best
-            generative AI SaaS projects listed on our waitlist.
+          Sammen skaper vi skreddersydde løsninger og førsteklasses rensetjenester.
           </p>
           <AutoScrollLogos clients={clients} />
         </div>
@@ -136,7 +132,7 @@ export default function Home() {
       <section className="py-10 md:py-20 bg-[#2d3c2d] text-white bg-[url('/customer.jpg')] bg-cover bg-center">
         <div className="container mx-auto px-4">
           <h2 className="text-2xl md:text-3xl font-bold mb-10 flex justify-center items-center">
-            What our customers say <span className="text-red-500 ml-2">❤</span>
+            Hva kundene våre sier <span className="text-red-500 ml-2">❤</span>
           </h2>
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
             {testimonials.map((testimonial, index) => (
@@ -185,11 +181,9 @@ export default function Home() {
               <div className="w-16 h-16 flex items-center justify-center mb-4 text-[#2d3c2d]">
                 <Truck className="w-10 h-10" />
               </div>
-              <h3 className="text-xl font-bold mb-3">PICKUP AND DELIVERY</h3>
+              <h3 className="text-xl font-bold mb-3">HENTING OG LEVERING</h3>
               <p className="text-gray-600">
-                We offer pick-up and delivery for those of you who are having a
-                hard time to go out due to their schedule or are too busy with
-                life to pick up.
+              Vi tilbyr henting og levering for dere som har en travel timeplan eller er for opptatt med hverdagen til å hente selv.
               </p>
             </div>
             <div className="flex flex-col items-center text-center">
@@ -197,21 +191,19 @@ export default function Home() {
                 <Leaf className="w-10 h-10" />
               </div>
               <h3 className="text-xl font-bold mb-3">
-                ENVIRONMENTALLY FRIENDLY
+                MILJØVENNLIG
               </h3>
               <p className="text-gray-600">
-                We take the environment seriously in our standards. We have
-                phased out all harmful detergents as much as possible.
+              Vi tar miljøet på alvor i våre standarder. Vi har faset ut alle skadelige vaskemidler så mye som mulig.
               </p>
             </div>
             <div className="flex flex-col items-center text-center">
               <div className="w-16 h-16 flex items-center justify-center mb-4 text-[#2d3c2d]">
                 <ThumbsUp className="w-10 h-10" />
               </div>
-              <h3 className="text-xl font-bold mb-3">SATISFACTION GUARANTEE</h3>
+              <h3 className="text-xl font-bold mb-3">FORNØYDGARANTI</h3>
               <p className="text-gray-600">
-                We can not explain why so many visit our customers are and
-                re-choose the same Luga outlet to us.
+                Vi kan ikke forklare hvorfor så mange besøker våre kunder og velger den samme Luga-avdelingen igjen og igjen.
               </p>
             </div>
           </div>
@@ -222,14 +214,13 @@ export default function Home() {
       <section id="hours" className="py-16 bg-[#2d3c2d] text-white">
         <div className="container mx-auto px-4">
           <div className="border border-white w-max mx-auto rounded-full flex items-center justify-center px-4 py-2 bg-[rgba(255, 255, 255, 0.05)]">
-            <h2 className="text-xs text-center ">FIND YOUR NEAREST LOCATION</h2>
+            <h2 className="text-xs text-center ">FINN DIN NÆRMESTE LOKASJON</h2>
           </div>
           <h3 className="text-4xl font-bold mb-6 pt-4 text-center">
-            Visit Us Nearby
+            Besøk oss i nærheten
           </h3>
           <p className="text-center max-w-3xl mx-auto mb-12">
-            Experience our services in person at one of our convenient
-            locations. Our expert team is ready to welcome and assist you.
+          Opplev våre tjenester personlig på en av våre praktiske lokasjoner. Vårt ekspertteam er klare til å ønske deg velkommen og hjelpe deg.
           </p>
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
             {locations.map((location, index) => (
@@ -245,25 +236,25 @@ export default function Home() {
                     alt="Location Image"
                   />
                 </div>
-                <h3 className="text-xl font-bold mb-4">Opening Hours</h3>
+                <h3 className="text-xl font-bold mb-4">Åpningstider</h3>
                 <p className="mb-4 text-center">{location.area}</p>
                 <div className="flex items-center justify-center mb-4">
                   <MapPin className="w-5 h-5 mr-2" />
                   <p className="text-sm">{location.address}</p>
                 </div>
                 <div className="border border-white/70 rounded-[15px] py-3 mb-4 w-70">
-                  <h4 className="text-sm font-bold mb-2">OPENING TIMES</h4>
+                  <h4 className="text-sm font-bold mb-2">Åpningstider</h4>
                   <p className="text-sm">
-                    Monday-Friday: {location.weekdayHours}
+                    Mandag-Fredag: {location.weekdayHours}
                   </p>
-                  <p className="text-sm">Saturday: {location.saturdayHours}</p>
+                  <p className="text-sm">Lørdag: {location.saturdayHours}</p>
                 </div>
                 <div className="flex items-center justify-center mb-6">
                   <Phone className="w-4 h-4 mr-2" />
                   <p className="text-sm">{location.phone}</p>
                 </div>
                 <Link href={location.redirection} target="_blank" className="w-max border border-white px-10 rounded-full py-2 text-sm">
-                  Get Directions
+                  Få veibeskrivelse
                 </Link>
               </div>
             ))}
@@ -275,17 +266,12 @@ export default function Home() {
       <section className="py-16 bg-white">
         <div className="container mx-auto px-4">
           <h2 className="text-2xl md:text-3xl font-bold mb-2 text-center">
-            Frequently Asked Questions and
+            Ofte stilte spørsmål
           </h2>
-          <h3 className="text-2xl md:text-3xl font-bold mb-4 md:mb-8 text-center">
-            Resources
-          </h3>
           <p className="text-xs md:text-base text-center max-w-3xl mx-auto mb-12">
-            Do you have a question about Luga? See the list below for our most
-            frequently asked questions. If your question is not listed here,
-            then please{" "}
-            <Link href="#contact" className="text-[#2d3c2d] underline">
-              contact us
+            Har du et spørsmål om Luga? Se listen nedenfor for våre mest stilte spørsmål. Hvis spørsmålet ditt ikke står her, vennligst {" "}
+            <Link href="/contact" className="text-[#2d3c2d] underline">
+              kontakt oss
             </Link>
             .
           </p>

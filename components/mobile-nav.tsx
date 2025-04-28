@@ -20,22 +20,22 @@ export default function MobileNav() {
           </button>
           <div className="flex flex-col items-center space-y-6 p-8 bg-white">
             <Link href="/" className="text-lg font-medium py-2 w-full block text-center" onClick={() => setIsOpen(false)}>
-              Home
+              Hjem
             </Link>
             <Link href="#services" className="text-lg font-medium py-2 w-full block text-center" onClick={() => setIsOpen(false)}>
-              Services
+              Tjenester
             </Link>
             <Link href="/pricing" className="text-lg font-medium py-2 w-full block text-center" onClick={() => setIsOpen(false)}>
-              Pricing
+              Priser
             </Link>
-            <Link href="#hours" className="text-lg font-medium py-2 w-full block text-center" onClick={() => setIsOpen(false)}>
+            {/* <Link href="#hours" className="text-lg font-medium py-2 w-full block text-center" onClick={() => setIsOpen(false)}>
               Opening Hours
-            </Link>
+            </Link> */}
             <Link href="/about" className="text-lg font-medium py-2 w-full block text-center" onClick={() => setIsOpen(false)}>
-              About us
+              Om
             </Link>
             <Link href="/contact" className="text-lg font-medium py-2 w-full block text-center" onClick={() => setIsOpen(false)}>
-              Contact
+              Kontakt
             </Link>
           </div>
         </div>

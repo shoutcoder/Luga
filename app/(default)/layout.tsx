@@ -29,14 +29,14 @@ export default function RootLayout({
             <footer className="py-6 bg-[#2d3c2d] text-white">
               <div className="container mx-auto px-4">
                 <div className="flex flex-col md:flex-row justify-between items-center">
-                  <p className="text-sm">Copyright © 2024 Luga</p>
+                  <p className="text-sm">Opphavsrett © 2025 Luga</p>
                   <div className="flex items-center space-x-4 mt-4 md:mt-0">
                     <Link href="#" className="text-sm">
-                      Terms of use
+                      Vilkår for bruk
                     </Link>
                     <span className="w-1 h-1 bg-white rounded-full"></span>
                     <Link href="#" className="text-sm">
-                      Privacy Policy
+                      Personvernerklæring
                     </Link>
                   </div>
                 </div>
