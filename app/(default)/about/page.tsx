@@ -7,16 +7,18 @@ export default async function AboutPage() {
   return (
     <main className="min-h-screen mt-10 pt-24 text-white">
       <div className="container mx-auto px-4 text-black">
-        <h1 className="text-3xl md:text-4xl font-bold mb-24 text-center">About Us</h1>
+        <h1 className="text-3xl md:text-4xl font-bold mb-24 text-center">OM OSS</h1>
         
         <div className="grid md:grid-cols-2 gap-8 mb-12">
           <div>
-            <h2 className="text-2xl font-bold mb-4">Our Story</h2>
+            <h2 className="text-2xl font-bold mb-4">Skredderi og renseri med fokus på kvalitet, bærekraft og personlig service</h2>
             <p className="mb-4">
-              Since our establishment, we have been providing high-quality tailoring and garment services to our valued customers. With decades of experience in the industry, we take pride in our craftsmanship and attention to detail.
+            LUGA AS er en veletablert aktør innen skredderi og renseri, med avdelinger i Oslo, Sandvika, Strømmen og Drammen.
+            Med over 15 000 reparasjoner og tilpasninger i året, har vi bygget en solid posisjon i tekstilbransjen, drevet av en sterk lidenskap for kvalitet, håndverk og bærekraft.
             </p>
             <p>
-              Our team of skilled tailors and fashion experts work diligently to ensure each piece meets our high standards of quality and style.
+            Hos oss kan du få forlenget levetiden på dine klær, tilpasset plagg etter perfekt passform, renset alt fra hverdagsklær til bunader og skinn, samt produsert skreddersydde dresser, skjorter og kjoler etter dine mål.
+            Vi tilbyr også spesialtilpasning av arbeidstøy og produksjon av mindre kleskolleksjoner, perfekt for lokale designere.
             </p>
           </div>
           <div className="relative h-[300px]">
@@ -29,6 +31,88 @@ export default async function AboutPage() {
           </div>
         </div>
 
+        <div className="grid md:grid-cols-2 gap-8 mb-12">
+          <div className="relative h-[300px]">
+            <Image
+              src="/placeholder.svg"
+              alt="About Us"
+              fill
+              className="object-cover rounded-lg"
+            />
+          </div>
+          <div>
+            <h2 className="text-2xl font-bold mb-4">Vårt team</h2>
+            <p className="mb-4">
+            Bak LUGA står et sammensveiset team på 11 entusiastiske medarbeidere som elsker å arbeide med tekstiler.
+            Vårt skredderteam består av både faglærte og svært erfarne håndverkere, som sammen sikrer høy kvalitet i alt vi gjør.
+            Vi har også et sterkt nettverk av samarbeidspartnere i utlandet, som gir oss tilgang til førsteklasses stoffer til både festantrekk og arbeidsklær.
+            </p>
+            <p>
+            LUGA ledes av en daglig leder med mastergrad innen økonomi og ledelse, samt over 20 års erfaring innen forretningsutvikling og salg.
+            </p>
+          </div>
+        </div>
+
+        <div className="grid md:grid-cols-2 gap-8 mb-12">
+          <div>
+            <h2 className="text-2xl font-bold mb-4">Vår reise</h2>
+            <p className="mb-4">
+            LUGAs reise startet i det små, med justeringer av klær på kjøkkenet hjemme hos vår daglige leder.
+            Gjennombruddet kom da vi åpnet vår første butikk, med eget skredderverksted og alt av nødvendig utstyr.
+            Dette ga oss friheten til å utvikle egne tjenester og tilby skreddersøm og tilpasning direkte til kundene.
+            Siden den gang har vi vokst jevnt, bygget sterke partnerskap, og aldri sett oss tilbake.
+            </p>
+          </div>
+          <div className="relative h-[300px]">
+            <Image
+              src="/placeholder.svg"
+              alt="About Us"
+              fill
+              className="object-cover rounded-lg"
+            />
+          </div>
+        </div>
+        <div className="grid md:grid-cols-2 gap-8 mb-12">
+          <div className="relative h-[300px]">
+            <Image
+              src="/placeholder.svg"
+              alt="About Us"
+              fill
+              className="object-cover rounded-lg"
+            />
+          </div>
+          <div>
+            <h2 className="text-2xl font-bold mb-4">Innovasjon og bærekraft</h2>
+            <p className="mb-4">
+            Et av våre viktigste vekstområder de siste årene har vært samarbeidet med vekterbransjen i Oslo og Akershus.
+            I stedet for å kaste skadet arbeidstøy, tilbyr vi en helhetlig løsning med henting, gjennomgang, rens og reparasjon.
+            Dette har spart våre partnere for store kostnader og redusert miljøbelastningen.
+            Alt tøy som ikke kan repareres sendes til Norsk Tekstilgjenvinning, slik at vi sikrer en bærekraftig håndtering.
+            </p>
+            <p>
+              Denne satsningen har alene bidratt til over 10 % av vår omsetning det siste året.
+            </p>
+          </div>
+        </div>
+        <div className="grid md:grid-cols-2 gap-8 mb-12">
+          <div>
+            <h2 className="text-2xl font-bold mb-4">Vår filosofi</h2>
+            <p className="mb-4">
+            Hos LUGA handler det om mer enn klær.
+Vi tror på å forlenge plaggens liv, ta vare på ressurser, og gi kundene våre det beste innen skreddersøm, rens og tekstilpleie.
+Vi jobber hver dag for å levere kvalitet, personlig service og bærekraftige løsninger som gjør en forskjell.
+            </p>
+            <p>Velkommen til LUGA AS. Vi ser frem til å ta vare på dine klær!</p>
+          </div>
+          <div className="relative h-[300px]">
+            <Image
+              src="/placeholder.svg"
+              alt="About Us"
+              fill
+              className="object-cover rounded-lg"
+            />
+          </div>
+        </div>
         <div className="grid md:grid-cols-3 gap-8 text-white">
           <div className="p-6 bg-[#1a231a] rounded-lg">
             <h3 className="text-xl font-bold mb-3">Our Mission</h3>
@@ -62,7 +146,7 @@ export default async function AboutPage() {
         </section>
 
         {/* Company Culture Section */}
-        <section className="my-24 bg-gray-50 py-16 rounded-xl">
+        {/* <section className="my-24 bg-gray-50 py-16 rounded-xl">
           <div className="container mx-auto px-4">
             <h2 className="text-3xl font-bold mb-12 text-center">Our Culture</h2>
             <div className="grid md:grid-cols-2 gap-12">
@@ -100,12 +184,12 @@ export default async function AboutPage() {
               </div>
             </div>
           </div>
-        </section>
+        </section> */}
 
         {/* Team Section */}
         <section className="my-24">
           <h2 className="text-3xl font-bold mb-12 text-center">Meet Our Team</h2>
-          <div className="grid md:grid-cols-3 lg:grid-cols-4 gap-8">
+          <div className="grid md:grid-cols-3 lg:grid-cols-5 gap-8">
             {teamMember.map((member, index) => (
               <div key={index} className="text-center">
                 <div className="relative h-[300px] mb-4">

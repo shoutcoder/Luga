@@ -81,7 +81,7 @@ export default function HeroSlider() {
               <h2 className="text-3xl md:text-4xl font-bold mb-4">{slide.title}</h2>
               <p className="text-xs mb-6 md:text-lg">{slide.description}</p>
               <Link
-                href="#contact"
+                href="/contact"
                 className="inline-flex items-center px-10 py-3 bg-white text-gray-800 rounded-full font-medium"
               >
                 Contact Now <ChevronRight className="ml-2 h-4 w-4" />
