@@ -3,13 +3,11 @@ import Link from "next/link";
 import Image from "next/image";
 import { usePathname } from "next/navigation";
 import MobileNav from "@/components/mobile-nav";
-import Cookies from "js-cookie";
-import jwt from "jsonwebtoken";
 import Role from "./dashboard/common/Role";
 
 export default function MainNav() {
   const pathname = usePathname();
-  const isHome = pathname === "/";
+  const isHome = pathname === "/" ||pathname === "/greenearth" ;
   return (
     <nav
       className={`fixed  top-0  left-0 right-0 z-50 flex items-center justify-between px-4 py-3 md:px-16 md:py-6 backdrop-blur-md ${

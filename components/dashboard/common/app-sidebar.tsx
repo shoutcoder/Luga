@@ -9,7 +9,9 @@ import {
   HelpCircle,
   CoinsIcon,
   ChartColumnStacked,
-  Navigation
+  Navigation,
+  Users,
+  
 } from "lucide-react";
 
 import {
@@ -42,6 +44,11 @@ const items = [
     title: "Testimonial",
     url: "/testimonial",
     icon: MessageCircleHeart,
+  },
+  {
+    title: "Manage Team",
+    url: "/edit-team",
+    icon: Users,
   },
   {
     title: "Visit Us",

@@ -10,7 +10,8 @@ const adminRoutes = [
   "/heroBanner",
   "/services",
   "/testimonial",
-  "/visit-us"
+  "/visit-us",
+  "/edit-team",
 ];
 
 // Function to safely decode base64 JSON token payload
@@ -71,6 +72,7 @@ export const config = {
     "/heroBanner",
     "/services",
     "/testimonial",
-    "/visit-us"
+    "/visit-us",
+    "/edit-team",
   ],
 };
