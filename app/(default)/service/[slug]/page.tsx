@@ -1,5 +1,7 @@
 "use client";
 
+import { useParams } from "next/navigation";
+
 const sevices = {
   id: "01",
   title: "Skredderi",
@@ -38,6 +40,10 @@ const sevices = {
 };
 
 export default function Service() {
+  const params = useParams();
+  const slug = params.slug;
+
+  console.log("Slug:", slug); // e.g. "skredderi"
   return (
     <main className="min-h-screen mt-10  text-white bg-gradient-to-t from-black/0 to-[#2d3c2d]">
       <div className="backdrop-blur-sm bg-black/50 w-full h-full">
@@ -47,49 +53,28 @@ export default function Service() {
           </h1>
 
           <p className="text-center mb-12 md:text-lg ">{sevices?.desc}</p>
-
           {sevices.feature.map((service, index) => (
             <div
               key={index}
-              className="grid md:grid-cols-2 items-center gap-8 mb-12"
+              className={`flex flex-col md:flex-row ${
+                index % 2 !== 0 ? "md:flex-row-reverse" : ""
+              } items-center gap-8 mb-12`}
             >
-              {index % 2 === 0 ? (
-                <>
-                  <div>
-                    <h2 className="text-2xl font-bold mb-4">{service.title}</h2>
-                    {service.description.map((para, i) => (
-                      <p key={i} className="mb-4">
-                        {para}
-                      </p>
-                    ))}
-                  </div>
-                  <div className="relative h-[300px]">
-                    <img
-                      src={service.image}
-                      alt={service.title}
-                      className="object-cover w-full h-full rounded-lg shadow-lg"
-                    />
-                  </div>
-                </>
-              ) : (
-                <>
-                  <div className="relative h-[300px]">
-                    <img
-                      src={service.image}
-                      alt={service.title}
-                      className="object-cover w-full h-full rounded-lg shadow-lg"
-                    />
-                  </div>
-                  <div>
-                    <h2 className="text-2xl font-bold mb-4">{service.title}</h2>
-                    {service.description.map((para, i) => (
-                      <p key={i} className="mb-4">
-                        {para}
-                      </p>
-                    ))}
-                  </div>
-                </>
-              )}
+              <div className="md:w-1/2">
+                <h2 className="text-2xl font-bold mb-4">{service.title}</h2>
+                {service.description.map((para, i) => (
+                  <p key={i} className="mb-4">
+                    {para}
+                  </p>
+                ))}
+              </div>
+              <div className="relative h-[300px] w-full md:w-1/2">
+                <img
+                  src={service.image}
+                  alt={service.title}
+                  className="object-cover w-full h-full rounded-lg shadow-lg"
+                />
+              </div>
             </div>
           ))}
 
