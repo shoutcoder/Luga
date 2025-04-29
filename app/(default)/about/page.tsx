@@ -189,10 +189,11 @@ Vi jobber hver dag for å levere kvalitet, personlig service og bærekraftige l�
         {/* Team Section */}
         <section className="my-24">
           <h2 className="text-3xl font-bold mb-12 text-center">Meet Our Team</h2>
-          <div className="grid md:grid-cols-3 lg:grid-cols-5 gap-8">
+          <main  className="flex justify-center">
+          <div className=" flex gap-5 flex-wrap justify-center   ">
             {teamMember.map((member, index) => (
               <div key={index} className="text-center">
-                <div className="relative h-[300px] mb-4">
+                <div className="relative h-[300px] w-[250px] mb-4">
                   <Image
                     src={member.imageUrl}
                     alt={member.name}
@@ -205,6 +206,7 @@ Vi jobber hver dag for å levere kvalitet, personlig service og bærekraftige l�
               </div>
             ))}
           </div>
+          </main>
         </section>
       </div>
     </main>

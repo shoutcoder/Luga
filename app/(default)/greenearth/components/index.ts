@@ -1,0 +1,7 @@
+export *  from "./Motion"
+export *  from "./Hero"
+export *  from "./About"
+export *  from "./Impact"
+export *  from "./Partners"
+export *  from "./Testimonials"
+export *  from "./Contact"
