@@ -11,6 +11,8 @@ interface HeroSlide {
   url: string;
   title: string;
   description: string;
+  ctaButton: string;
+  ctaLink: string
 }
 
 export default function HeroSlider() {
@@ -20,7 +22,7 @@ export default function HeroSlider() {
   }, []);
   const fetchHeroBanner = async () => {
     try {
-      const heroData = await HeroBannerDetails();
+      const heroData:HeroSlide[] = await HeroBannerDetails();
       setSlides(heroData);
     } catch (err) {
       setSlides([]);
@@ -85,10 +87,10 @@ export default function HeroSlider() {
               </h2>
               <p className="text-xs mb-6 md:text-lg">{slide.description}</p>
               <Link
-                href="/contact"
+                href={ "/"+slide.ctaLink ||"/contact"}
                 className="inline-flex items-center px-10 py-3 bg-white text-gray-800 rounded-full font-medium"
               >
-                Contact Now <ChevronRight className="ml-2 h-4 w-4" />
+               {slide.ctaButton ||"Contact Now"} <ChevronRight className="ml-2 h-4 w-4" />
               </Link>
             </div>
 

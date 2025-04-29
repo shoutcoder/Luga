@@ -14,6 +14,8 @@ interface Slide {
   url: string
   title: string
   description: string
+  ctaButton: string
+  ctaLink: string
 }
 
 export default function EditHeroSlides() {
@@ -27,6 +29,8 @@ export default function EditHeroSlides() {
     url: "",
     title: "",
     description: "",
+    ctaButton: "",
+    ctaLink: ""
   })
 
   useEffect(() => {
@@ -61,6 +65,8 @@ export default function EditHeroSlides() {
       title: editingSlide.title,
       description: editingSlide.description,
       url: editingSlide.url,
+      ctaButton: editingSlide.ctaButton,
+      ctaLink: editingSlide.ctaLink
     })
 
     setSavingSlide(false)
@@ -88,14 +94,38 @@ export default function EditHeroSlides() {
           {slides.map((slide, index) => (
             <SwiperSlide key={slide.id}>
               <div className="relative h-[70vh] rounded-2xl overflow-hidden shadow-md w-full border-gray-300">
-                <img
+                {/* <img
                   src={slide.url}
                   alt={`Slide ${index + 1}`}
                   className="absolute inset-0 w-full h-full object-cover"
-                />
+                /> */}
+                {(() => {
+                  const videoExtensions = [".mp4", ".webm", ".ogg", ".mov"];
+                  const isVideo = videoExtensions.some(ext => slide.url.includes(ext));
+                  return isVideo ? (
+                    <video
+                      src={slide.url}
+                      className="absolute inset-0 w-full h-full object-cover"
+                      autoPlay
+                      muted
+                      loop
+                    />
+                  ) : (
+                    <img
+                      src={slide.url}
+                      alt={`Slide ${index + 1}`}
+                      className="absolute inset-0 w-full h-full object-cover"
+                    />
+                  );
+                })()}
+
                 <div className="absolute inset-0 bg-black/50 flex flex-col justify-end items-start p-6 text-white">
                   <h3 className="text-2xl font-bold mb-2">{slide.title}</h3>
                   <p className="text-sm">{slide.description}</p>
+                  <button className="inline-flex items-center px-10 py-3 bg-white text-gray-800 rounded-full font-medium"
+                  >{slide.ctaButton}</button>
+
+                  <p>{slide.ctaLink}</p>
                 </div>
                 <button
                   className="absolute top-3 right-3 bg-white text-black px-4 py-1 rounded-md text-sm shadow"

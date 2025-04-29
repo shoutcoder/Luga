@@ -7,11 +7,12 @@ import Role from "./dashboard/common/Role";
 
 export default function MainNav() {
   const pathname = usePathname();
-  const isHome = pathname === "/" ||pathname === "/greenearth" ;
+  const isHome = pathname === "/"  ;
+  const isGreenEarth = pathname === "/greenearth"  ;
   return (
     <nav
       className={`fixed  top-0  left-0 right-0 z-50 flex items-center justify-between px-4 py-3 md:px-16 md:py-6 backdrop-blur-md ${
-        isHome ? "" : "bg-[#2d3c2d]"
+        isGreenEarth ? "bg-teal-900/30" : isHome ? "" : "bg-[#2d3c2d]"
       }`}
     >
       <div className="  hidden md:flex items-center space-x-6 text-white">

@@ -5,6 +5,8 @@ interface Slide {
   url: string;
   title: string;
   description: string;
+  ctaButton: string
+  ctaLink: string
 }
 
 interface EditSlideModalProps {
@@ -63,6 +65,26 @@ const EditSlideModal: React.FC<EditSlideModalProps> = ({ isOpen, slide, onClose,
             onChange={(e) => onChange("description", e.target.value)}
             placeholder="Enter description"
             className="w-full h-40 border rounded p-2"
+          />
+        </div>
+        <div>
+          <label className="block text-sm font-medium text-gray-600 mb-1"> Button Title</label>
+          <input
+            type="text"
+            value={slide.ctaButton}
+            onChange={(e) => onChange("ctaButton", e.target.value)}
+            placeholder="Enter Button title"
+            className="w-full border rounded p-2"
+          />
+        </div>
+        <div>
+          <label className="block text-sm font-medium text-gray-600 mb-1">Button Link</label>
+          <input
+            type="text"
+            value={slide.ctaLink}
+            onChange={(e) => onChange("ctaLink", e.target.value)}
+            placeholder="Enter Button Link"
+            className="w-full border rounded p-2"
           />
         </div>
 

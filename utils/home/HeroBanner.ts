@@ -7,6 +7,8 @@ interface HeroSlide {
     url: string
     title: string
     description: string
+    ctaButton:string
+    ctaLink:string
   }
 export const HeroBannerDetails = async ():Promise<HeroSlide[]>=>{
     try{
@@ -16,6 +18,8 @@ export const HeroBannerDetails = async ():Promise<HeroSlide[]>=>{
                 title:true,
                 description:true,
                 url:true,
+                ctaButton:true,
+                ctaLink:true,
             },
             orderBy:{
                 createdAt:"asc"
@@ -27,7 +31,8 @@ export const HeroBannerDetails = async ():Promise<HeroSlide[]>=>{
         return []
     }
 }
-export const updateHeroBanner = async (id: string, updatedSlide: { title: string; description: string; url: string }) => {
+export const updateHeroBanner = async (id: string, updatedSlide: { title: string; description: string; url: string;  ctaButton:string ;
+  ctaLink:string}) => {
     try {
       await prisma.heroBanner.update({
         where: { id },
@@ -35,6 +40,8 @@ export const updateHeroBanner = async (id: string, updatedSlide: { title: string
           title: updatedSlide.title,
           description: updatedSlide.description,
           url: updatedSlide.url,
+          ctaButton:updatedSlide.ctaButton,
+          ctaLink:updatedSlide.ctaLink
         },
       })
       return { success: true }
