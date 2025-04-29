@@ -1,6 +1,9 @@
 "use client";
 
+import { FaqDetails, OurServices } from "@/utils";
+import { Car, ChevronDown, Leaf, Link, ThumbsUp } from "lucide-react";
 import { useParams } from "next/navigation";
+import { useEffect, useState } from "react";
 
 const sevices = {
   id: "01",
@@ -43,10 +46,27 @@ export default function Service() {
   const params = useParams();
   const slug = params.slug;
 
+  const [openFaq, setOpenFaq] = useState<number | null>(null);
+
+  const [faqs, setFaqs] = useState<Faqs[]>([]);
+  useEffect(() => {
+    fetchFaqs();
+  }, []);
+
+  const fetchFaqs = async () => {
+    try {
+      const faqs = await FaqDetails();
+      setFaqs(faqs);
+    } catch (err) {
+      setFaqs([]);
+    }
+  };
+
   console.log("Slug:", slug); // e.g. "skredderi"
   return (
     <main className="min-h-screen mt-10  text-white bg-gradient-to-t from-black/0 to-[#2d3c2d]">
       <div className="backdrop-blur-sm bg-black/50 w-full h-full">
+        {/* //service section */}
         <div className="container mx-auto px-4 text-white py-16">
           <h1 className="text-3xl md:text-6xl font-bold mb-12 text-center">
             {sevices.title}
@@ -87,6 +107,123 @@ export default function Service() {
               ))}
           </div>
         </div>
+
+        {/* //why choose us  */}
+        <section className="py-16 ">
+          <div className="container mx-auto px-4 text-center text-white">
+            <h2 className="text-3xl font-bold mb-6">Hvorfor velge oss?</h2>
+            <p className="mb-12 text-lg">
+              Med 20+ års erfaring, kvalitetsmaterialer og lidenskap for
+              håndverk, garanterer vi førsteklasses resultat.
+            </p>
+            <div className="grid md:grid-cols-3 gap-8">
+              <div className="p-6 bg-[#2d3c2d] rounded-xl shadow-md">
+                <h3 className="text-xl font-semibold mb-2">Erfaring</h3>
+                <p>
+                  20+ års erfaring i skreddersøm og kundetilpassede løsninger.
+                </p>
+              </div>
+              <div className="p-6 bg-[#2d3c2d] rounded-xl shadow-md">
+                <h3 className="text-xl font-semibold mb-2">Kvalitet</h3>
+                <p>
+                  Vi bruker kun nøye utvalgte stoffer og søm med høy presisjon.
+                </p>
+              </div>
+              <div className="p-6 bg-[#2d3c2d] rounded-xl shadow-md">
+                <h3 className="text-xl font-semibold mb-2">Kundetilfredshet</h3>
+                <p>Vi lytter, tilpasser og leverer — hver gang.</p>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        {/* faq */}
+
+        <section className="py-16 ">
+          <div className="container mx-auto px-4">
+            <h2 className="text-2xl md:text-3xl font-bold mb-2 text-center">
+              Ofte stilte spørsmål
+            </h2>
+            <p className="text-xs md:text-base text-center max-w-3xl mx-auto mb-12">
+              Har du et spørsmål om Luga? Se listen nedenfor for våre mest
+              stilte spørsmål. Hvis spørsmålet ditt ikke står her, vennligst{" "}
+            </p>
+            <div className="max-w-3xl mx-auto">
+              {faqs.map((faq, index) => (
+                <div key={index} className="border-b border-gray-200 py-4">
+                  <button
+                    onClick={() => setOpenFaq(openFaq === index ? null : index)}
+                    className="flex items-center justify-between w-full text-left"
+                  >
+                    <h4 className="text-lg font-medium">{faq.question}</h4>
+                    <ChevronDown
+                      className={`w-5 h-5 transition-transform duration-200 ${
+                        openFaq === index ? "rotate-180" : ""
+                      }`}
+                    />
+                  </button>
+                  <div
+                    className={`transition-all duration-200 overflow-hidden ${
+                      openFaq === index ? "max-h-40 mt-4" : "max-h-0"
+                    }`}
+                  >
+                    <p className=" text-sm">{faq.answer}</p>
+                  </div>
+                </div>
+              ))}
+            </div>
+          </div>
+        </section>
+
+        {/* //feature  */}
+        <section className="py-16 ">
+          <div className="container mx-auto px-4">
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+              <div className="flex flex-col items-center text-center">
+                <div className="w-16 h-16 flex items-center justify-center mb-4 text-white">
+                  {/* <Truck className="w-10 h-10" />{" "} */}
+                  <Car className="w-10 h-10" />
+                </div>
+                <h3 className="text-xl font-bold mb-3">HENTING OG LEVERING</h3>
+                <p className=" text-sm">
+                  Vi tilbyr henting og levering for dere som har en travel
+                  timeplan eller er for opptatt med hverdagen til å hente selv.
+                </p>
+              </div>
+              <div className="flex flex-col items-center text-center">
+                <div className="w-16 h-16 flex items-center justify-center  mb-4 text-white">
+                  <Leaf className="w-10 h-10" />
+                </div>
+                <h3 className="text-xl font-bold mb-3">MILJØVENNLIG</h3>
+                <p className=" text-sm">
+                  Vi tar miljøet på alvor i våre standarder. Vi har faset ut
+                  alle skadelige vaskemidler så mye som mulig.
+                </p>
+              </div>
+              <div className="flex flex-col items-center text-center">
+                <div className="w-16 h-16 flex items-center justify-center mb-4 text-white">
+                  <ThumbsUp className="w-10 h-10" />
+                </div>
+                <h3 className="text-xl font-bold mb-3">FORNØYDGARANTI</h3>
+                <p className="">
+                  Vi kan ikke forklare hvorfor så mange besøker våre kunder og
+                  velger den samme Luga-avdelingen igjen og igjen.
+                </p>
+              </div>
+            </div>
+          </div>
+        </section>
+        <section className="py-16 bg-gradient-to-r from-[#3d5a3d] to-[#2d3c2d] text-white text-center">
+          <h2 className="text-3xl font-bold mb-4">
+            Bestill en konsultasjon i dag!
+          </h2>
+          <p className="mb-6">
+            Vi hjelper deg gjerne med dine skreddersydde behov.
+          </p>
+          <button className="px-6 py-3 bg-white text-black rounded-full font-semibold hover:bg-gray-200 transition">
+            Kontakt oss
+          </button>
+        </section>
       </div>
     </main>
   );

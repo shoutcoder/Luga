@@ -219,7 +219,6 @@ export default function Home() {
           </div>
         </div>
       </section>
-
       {/* Locations Section */}
       <section id="hours" className="py-16 bg-[#2d3c2d] text-white">
         <div className="container mx-auto px-4">
