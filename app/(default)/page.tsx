@@ -88,7 +88,7 @@ export default function Home() {
           </div>
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 items-end">
             {services.map((service, index) => (
-              <Link href={`/service/${service?.title.toLocaleLowerCase()}`}>
+              <Link href={`/service/${service?.id}`}>
                 <div
                   key={index}
                   className={`bg-[#1e291e] border border-gray-500 rounded overflow-hidden relative ${

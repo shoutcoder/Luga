@@ -81,7 +81,6 @@ export default function Service() {
   const loadFeatures = async () => {
     setLoading(true)
     const data = await getService(slug)
-    console.log("data-",data);
     setFeatures(data)
     setLoading(false)
   }

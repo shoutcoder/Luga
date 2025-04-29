@@ -36,7 +36,6 @@ export function Contact() {
 
     function onSubmit(values: z.infer<typeof formSchema>) {
         // In a real app, this would submit to your API
-        console.log(values);
         // Show success state
         alert("Thank you for your message! We'll get back to you soon.");
         form.reset();
