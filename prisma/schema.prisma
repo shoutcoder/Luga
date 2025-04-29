@@ -33,11 +33,35 @@ model HeroBanner {
 }
 
 model Service {
-  id        String   @id @default(cuid())
+  id        String           @id @default(cuid())
   title     String
   url       String
-  createdAt DateTime @default(now())
-  updatedAt DateTime @updatedAt
+  createdAt DateTime         @default(now())
+  updatedAt DateTime         @updatedAt
+  bgImage   String?
+  desc      String?
+  slug      String?          @default(cuid())
+  features  ServiceFeature[] @relation("SectionFeatures")
+}
+
+model ServiceFeature {
+  id        String          @id @default(cuid())
+  title     String
+  image     String
+  serviceId String
+  createdAt DateTime        @default(now())
+  updatedAt DateTime        @default(now()) @updatedAt
+  details   FeatureDetail[] @relation("FeatureToDetails")
+  service   Service         @relation("SectionFeatures", fields: [serviceId], references: [id])
+}
+
+model FeatureDetail {
+  id        String         @id @default(cuid())
+  content   String
+  featureId String
+  createdAt DateTime       @default(now())
+  updatedAt DateTime       @default(now()) @updatedAt
+  feature   ServiceFeature @relation("FeatureToDetails", fields: [featureId], references: [id])
 }
 
 model Testimonial {
@@ -138,32 +162,6 @@ model Contact {
   message   String
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
-}
-
-model ServiceSection {
-  id        String           @id @default(cuid())
-  title     String
-  desc      String
-  bgImage   String?
-  createdAt DateTime         @default(now())
-  updatedAt DateTime         @updatedAt
-  features  ServiceFeature[] @relation("SectionFeatures")
-}
-
-model ServiceFeature {
-  id               String          @id @default(cuid())
-  title            String
-  image            String
-  serviceSectionId String
-  details          FeatureDetail[] @relation("FeatureToDetails")
-  serviceSection   ServiceSection  @relation("SectionFeatures", fields: [serviceSectionId], references: [id])
-}
-
-model FeatureDetail {
-  id        String         @id @default(cuid())
-  content   String
-  featureId String
-  feature   ServiceFeature @relation("FeatureToDetails", fields: [featureId], references: [id])
 }
 
 enum Role {

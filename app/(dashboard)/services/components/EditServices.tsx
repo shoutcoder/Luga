@@ -8,10 +8,13 @@ import "swiper/css/navigation"
 import { Pagination, Navigation } from "swiper/modules"
 import EditServiceModal from "./EditServiceModal"
 import { OurServices, updateService } from "@/utils"
+import ManageFeatures from "./ManageFeatures"
  interface ServiceSlide {
   id: string
   title: string
   url: string
+  desc: string | null
+  slug: string | null
 }
 
 export default function EditServices() {
@@ -24,6 +27,8 @@ export default function EditServices() {
     id: "",
     title: "",
     url: "",
+    desc:"",
+    slug:""
   })
 
   useEffect(() => {
@@ -56,6 +61,7 @@ export default function EditServices() {
     await updateService(editingService.id!, {
       title: editingService.title,
       url: editingService.url,
+      desc:editingService.desc || "",
     })
 
     setSaving(false)
@@ -63,7 +69,7 @@ export default function EditServices() {
   }
 
   return (
-    <div className="py-6 flex flex-col items-center gap-8">
+    <div className="py-6 flex  flex-col items-center gap-8">
       <h2 className="text-3xl font-bold text-center text-primary">Edit Services</h2>
 
       {loading ? (
@@ -78,11 +84,21 @@ export default function EditServices() {
           pagination={{ clickable: true }}
           navigation
           modules={[Pagination, Navigation]}
-          className="w-[80vw] md:w-[40vw] h-[75vh]"
+          className="w-[80vw]  md:w-[40vw] h-full relative "
         >
+           <style jsx global>{`
+              .swiper-button-next::after,
+              .swiper-button-prev::after {
+                color: #10b92c;
+                position:absolute;
+                top:-700px;
+              }
+            `}</style>
           {services.map((svc, idx) => (
-            <SwiperSlide key={svc.id}>
+            <div key={svc.id} className="border-4">
+            <SwiperSlide className="flex gap-10" >
               <div className="relative h-[70vh] rounded-2xl overflow-hidden shadow-md border-gray-300">
+                <p className="absolute top-4 left-4 text-lg" >{idx}</p>
                 <img
                   src={svc.url}
                   alt={svc.title}
@@ -98,7 +114,10 @@ export default function EditServices() {
                   Edit
                 </button>
               </div>
+            <ManageFeatures serviceId={svc.id}/>
             </SwiperSlide>
+            </div>
+            
           ))}
         </Swiper>
       )}

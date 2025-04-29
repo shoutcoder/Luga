@@ -1,6 +1,7 @@
 "use client";
 
-import { FaqDetails, OurServices } from "@/utils";
+import FullScreenLoader from "@/components/dashboard/common/FullScreenLoader";
+import { FaqDetails, OurServices,getService } from "@/utils";
 import {
   Car,
   ChevronDown,
@@ -11,7 +12,7 @@ import {
 } from "lucide-react";
 import { useParams } from "next/navigation";
 import { useEffect, useState } from "react";
-
+ 
 const sevices = {
   id: "01",
   title: "Skredderi",
@@ -51,11 +52,16 @@ const sevices = {
 
 export default function Service() {
   const params = useParams();
-  const slug = params.slug;
-
+  const rawSlug = params.slug;
+  
+  const slug = Array.isArray(rawSlug) ? rawSlug[0] : rawSlug ?? "";
+  
   const [openFaq, setOpenFaq] = useState<number | null>(null);
 
   const [faqs, setFaqs] = useState<Faqs[]>([]);
+  const [features, setFeatures] = useState<FullService | null>(null)
+  const [loading, setLoading] = useState(true)
+
   useEffect(() => {
     fetchFaqs();
   }, []);
@@ -68,30 +74,43 @@ export default function Service() {
       setFaqs([]);
     }
   };
+  useEffect(() => {
+    loadFeatures()
+  }, [slug])
+
+  const loadFeatures = async () => {
+    setLoading(true)
+    const data = await getService(slug)
+    console.log("data-",data);
+    setFeatures(data)
+    setLoading(false)
+  }
 
   console.log("Slug:", slug); // e.g. "skredderi"
+  if(features==null){
+    return <FullScreenLoader/>
+  }  
   return (
     <main className="min-h-screen mt-10  text-black bg-white">
       <div className=" w-full h-full">
         {/* //service section */}
         <div className="container mx-auto px-4 text-black py-16">
           <h1 className="text-3xl text-[#2d353c] md:text-6xl font-bold mb-12 text-center">
-            {sevices.title}
+            {features.title}
           </h1>
 
-          <p className="text-center mb-12 md:text-lg ">{sevices?.desc}</p>
-          {sevices.feature.map((service, index) => (
+          <p className="text-center mb-12 md:text-lg ">{features?.desc}</p>
+          {features.features.map((service, index) => (
             <div
               key={index}
-              className={`flex flex-col md:flex-row ${
-                index % 2 !== 0 ? "md:flex-row-reverse" : ""
-              } items-center gap-8 mb-12`}
+              className={`flex flex-col md:flex-row ${index % 2 !== 0 ? "md:flex-row-reverse" : ""
+                } items-center gap-8 mb-12`}
             >
               <div className="md:w-1/2">
                 <h2 className="text-2xl font-bold mb-4">{service.title}</h2>
-                {service.description.map((para, i) => (
+                {service.details.map((para, i) => (
                   <p key={i} className="mb-4">
-                    {para}
+                    {para.content|| ""}
                   </p>
                 ))}
               </div>
@@ -164,15 +183,13 @@ export default function Service() {
                   >
                     <h4 className="text-lg font-medium">{faq.question}</h4>
                     <ChevronDown
-                      className={`w-5 h-5 transition-transform duration-200 ${
-                        openFaq === index ? "rotate-180" : ""
-                      }`}
+                      className={`w-5 h-5 transition-transform duration-200 ${openFaq === index ? "rotate-180" : ""
+                        }`}
                     />
                   </button>
                   <div
-                    className={`transition-all duration-200 overflow-hidden ${
-                      openFaq === index ? "max-h-40 mt-4" : "max-h-0"
-                    }`}
+                    className={`transition-all duration-200 overflow-hidden ${openFaq === index ? "max-h-40 mt-4" : "max-h-0"
+                      }`}
                   >
                     <p className=" text-sm">{faq.answer}</p>
                   </div>

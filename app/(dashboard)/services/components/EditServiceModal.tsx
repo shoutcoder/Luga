@@ -6,6 +6,7 @@ interface Slide {
   id?: string
   title: string
   url: string
+  desc:string | null
 }
 
 interface EditServiceModalProps {
@@ -57,6 +58,15 @@ const EditServiceModal: React.FC<EditServiceModalProps> = ({
             type="text"
             value={slide.url}
             onChange={(e) => onChange("url", e.target.value)}
+            className="w-full border rounded p-2"
+          />
+        </div>
+        <div>
+          <label className="block text-sm font-medium text-gray-600 mb-1">Description</label>
+          <input
+            type="text"
+            value={slide.desc || ""}
+            onChange={(e) => onChange("desc", e.target.value)}
             className="w-full border rounded p-2"
           />
         </div>
