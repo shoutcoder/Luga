@@ -342,38 +342,55 @@ export default function Home() {
 
 const clients = [
   {
-    name: "Google",
-    logo: "https://ik.imagekit.io/vv/Vector%20(4).png?updatedAt=1744566734991",
+    name: "",
+    logo: "https://ik.imagekit.io/vv/lugaP6.png?updatedAt=1746023673999",
   },
   {
-    name: "Netflix",
-    logo: "https://ik.imagekit.io/vv/Group%2013%20(2).png?updatedAt=1744566735026",
+    name: "",
+    logo: "https://ik.imagekit.io/vv/lugaP1.png?updatedAt=1746023673994",
   },
   {
-    name: "Google",
-    logo: "https://ik.imagekit.io/vv/Vector%20(4).png?updatedAt=1744566734991",
+    name: "",
+    logo: "https://ik.imagekit.io/vv/lugaP3.png?updatedAt=1746023673864",
   },
   {
-    name: "Netflix",
-    logo: "https://ik.imagekit.io/vv/Group%2013%20(2).png?updatedAt=1744566735026",
+    name: "",
+    logo: "https://ik.imagekit.io/vv/lugaP2.png?updatedAt=1746023673859",
   },
   {
-    name: "Google",
-    logo: "https://ik.imagekit.io/vv/Vector%20(4).png?updatedAt=1744566734991",
+    name: "",
+    logo: "https://ik.imagekit.io/vv/lugaP5.png?updatedAt=1746023673940",
   },
   {
-    name: "Netflix",
-    logo: "https://ik.imagekit.io/vv/Group%2013%20(2).png?updatedAt=1744566735026",
+    name: "",
+    logo: "https://ik.imagekit.io/vv/lugaP4.png?updatedAt=1746023673943",
   },
   {
-    name: "Google",
-    logo: "https://ik.imagekit.io/vv/Vector%20(4).png?updatedAt=1744566734991",
+    name: "",
+    logo: "https://ik.imagekit.io/vv/lugaP6.png?updatedAt=1746023673999",
   },
   {
-    name: "Netflix",
-    logo: "https://ik.imagekit.io/vv/Group%2013%20(2).png?updatedAt=1744566735026",
+    name: "",
+    logo: "https://ik.imagekit.io/vv/lugaP1.png?updatedAt=1746023673994",
+  },
+  {
+    name: "",
+    logo: "https://ik.imagekit.io/vv/lugaP3.png?updatedAt=1746023673864",
+  },
+  {
+    name: "",
+    logo: "https://ik.imagekit.io/vv/lugaP2.png?updatedAt=1746023673859",
+  },
+  {
+    name: "",
+    logo: "https://ik.imagekit.io/vv/lugaP5.png?updatedAt=1746023673940",
+  },
+  {
+    name: "",
+    logo: "https://ik.imagekit.io/vv/lugaP4.png?updatedAt=1746023673943",
   },
 ];
+
 
 // const testimonials = [
 //   {
