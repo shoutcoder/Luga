@@ -7,9 +7,9 @@ const page = () => {
             <Hero />
             <About />
             <Impact/>
-            <Partners/>
+            {/* <Partners/>
             <Testimonials/>
-            <Contact/>
+            <Contact/> */}
         </div>
     )
 }
