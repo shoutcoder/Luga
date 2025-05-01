@@ -1,27 +1,38 @@
-import type React from "react"
-import "../globals.css"
-import { Inter } from "next/font/google"
-import { ThemeProvider } from "@/components/theme-provider"
-import MainNav from "@/components/main-nav"
-import Link from "next/link"
+import type React from "react";
+import "../globals.css";
+import { Inter, Poppins } from "next/font/google";
+import { ThemeProvider } from "@/components/theme-provider";
+import MainNav from "@/components/main-nav";
+import Link from "next/link";
 
-const inter = Inter({ subsets: ["latin"] })
+const inter = Inter({ subsets: ["latin"] });
 
+const poppins = Poppins({
+  subsets: ["latin"],
+  weight: ["400", "500", "600"], // Choose weights you need
+  variable: "--font-poppins", // optional CSS variable
+});
 export const metadata = {
   title: "Luga - Tailoring and Dry Cleaning Services",
-  description: "Professional tailoring and dry cleaning services with over 25 years of experience.",
-  generator: 'v0.dev'
-}
+  description:
+    "Professional tailoring and dry cleaning services with over 25 years of experience.",
+  generator: "v0.dev",
+};
 
 export default function RootLayout({
   children,
 }: {
-  children: React.ReactNode
+  children: React.ReactNode;
 }) {
   return (
     <html lang="en">
-      <body className={inter.className}>
-        <ThemeProvider attribute="class" defaultTheme="light" enableSystem disableTransitionOnChange>
+      <body className={poppins.className}>
+        <ThemeProvider
+          attribute="class"
+          defaultTheme="light"
+          enableSystem
+          disableTransitionOnChange
+        >
           <main className="min-h-screen">
             <MainNav />
             {children}
@@ -46,5 +57,5 @@ export default function RootLayout({
         </ThemeProvider>
       </body>
     </html>
-  )
+  );
 }

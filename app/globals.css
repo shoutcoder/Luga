@@ -140,7 +140,7 @@ body {
 /* For modern browsers */
 .hide-scrollbar {
   scrollbar-width: none; /* Firefox */
-  -ms-overflow-style: none;  /* IE and Edge */
+  -ms-overflow-style: none; /* IE and Edge */
 }
 
 .hide-scrollbar::-webkit-scrollbar {
