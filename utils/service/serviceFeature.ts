@@ -67,15 +67,18 @@ export const getService = async (serviceId: string): Promise<FullService | null>
       where: { id:serviceId },
       include: {
         features:{
-          include:{
-            details:true
-          },
           orderBy:{
             createdAt:"asc",
           }
+          ,include:{
+            details:true,
+          
+          },
         },
         
+        
       },
+    
       
     });
     return features;

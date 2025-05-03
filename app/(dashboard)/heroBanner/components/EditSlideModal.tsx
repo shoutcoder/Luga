@@ -41,7 +41,7 @@ const EditSlideModal: React.FC<EditSlideModalProps> = ({ isOpen, slide, onClose,
           <input
             type="text"
             value={slide.url}
-            onChange={(e) => onChange("image", e.target.value)}
+            onChange={(e) => onChange("url", e.target.value)}
             placeholder="https://example.com/image.jpg"
             className="w-full border rounded p-2"
           />

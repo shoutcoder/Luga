@@ -1,5 +1,14 @@
 "use client";
+// For App Router (e.g., app/layout.js)
 
+import { Manrope } from 'next/font/google';
+
+const manrope = Manrope({
+  subsets: ['latin'],
+  variable: '--font-manrope', // Optional: For Tailwind `font-variable`
+  display: 'swap',
+  weight: ['200', '300', '400', '500', '600', '700', '800'],
+});
 import FullScreenLoader from "@/components/dashboard/common/FullScreenLoader";
 import {
   Accordion,
@@ -79,6 +88,7 @@ const services = {
   ],
 };
 
+
 export default function Service() {
   const params = useParams();
   const rawSlug = params.slug;
@@ -127,12 +137,12 @@ export default function Service() {
         {/* //service section */}
 
         {/* /hero  */}
-        <section className=" container mx-auto flex flex-col justify-center items-center relative text-center mt-36  overflow-hidden">
-          <span className="inline-block px-4  py-2 bg-white text-[#333] font-medium rounded-full text-sm md:text-lg  ">
+        <section className=" container h-[60vh] mx-auto flex flex-col justify-center items-center relative text-center mt-36  overflow-hidden">
+          {/* <span className="inline-block px-4  py-2 bg-white text-[#333] font-medium rounded-full text-sm md:text-lg  ">
             Premium skredderservice
-          </span>
+          </span> */}
           <h1
-            className="text-5xl md:text-9xl tracking-widest font-extrabold mb-4 leading-tight text-transparent bg-clip-text"
+            className="text-5xl md:text-8xl tracking-widest font-extrabold font-Manrope mb-4 leading-tight text-transparent bg-clip-text"
             style={{
               backgroundImage: `
       linear-gradient(to bottom, rgba(0,0,0,0.8), rgba(0,0,0,0.2)),
@@ -144,12 +154,13 @@ export default function Service() {
               backgroundClip: "text",
             }}
           >
-            {services.title}
+            {features.title}
           </h1>
+          {/* <h1 className={manrope.variable}>  {features.title}</h1> */}
 
-          <p className="text-2xl font-medium  text-[#333]">{services.desc}</p>
+          <p className="text-xl font-medium w-[95%] md:w-[80%] text-[#333]">{features.desc}</p>
 
-          <div className="w-full  h-[600px] mx-auto md:px-20">
+          {/* <div className="w-full  h-[600px] mx-auto md:px-20">
             <Image
               src={services.url}
               alt={services.title}
@@ -157,7 +168,7 @@ export default function Service() {
               height={400}
               className="w-full h-full rounded my-10 object-cover"
             />
-          </div>
+          </div> */}
 
           {/* <Button size="lg" className="gap-2  rounded-full mt-10">
               Bestill time <ArrowRight className="w-4 h-4" />
@@ -167,9 +178,9 @@ export default function Service() {
         {/* sticky section */}
 
         <section className="py-24 bg-[#F5F5F5] mt-16">
-          <div className="container mx-auto max-w-7xl px-6 grid grid-cols-1 lg:grid-cols-2 gap-10">
+          <div className="container mx-auto max-w-7xl px-6  gap-10">
             {/* Left - Sticky Section */}
-            <div className="lg:sticky top-24 self-start ">
+            {/* <div className="lg:sticky top-24 self-start ">
               <h2 className="text-3xl font-bold text-green-600 mb-4">
                 TRUE Zero Waste Certification
               </h2>
@@ -179,12 +190,12 @@ export default function Service() {
                 stewardship but also provides a structured roadmap to help you
                 achieve your sustainability goals.
               </p>
-            </div>
+            </div> */}
 
             {/* Right - Scrollable Phases */}
-            <div className="space-y-24 ">
-              {services.features.map((service, index) => (
-                <div>
+            <div className="space-y-24">
+              {features.features.map((service, index) => (
+                <div className="mx-auto w-[90%] md:w-[70%] " >
                   {" "}
                   <h3 className="text-2xl font-semibold uppercase text-[#333] mb-2">
                     {service.title}
@@ -289,7 +300,7 @@ export default function Service() {
       </section>
 
       {/* faq */}
-      <section className="py-24 bg-[#F5F5F5]">
+      {/* <section className="py-24 bg-[#F5F5F5]">
         <div className="container max-w-4xl">
           <div className="text-center mb-16">
             <h2 className="text-4xl font-bold text-[#333] tracking-wider mb-4">
@@ -318,7 +329,7 @@ export default function Service() {
             ))}
           </Accordion>
         </div>
-      </section>
+      </section> */}
 
       {/* //feature  */}
       <section className="py-24 px-4 ">

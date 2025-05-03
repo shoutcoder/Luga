@@ -1,11 +1,12 @@
 "use client"
 
 import { useState, useEffect } from "react"
-import { Plus, Edit } from "lucide-react"
-import { CategoryDetails, createCategory, updateCategory, createSection, createItem, updateSection,updateItem } from "@/utils"
+import { Plus, Edit, Trash, Trash2 } from "lucide-react"
+import { CategoryDetails, createCategory, updateCategory, deleteCategory, createSection,deleteSection, createItem, updateSection, updateItem, deleteItem } from "@/utils"
 import CategoryModal from "./CategoryModal"
 import SectionModal from "./SectionModal"
 import ItemModal from "./ItemModal"
+import ConfirmDeleteModal from "@/components/dashboard/common/ConfirmDeleteModal"
 
 interface Item {
   id: string
@@ -40,10 +41,18 @@ export default function EditCategories() {
   const [newCategoryTitle, setNewCategoryTitle] = useState("")
   const [editingCategoryId, setEditingCategoryId] = useState<string | null>(null)
 
+  //CategoryModal 
+  const [modalDeleteCategory, setModalDeleteCategory] = useState<boolean>(false)
+  const [deleteCategoryId, setDeleteCategoryId] = useState<string | null>(null);
+
   // Section
   const [newSectionTitle, setNewSectionTitle] = useState("")
   const [selectedCategoryId, setSelectedCategoryId] = useState<string | null>(null)
   const [editingSectionId, setEditingSectionId] = useState<string | null>(null)
+
+  //SectionModal 
+  const [modalDeleteSection, setModalDeleteSection] = useState<boolean>(false)
+  const [deletSectionId, setDeleteSectionId] = useState<string | null>(null);
 
   // Item
   const [newItemName, setNewItemName] = useState("")
@@ -83,6 +92,22 @@ export default function EditCategories() {
     }
     await loadCategories()
   }
+  //Category Delete
+  const confirmDelete = async () => {
+    try {
+      setLoading(true);
+      if (deleteCategoryId)
+        await deleteCategory(deleteCategoryId)
+    }
+    catch (err) {
+
+    } finally {
+      loadCategories()
+      setModalDeleteCategory(false)
+      setDeleteCategoryId(null);
+    }
+
+  }
 
   // Section
   const handleAddSection = (categoryId: string) => {
@@ -105,6 +130,22 @@ export default function EditCategories() {
       await createSection({ title, categoryId: selectedCategoryId })
     }
     await loadCategories()
+  }
+  //Section Delete
+  const confirmDeleteSection = async () => {
+    try {
+      setLoading(true);
+      if (deletSectionId)
+        await deleteSection(deletSectionId)
+    }
+    catch (err) {
+
+    } finally {
+      loadCategories()
+      setModalDeleteSection(false)
+      setDeleteSectionId(null);
+    }
+
   }
 
   // Item
@@ -130,6 +171,21 @@ export default function EditCategories() {
     }
     await loadCategories()
   }
+  //Item Delete
+  const deleteItemHandler = async (id: string) => {
+    try {
+      setLoading(true);
+      if (id)
+        await deleteItem(id)
+    }
+    catch (err) {
+
+    } finally {
+      loadCategories()
+      setLoading(false)
+    }
+
+  }
 
   return (
     <div className="p-8">
@@ -147,9 +203,15 @@ export default function EditCategories() {
           <section key={category.id} className="mb-16">
             <div className="flex justify-between items-center mb-4">
               <h2 className="text-2xl font-semibold">{category.title}</h2>
-              <button onClick={() => handleEditCategory(category)} className="text-blue-600 flex items-center gap-1">
-                <Edit size={16} /> Edit
-              </button>
+              <div className="flex justify-center items-center gap-3">
+                <button onClick={() => handleEditCategory(category)} className="text-blue-600 flex items-center gap-1">
+                  <Edit size={16} /> Edit
+                </button>
+                <button onClick={() => { setModalDeleteCategory(true); setDeleteCategoryId(category.id) }} className="text-red-600 flex items-center gap-1">
+                  <Trash size={16} />
+                </button>
+              </div>
+
             </div>
 
             <div className="grid md:grid-cols-3 gap-8">
@@ -157,21 +219,33 @@ export default function EditCategories() {
                 <div key={section.id} className="p-4 border rounded-lg">
                   <div className="flex justify-between items-center mb-2">
                     <h3 className="text-lg font-medium">{section.title}</h3>
+                    <div>
                     <button onClick={() => handleEditSection(section)} className="text-blue-600">
                       <Edit size={14} />
                     </button>
+                    <button onClick={() => { setModalDeleteSection(true); setDeleteSectionId(section.id) }} className="text-red-600 flex items-center gap-1">
+                  <Trash size={16} />
+                </button>
+                    </div>
+                    
                   </div>
                   <div className="space-y-2">
                     {section.items.map((item) => (
                       <div key={item.id} className="flex justify-between text-sm">
                         <div className="flex justify-between items-center flex-1 mr-5" >
-                        <span>{item.name}</span>
-                        <span>NOK {item.price}</span>
-                            </div>
-                            <button onClick={() => handleEditItem(item)}>
-                          <Edit size={14} />
-                        </button>
-                        
+                          <span>{item.name}</span>
+                          <span>NOK {item.price}</span>
+                        </div>
+                        <div className="flex gap-2">
+
+                          <button onClick={() => handleEditItem(item)}>
+                            <Edit size={14} />
+                          </button>
+                          <button className="text-purple-500" onClick={() => deleteItemHandler(item.id)}>
+                            <Trash size={14} />
+                          </button>
+                        </div>
+
                       </div>
                     ))}
                   </div>
@@ -216,6 +290,21 @@ export default function EditCategories() {
         onSave={handleSaveItem}
         initialName={newItemName}
         initialPrice={newItemPrice}
+      />
+
+      <ConfirmDeleteModal
+        open={modalDeleteCategory}
+        title="Confirm Delete"
+        message="Are you sure you want to delete this Category?"
+        onClose={() => setModalDeleteCategory(false)}
+        onConfirm={confirmDelete}
+      />
+      <ConfirmDeleteModal
+        open={modalDeleteSection}
+        title="Confirm Delete"
+        message="Are you sure you want to delete this Section?"
+        onClose={() => setModalDeleteSection(false)}
+        onConfirm={confirmDeleteSection}
       />
     </div>
   )

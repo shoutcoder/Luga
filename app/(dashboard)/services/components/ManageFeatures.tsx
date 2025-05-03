@@ -145,12 +145,12 @@ const handleModalSave = (id: string, title: string, image: string) => {
                                     Edit
                                 </button>
                             </div>
-                            {/* <button
+                            <button
                 onClick={() => handleDeleteFeature(feature.id)}
-                className="text-red-600 mt-2 md:mt-0"
+                className="text-red-600 mt-2 md:mt-0 bg-gray-100 p-2 rounded-full"
               >
-                Delete Feature
-              </button> */}
+                <Trash2/>
+              </button>
                         </div>
 
                         <div className="mt-4 pl-2 border-l-2">
@@ -165,9 +165,9 @@ const handleModalSave = (id: string, title: string, image: string) => {
                                     />
                                     <button
                                         onClick={() => handleDeleteDetail(detail.id)}
-                                        className="text-red-600"
+                                        className="text-red-500"
                                     >
-                                        <Trash2 />
+                                        <Trash2 className="w-5 h-5" />
                                     </button>
                                 </div>
                             ))}

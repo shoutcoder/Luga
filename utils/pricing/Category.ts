@@ -65,12 +65,22 @@ export const updateCategory = async (id: string, data: { title: string }) => {
     data,
   });
 };
+export const deleteCategory = async (id: string) => {
+  return await prisma.category.delete({
+    where: { id }
+  });
+};
 
 export const createSection = async (data: {
   title: string;
   categoryId: string;
 }) => {
   return await prisma.section.create({ data });
+};
+export const deleteSection = async (id: string) => {
+  return await prisma.section.delete({
+    where: { id }
+  });
 };
 
 export const createItem = async (data: {
@@ -93,5 +103,10 @@ export const updateItem = async (
   return await prisma.item.update({
     where: { id },
     data,
+  });
+};
+export const deleteItem = async (id: string) => {
+  return await prisma.item.delete({
+    where: { id }
   });
 };

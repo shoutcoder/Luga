@@ -1,7 +1,9 @@
 "use client"
-import { useState, useTransition } from "react";
+import { useEffect, useState, useTransition } from "react";
 import { Mail, MapPin, Phone } from "lucide-react"
-import { CreateDetails } from "@/utils";
+import { CreateDetails, LocationsDetails } from "@/utils";
+import Image from "next/image";
+import Link from "next/link";
 
 const stores = [
   {
@@ -36,7 +38,11 @@ export default function ContactPage() {
 
   const [isPending, startTransition] = useTransition();
   const [success, setSuccess] = useState<boolean | null>(null);
+  const [locations, setLocations] = useState<Locations[]>([]);
 
+  useEffect(()=>{
+    fetchLocation()
+  },[])
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
 
@@ -50,6 +56,14 @@ export default function ContactPage() {
         setSuccess(null);
       }, 2000);
     });
+  };
+  const fetchLocation = async () => {
+    try {
+      const locations = await LocationsDetails();
+      setLocations(locations);
+    } catch (err) {
+      setLocations([]);
+    }
   };
   return (
     <main className="min-h-screen pt-16">
@@ -132,30 +146,61 @@ export default function ContactPage() {
       </div>
       <div className="container mx-auto px-4">
         {/* Store Locations Grid */}
-        <div className="grid md:grid-cols-3 gap-6 mb-12">
-          {stores.map((store, index) => (
-            <div key={index} className="bg-gradient-to-br from-[#1a231a] to-[#141914] p-6 rounded-lg shadow-xl hover:translate-y-[-4px] transition-all duration-300 border border-[#2d3c2d]/20">
-              <h3 className="text-xl font-bold mb-4 text-white">{store.name}</h3>
-              <div className="space-y-4 text-gray-300">
-                <div className="flex items-start space-x-4 group">
-                  <MapPin className="w-6 h-6 mt-1 text-[#4a5f4a] group-hover:text-[#6a8f6a] transition-colors" />
-                  <div>
-                    <p>{store.address}</p>
-                    <p>{store.city}</p>
+             <section id="hours" className="py-16 bg-[#2d3c2d] text-white">
+                <div className="container mx-auto px-4">
+                  <div className="border border-white w-max mx-auto rounded-full flex items-center justify-center px-4 py-2 bg-[rgba(255, 255, 255, 0.05)]">
+                    <h2 className="text-xs text-center ">FINN DIN NÆRMESTE LOKASJON</h2>
+                  </div>
+                  <h3 className="text-4xl font-bold mb-6 pt-4 text-center">
+                    Besøk oss i nærheten
+                  </h3>
+                  <p className="text-center max-w-3xl mx-auto mb-12">
+                    Opplev våre tjenester personlig på en av våre praktiske lokasjoner.
+                    Vårt ekspertteam er klare til å ønske deg velkommen og hjelpe deg.
+                  </p>
+                  <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+                    {locations.map((location, index) => (
+                      <div
+                        key={index}
+                        className="border border-white rounded-[10px] text-center p-6"
+                      >
+                        <div className="flex items-center justify-center mb-4">
+                          <Image
+                            src={"/time.png"}
+                            width={100}
+                            height={100}
+                            alt="Location Image"
+                          />
+                        </div>
+                        <h3 className="text-xl font-bold mb-4">Åpningstider</h3>
+                        <p className="mb-4 text-center">{location.area}</p>
+                        <div className="flex items-center justify-center mb-4">
+                          <MapPin className="w-5 h-5 mr-2" />
+                          <p className="text-sm">{location.address}</p>
+                        </div>
+                        <div className=" bg-[#608160] rounded-[15px] py-3 mb-4 w-70">
+                          <h4 className="text-sm font-bold mb-2">Åpningstider</h4>
+                          <p className="text-sm">
+                            Mandag-Fredag: {location.weekdayHours}
+                          </p>
+                          <p className="text-sm">Lørdag: {location.saturdayHours}</p>
+                        </div>
+                        <div className="flex items-center justify-center mb-6">
+                          <Phone className="w-4 h-4 mr-2" />
+                          <p className="text-sm">{location.phone}</p>
+                        </div>
+                        <Link
+                          href={location.redirection}
+                          target="_blank"
+                          className="w-max border border-white px-10 rounded-full py-2 text-sm"
+                        >
+                          Få veibeskrivelse
+                        </Link>
+                      </div>
+                    ))}
                   </div>
                 </div>
-                <div className="flex items-start space-x-4 group">
-                  <Phone className="w-6 h-6 mt-1 text-[#4a5f4a] group-hover:text-[#6a8f6a] transition-colors" />
-                  <p>{store.phone}</p>
-                </div>
-                <div className="flex items-start space-x-4 group">
-                  <Mail className="w-6 h-6 mt-1 text-[#4a5f4a] group-hover:text-[#6a8f6a] transition-colors" />
-                  <p>{store.email}</p>
-                </div>
-              </div>
-            </div>
-          ))}
-        </div>
+              </section>
 
         {/* Map Section */}
         <div className="mb-12">

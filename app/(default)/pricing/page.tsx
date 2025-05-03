@@ -2,7 +2,7 @@ import { CategoryDetails, PlanPriceDetails } from '@/utils'
 import Link from 'next/link'
 
 export default async function PricingPage() {
-  const priceCategories = await PlanPriceDetails()
+  // const priceCategories = await PlanPriceDetails()
   const categories = await CategoryDetails()
 
   return (
@@ -11,7 +11,7 @@ export default async function PricingPage() {
         <h1 className="text-4xl text-center mb-16">PRICE-LIST</h1>
         
         {/* Vak tjenester */}
-        <section className="mb-16">
+        {/* <section className="mb-16">
           <h2 className="text-2xl  mb-8">VÅR TJENESTER</h2>
           <div className="grid md:grid-cols-3 gap-x-12 gap-y-4">
             {priceCategories.map((category) => (
@@ -28,7 +28,7 @@ export default async function PricingPage() {
               </div>
             ))}
           </div>
-        </section>
+        </section> */}
 
         {/* Other categories */}
         {categories.map((category) => (

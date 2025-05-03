@@ -60,11 +60,11 @@ const items = [
     url: "/faq",
     icon: HelpCircle,
   },
-  {
-    title: "Pricing",
-    url: "/edit-pricing",
-    icon: CoinsIcon,
-  },
+  // {
+  //   title: "Pricing",
+  //   url: "/edit-pricing",
+  //   icon: CoinsIcon,
+  // },
   {
     title: "Category",
     url: "/edit-category",
