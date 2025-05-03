@@ -137,7 +137,7 @@ export default function Service() {
         {/* //service section */}
 
         {/* /hero  */}
-        <section className=" container h-[60vh] mx-auto flex flex-col justify-center items-center relative text-center mt-36  overflow-hidden">
+        <section className=" container h-[60vh] space-y-2 md:space-y-3 lg:space-y-5 mx-auto flex flex-col justify-center items-center relative text-center mt-36  overflow-hidden">
           {/* <span className="inline-block px-4  py-2 bg-white text-[#333] font-medium rounded-full text-sm md:text-lg  ">
             Premium skredderservice
           </span> */}
@@ -158,7 +158,7 @@ export default function Service() {
           </h1>
           {/* <h1 className={manrope.variable}>  {features.title}</h1> */}
 
-          <p className="text-xl font-medium w-[95%] md:w-[80%] text-[#333]">{features.desc}</p>
+          <p className=" text-base sm:text-lg md:text-xl md:font-medium w-full md:w-[80%] text-[#333]">{features.desc}</p>
 
           {/* <div className="w-full  h-[600px] mx-auto md:px-20">
             <Image
@@ -195,7 +195,7 @@ export default function Service() {
             {/* Right - Scrollable Phases */}
             <div className="space-y-24">
               {features.features.map((service, index) => (
-                <div className="mx-auto w-[90%] md:w-[70%] " >
+                <div className="mx-auto w-full md:w-[70%] " >
                   {" "}
                   <h3 className="text-2xl font-semibold uppercase text-[#333] mb-2">
                     {service.title}
@@ -214,7 +214,7 @@ export default function Service() {
                   <div className="space-y-3">
                     {service.details.map((item, i) => (
                       <div key={i} className="flex items-start space-x-3">
-                        <span className="text-green-500 mt-1">✔️</span>
+                        <span>✔️</span>
                         <span className="  text-sm md:text-base  text-[#333] font-medium">
                           {item.content}
                         </span>
