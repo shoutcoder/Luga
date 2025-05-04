@@ -43,7 +43,7 @@ export default function ManageFeatures({ serviceId }: ManageFeaturesProps) {
     }
 
     const handleAddFeature = async () => {
-        if (!newFeatureTitle || !newFeatureImage) return
+        if (!newFeatureTitle) return
         setLoading(true);
         const res = await createServiceFeature(serviceId, {
             title: newFeatureTitle,

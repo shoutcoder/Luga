@@ -7,7 +7,7 @@ interface FeatureDetail {
 interface ServiceFeature {
   id: string;
   title: string;
-  image: string;
+  image: string | null;
   serviceId: string;
   details: FeatureDetail[];
 }
@@ -28,7 +28,7 @@ interface ServiceSlide {
   features: {
     id: string;
     title: string;
-    image: string;
+    image: string | null;
     serviceId: string;
     details: FeatureDetail[];
   }[];

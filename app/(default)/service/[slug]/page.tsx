@@ -195,7 +195,7 @@ export default function Service() {
             {/* Right - Scrollable Phases */}
             <div className="space-y-24">
               {features.features.map((service, index) => (
-                <div className="mx-auto w-full md:w-[70%] " >
+                <div key={index} className="mx-auto w-full md:w-[70%] " >
                   {" "}
                   <h3 className="text-2xl font-semibold uppercase text-[#333] mb-2">
                     {service.title}
@@ -204,13 +204,18 @@ export default function Service() {
                     We begin by gathering and analyzing critical data, including
                     commodity weights, financial info, and waste processes...
                   </p>
-                  <Image
+                  {
+                    service.image &&
+                    <Image
                     src={service.image}
                     alt={service.title}
                     width={400}
                     height={400}
                     className="w-full transition-transform duration-500 group-hover:scale-105 my-10"
                   />
+
+                  }
+                  
                   <div className="space-y-3">
                     {service.details.map((item, i) => (
                       <div key={i} className="flex items-start space-x-3">

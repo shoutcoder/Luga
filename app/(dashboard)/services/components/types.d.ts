@@ -7,7 +7,7 @@ export interface FeatureDetail {
   export interface ServiceFeature {
     id: string;
     title: string;
-    image: string;
+    image: string | null;
     serviceId: string;
     details: FeatureDetail[];
   }

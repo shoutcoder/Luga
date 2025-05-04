@@ -47,7 +47,7 @@ model Service {
 model ServiceFeature {
   id        String          @id @default(cuid())
   title     String
-  image     String
+  image     String?
   serviceId String
   createdAt DateTime        @default(now())
   updatedAt DateTime        @default(now()) @updatedAt

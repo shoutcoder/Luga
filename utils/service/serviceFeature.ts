@@ -12,7 +12,7 @@ export interface FeatureDetail {
 export interface ServiceFeature {
   id: string;
   title: string;
-  image: string;
+  image: string| null;
   serviceId: string;
   details: FeatureDetail[];
 }
@@ -33,7 +33,7 @@ export interface FullService {
   features: {
     id: string;
     title: string;
-    image: string;
+    image: string | null;
     serviceId: string;
     details: FeatureDetail[];
   }[];
@@ -49,10 +49,9 @@ export const getServiceFeatures = async (serviceId: string): Promise<ServiceFeat
       where: { serviceId },
       include: {
         details: true,
-        
       },
       orderBy:{
-        createdAt:"asc",
+        createdAt:"asc"
       }
     });
     return features;
@@ -68,17 +67,14 @@ export const getService = async (serviceId: string): Promise<FullService | null>
       include: {
         features:{
           orderBy:{
-            createdAt:"asc",
+            createdAt:"desc",
           }
           ,include:{
             details:true,
-          
           },
         },
-        
-        
       },
-    
+
       
     });
     return features;
@@ -91,7 +87,7 @@ export const getService = async (serviceId: string): Promise<FullService | null>
 // ----- CREATE a new feature -----
 export const createServiceFeature = async (
   serviceId: string,
-  data: { title: string; image: string }
+  data: { title: string; image: string | null}
 ): Promise<{ success: boolean; feature?: ServiceFeature; error?: any }> => {
   try {
     const feature = await prisma.serviceFeature.create({
@@ -114,7 +110,7 @@ export const createServiceFeature = async (
 // ----- UPDATE a feature -----
 export const updateServiceFeature = async (
   id: string,
-  data: { title: string; image: string }
+  data: { title: string; image: string | null }
 ): Promise<{ success: boolean; error?: any }> => {
   try {
     await prisma.serviceFeature.update({
