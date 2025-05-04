@@ -4,6 +4,7 @@ import { Inter, Poppins } from "next/font/google";
 import { ThemeProvider } from "@/components/theme-provider";
 import MainNav from "@/components/main-nav";
 import Link from "next/link";
+import SocialMediaBar from "@/components/dashboard/common/SocialMediaBar";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -33,8 +34,9 @@ export default function RootLayout({
           enableSystem
           disableTransitionOnChange
         >
-          <main className="min-h-screen">
+          <main className="min-h-screen relative">
             <MainNav />
+            <SocialMediaBar/>
             {children}
             {/* Footer */}
             <footer className="py-6 bg-[#2d3c2d] text-white">
