@@ -231,7 +231,7 @@ export default function Service() {
       </div>
 
       {/* //why choose us  */}
-      <section className="py-24 px-4 relative ">
+      <section className="py-24 px-4 relative hidden ">
         <div className="absolute top-0 right-0 w-1/4 h-1/4 bg-white rounded-bl-[100px] -z-10"></div>
         <div className="container mx-auto max-w-6xl">
           <div className="mb-16 text-center">
@@ -332,7 +332,7 @@ export default function Service() {
       </section> */}
 
       {/* //feature  */}
-      <section className="py-24 px-4 ">
+      <section className="py-24 px-4 hidden">
         <div className="container mx-auto max-w-6xl">
           <div className="grid grid-cols-1 md:grid-cols-3 gap-12">
             <div className="flex flex-col items-center text-center group">
@@ -391,7 +391,7 @@ export default function Service() {
           </Link>
         </section> */}
 
-      <section className="py-24 px-4 relative bg-[#2d3c2d] text-white overflow-hidden">
+      <section className="hidden py-24 px-4 relative bg-[#2d3c2d] text-white overflow-hidden">
         <div className="absolute inset-0 bg-[url('/placeholder.svg?height=100&width=100')] bg-repeat opacity-5"></div>
 
         {/* Decorative elements */}

@@ -91,7 +91,7 @@ export default function Home() {
               <Link href={`/service/${service?.id}`}>
                 <div
                   key={index}
-                  className={`bg-[#1e291e] border border-gray-500 rounded overflow-hidden relative ${
+                  className={`bg-[#1e291e]  rounded overflow-hidden relative ${
                     index === services.length - 1
                       ? "h-[300px] lg:h-[600px]"
                       : ""

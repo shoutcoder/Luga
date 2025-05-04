@@ -80,15 +80,15 @@ export default function HeroSlider() {
                 />
               ))}
           </div>
-          <div className="relative container z-10 flex flex-col justify-end h-full pb-16 px-4 text-white">
-            <div className="max-w-2xl">
+          <div className="relative container z-10 flex flex-col justify-center items-center text-center h-full pb-16 px-4 text-white">
+            <div className="max-w-[90%] md:max-w-[900px] mt-20">
               <h2 className="text-3xl md:text-4xl font-bold mb-4">
                 {slide.title}
               </h2>
               <p className="text-xs mb-6 md:text-lg">{slide.description}</p>
               <Link
                 href={"/" + slide.ctaLink || "/contact"}
-                className="inline-flex items-center px-10 py-3 bg-white text-gray-800 rounded-full font-medium"
+                className="inline-flex items-center py-3 text-white rounded-full font-medium"
               >
                 {slide.ctaButton || "Contact Now"}{" "}
                 <ChevronRight className="ml-2 h-4 w-4" />

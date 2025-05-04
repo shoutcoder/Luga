@@ -48,7 +48,7 @@ const socials = [
 
 export default function SocialMediaBar() {
     return (
-        <div className="fixed bottom-1 md:top-1/3 right-1 md:right-4 z-50 flex flex-col gap-1.5 md:gap-2.5 rounded-xl bg-white/70 backdrop-blur-sm shadow-xl p-1.5 md:p-2">
+        <div className="fixed h-fit bottom-1 md:top-1/3 right-1 md:right-4 z-50 flex flex-col gap-1.5 md:gap-2.5 rounded-xl bg-white/70 backdrop-blur-sm shadow-xl p-1.5 md:p-2">
             {socials.map(({ href, Icon, color, label }, index) => (
                 <Link
                     key={index}
