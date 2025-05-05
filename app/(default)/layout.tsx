@@ -36,7 +36,7 @@ export default function RootLayout({
         >
           <main className="min-h-screen relative">
             <MainNav />
-            <SocialMediaBar/>
+            {/* <SocialMediaBar/> */}
             {children}
             {/* Footer */}
             <footer className="py-6 bg-[#2d3c2d] text-white">
