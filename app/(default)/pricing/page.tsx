@@ -34,15 +34,15 @@ export default async function PricingPage() {
         {categories.map((category) => (
           <section key={category.title} className="mb-16">
             <h2 className="text-2xl  mb-8">{category.title}</h2>
-            <div className="grid md:grid-cols-3 gap-x-12 gap-y-4">
+            <div className="grid md:grid-cols-2 gap-x-12 gap-y-4">
               {category.sections.map((section) => (
                 <div key={section.title}>
                   <h3 className="font-medium mb-4">{section.title}</h3>
                   <div className="space-y-2">
                     {section.items.map((item) => (
-                      <div key={item.name} className="flex justify-between">
-                        <span className="text-sm">{item.name}</span>
-                        <span className="text-sm">NOK {item.price},-</span>
+                      <div key={item.name} className="flex justify-between pb-2">
+                        <span className="text-sm font-normal">{item.name}</span>
+                        <span className="text-sm">NOK {item.price}</span>
                       </div>
                     ))}
                   </div>
