@@ -48,13 +48,13 @@ const socials = [
 
 export default function SocialMediaBar() {
     return (
-        <div className="fixed h-fit bottom-1 md:top-1/3 right-1 md:right-4 z-50 flex flex-col gap-1.5 md:gap-2.5 rounded-xl bg-white/70 backdrop-blur-sm shadow-xl p-1.5 md:p-2">
+        <div className="fixed h-fit bottom-1 md:top-1/3 right-0 md:right-0 z-50 flex flex-col gap-1.5 md:gap-2.5 bg-white backdrop-blur-sm shadow-xl p-1.5 md:p-2">
             {socials.map(({ href, Icon, color, label }, index) => (
                 <Link
                     key={index}
                     href={href}
                     target="_blank"
-                    className={`group p-1.5 md:p-2 rounded-lg cursor-pointer ${color} transition-all duration-300`}
+                    className={`group p-1.5 md:p-2 cursor-pointer ${color} transition-all duration-300`}
                     title={label}
                 >
                     <Icon className={`${iconStyles} group-hover:scale-110`} />
