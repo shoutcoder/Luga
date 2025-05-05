@@ -39,7 +39,7 @@ const ItemModal = ({ isOpen, onClose, onSave, initialName, initialPrice }: ItemM
           placeholder="Item Name"
         />
         <input
-          type="number"
+          type="text"
           value={price}
           onChange={(e) => setPrice(e.target.value)}
           className="w-full p-2 border rounded-lg mb-4"
