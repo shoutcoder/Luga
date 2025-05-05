@@ -66,7 +66,7 @@ export default function ContactPage() {
     }
   };
   return (
-    <main className="min-h-screen pt-16">
+    <main className="min-h-screen">
       {/* Hero Section */}
       <div className="relative bg-gradient-to-b from-[#1a231a] to-[#0a0f0a] py-16 mb-12">
         <div className="absolute inset-0 opacity-10 bg-[linear-gradient(30deg,_#4a5f4a_12%,_transparent_12.5%,_transparent_87%,_#4a5f4a_87.5%,_#4a5f4a_0),_linear-gradient(150deg,_#4a5f4a_12%,_transparent_12.5%,_transparent_87%,_#4a5f4a_87.5%,_#4a5f4a_0),_linear-gradient(30deg,_#4a5f4a_12%,_transparent_12.5%,_transparent_87%,_#4a5f4a_87.5%,_#4a5f4a_0),_linear-gradient(150deg,_#4a5f4a_12%,_transparent_12.5%,_transparent_87%,_#4a5f4a_87.5%,_#4a5f4a_0),_linear-gradient(60deg,_#4a5f4a77_25%,_transparent_25.5%,_transparent_75%,_#4a5f4a77_75%,_#4a5f4a77_0),_linear-gradient(60deg,_#4a5f4a77_25%,_transparent_25.5%,_transparent_75%,_#4a5f4a77_75%,_#4a5f4a77_0)] bg-[size:80px_140px]"></div>

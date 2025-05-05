@@ -6,10 +6,16 @@ export default async function PricingPage() {
   const categories = await CategoryDetails()
 
   return (
-    <main className="min-h-screen mt-10 pt-24">
+    <main className="min-h-screen">
+      {/* Hero Section */}
+      <div className="relative bg-gradient-to-b from-[#fffde5] to-[#f9f7df] py-16 mb-12">
+        <div className="absolute inset-0 opacity-10 bg-[linear-gradient(30deg,_#4a5f4a_12%,_transparent_12.5%,_transparent_87%,_#4a5f4a_87.5%,_#4a5f4a_0),_linear-gradient(150deg,_#4a5f4a_12%,_transparent_12.5%,_transparent_87%,_#4a5f4a_87.5%,_#4a5f4a_0),_linear-gradient(30deg,_#4a5f4a_12%,_transparent_12.5%,_transparent_87%,_#4a5f4a_87.5%,_#4a5f4a_0),_linear-gradient(150deg,_#4a5f4a_12%,_transparent_12.5%,_transparent_87%,_#4a5f4a_87.5%,_#4a5f4a_0),_linear-gradient(60deg,_#4a5f4a77_25%,_transparent_25.5%,_transparent_75%,_#4a5f4a77_75%,_#4a5f4a77_0),_linear-gradient(60deg,_#4a5f4a77_25%,_transparent_25.5%,_transparent_75%,_#4a5f4a77_75%,_#4a5f4a77_0)] bg-[size:80px_140px]"></div>
+        <div className="container mx-auto px-4 relative">
+          <h1 className="text-4xl md:text-5xl font-bold mb-4 text-center">PRICE-LIST</h1>
+          <p className="text-black/75 text-center max-w-2xl mx-auto">Priser er veiledende og kan variere fra plagg til plagg, omfanget av tjeneste, flekker/smuss. Kom gjerne innom for et mer presis estimat.</p>
+        </div>
+      </div>
       <div className="container mx-auto px-4 max-w-4xl">
-        <h1 className="text-4xl text-center mb-16">PRICE-LIST</h1>
-        
         {/* Vak tjenester */}
         {/* <section className="mb-16">
           <h2 className="text-2xl  mb-8">VÅR TJENESTER</h2>
@@ -33,8 +39,9 @@ export default async function PricingPage() {
         {/* Other categories */}
         {categories.map((category) => (
           <section key={category.title} className="mb-16">
-            <h2 className="text-2xl  mb-8">{category.title}</h2>
-            <div className="grid md:grid-cols-2 gap-x-12 gap-y-4">
+            <h2 className="text-2xl  mb-5 text-center">{category.title}</h2>
+            <hr />
+            <div className="grid md:grid-cols-2 gap-x-12 gap-y-4 mt-4">
               {category.sections.map((section) => (
                 <div key={section.title}>
                   <h3 className="font-medium mb-4">{section.title}</h3>
