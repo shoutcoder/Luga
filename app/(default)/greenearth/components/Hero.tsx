@@ -38,10 +38,10 @@ export  function Hero() {
           transition={{ duration: 0.8 }}
           className="max-w-3xl mx-auto text-center"
         >
-          <div className="inline-flex items-center justify-center px-4 py-1 mb-6 rounded-full bg-white/10 backdrop-blur-sm border border-white/20">
+          {/* <div className="inline-flex items-center justify-center px-4 py-1 mb-6 rounded-full bg-white/10 backdrop-blur-sm border border-white/20">
             <Leaf className="w-4 h-4 mr-2 text-teal-500" />
             <span className="text-sm font-medium text-white">Join our mission for a sustainable future</span>
-          </div>
+          </div> */}
           
           <motion.h1 
             className="text-4xl md:text-5xl lg:text-6xl font-bold text-white mb-6"
@@ -49,7 +49,7 @@ export  function Hero() {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.2 }}
           >
-            Creating a Greener Tomorrow, <span className="text-chart-2 text-teal-500">Today</span>
+            Miljøvennlig rens, luksuriøs omsorg
           </motion.h1>
           
           <motion.p 
@@ -58,8 +58,7 @@ export  function Hero() {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.4 }}
           >
-            We're dedicated to implementing sustainable solutions and environmental 
-            initiatives that make a real difference for our planet and future generations.
+            Oppdag hvordan moderne rens kan være både skånsom for klærne dine og ansvarlig for planeten vår – der bærekraft møter skjønnhet, og hvor hvert valg du tar bidrar til en grønnere fremtid.
           </motion.p>
           
           <motion.div 
@@ -68,7 +67,7 @@ export  function Hero() {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.6 }}
           >
-            <Button 
+            {/* <Button 
               size="lg" 
               className="bg-teal-600  hover:bg-teal-600/90 text-white border-none"
             >
@@ -81,7 +80,7 @@ export  function Hero() {
               className="border-white bg-transparent text-white hover:bg-white/20 hover:text-teal-500"
             >
               Learn More
-            </Button>
+            </Button> */}
           </motion.div>
         </motion.div>
       </div>

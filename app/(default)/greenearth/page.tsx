@@ -6,7 +6,7 @@ const page = () => {
         <div>
             <Hero />
             <About />
-            <Impact/>
+            {/* <Impact/> */}
             {/* <Partners/>
             <Testimonials/>
             <Contact/> */}

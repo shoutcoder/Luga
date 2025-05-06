@@ -83,7 +83,7 @@ export default function MainNav() {
       </div>
       <nav
         className={`bg-[#2d3c2d] z-50 flex items-center justify-between px-4 py-3 md:px-16 md:py-6 backdrop-blur-md ${
-          isGreenEarth ? "bg-teal-900/30" : isHome ? "" : "bg-[#2d3c2d]"
+          isGreenEarth ? "bg-[#2d3c2d]" : isHome ? "" : "bg-[#2d3c2d]"
         }`}
       >
         <div className="  hidden md:flex items-center space-x-6 text-white">
@@ -93,7 +93,7 @@ export default function MainNav() {
           <Link href="/about" className="text-sm font-medium">
             Om
           </Link>
-          <Link href="#services" className="text-sm font-medium">
+          <Link href="/#services" className="text-sm font-medium">
             Tjenester
           </Link>
         </div>
