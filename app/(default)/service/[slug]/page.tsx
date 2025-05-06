@@ -137,7 +137,7 @@ export default function Service() {
         {/* //service section */}
 
         {/* /hero  */}
-        <section className=" container h-[60vh] space-y-2 md:space-y-3 lg:space-y-5 mx-auto flex flex-col justify-center items-center relative text-center mt-36  overflow-hidden">
+        <section className=" container h-[50vh] space-y-2 md:space-y-3 lg:space-y-5 mx-auto flex flex-col justify-center items-center relative text-center mt-36  overflow-hidden">
           {/* <span className="inline-block px-4  py-2 bg-white text-[#333] font-medium rounded-full text-sm md:text-lg  ">
             Premium skredderservice
           </span> */}
@@ -193,7 +193,7 @@ export default function Service() {
             </div> */}
 
             {/* Right - Scrollable Phases */}
-            <div className="space-y-24">
+            <div className="space-y-10">
               {features.features.map((service, index) => (
                 <div key={index} className="mx-auto w-full md:w-[70%] " >
                   {" "}
@@ -218,9 +218,8 @@ export default function Service() {
                   
                   <div className="space-y-3">
                     {service.details.map((item, i) => (
-                      <div key={i} className="flex items-start space-x-3">
-                        <span>✔️</span>
-                        <span className="  text-sm md:text-base  text-[#333] font-medium">
+                      <div key={i} className="flex items-start">
+                        <span className=" text-sm md:text-base  text-[#333] font-medium">
                           {item.content}
                         </span>
                       </div>
