@@ -5,128 +5,62 @@ export default async function AboutPage() {
   const teamMember = await TeamMemberDetails()
   const gallary = await GallaryDetails()
   return (
-    <main className="min-h-screen mt-10 pt-24 text-white">
+    <main className="min-h-screen mt-10 pt-18 text-white">
       <div className="container mx-auto px-4 text-black">
-        <h1 className="text-3xl md:text-4xl font-bold mb-24 text-center">OM OSS</h1>
+        <h1 className="text-3xl md:text-4xl font-bold text-center">OM OSS</h1>
+        <p className="text-center mb-12">Skredderi og renseri med fokus på kvalitet, bærekraft og personlig service</p>
         
-        <div className="grid md:grid-cols-2 gap-8 mb-12">
-          <div>
-            <h2 className="text-2xl font-bold mb-4">Skredderi og renseri med fokus på kvalitet, bærekraft og personlig service</h2>
-            <p className="mb-4">
-            LUGA AS er en veletablert aktør innen skredderi og renseri, med avdelinger i Oslo, Sandvika, Strømmen og Drammen.
-            Med over 15 000 reparasjoner og tilpasninger i året, har vi bygget en solid posisjon i tekstilbransjen, drevet av en sterk lidenskap for kvalitet, håndverk og bærekraft.
-            </p>
-            <p>
-            Hos oss kan du få forlenget levetiden på dine klær, tilpasset plagg etter perfekt passform, renset alt fra hverdagsklær til bunader og skinn, samt produsert skreddersydde dresser, skjorter og kjoler etter dine mål.
-            Vi tilbyr også spesialtilpasning av arbeidstøy og produksjon av mindre kleskolleksjoner, perfekt for lokale designere.
-            </p>
-          </div>
-          <div className="relative h-[300px]">
-            <Image
-              src="/placeholder.svg"
-              alt="About Us"
-              fill
-              className="object-cover rounded-lg"
-            />
-          </div>
+        <div>
+          <p className="mb-5">LUGA AS er en veletablert aktør innen skredderi og renseri, med avdelinger i Oslo, Sandvika, Strømmen og Drammen.
+          Med over 15 000 reparasjoner og tilpasninger i året, har vi bygget en solid posisjon i tekstilbransjen, drevet av en sterk lidenskap for kvalitet, håndverk og bærekraft.</p>
+          <p className="mb-5">Hos oss kan du få forlenget levetiden på dine klær, tilpasset plagg etter perfekt passform, renset alt fra hverdagsklær til bunader og skinn, samt produsert skreddersydde dresser, skjorter og kjoler etter dine mål.
+          Vi tilbyr også spesialtilpasning av arbeidstøy og produksjon av mindre kleskolleksjoner, perfekt for lokale designere.</p>
         </div>
 
-        <div className="grid md:grid-cols-2 gap-8 mb-12">
-          <div className="relative h-[300px]">
-            <Image
-              src="/placeholder.svg"
-              alt="About Us"
-              fill
-              className="object-cover rounded-lg"
-            />
-          </div>
-          <div>
-            <h2 className="text-2xl font-bold mb-4">Vårt team</h2>
-            <p className="mb-4">
-            Bak LUGA står et sammensveiset team på 11 entusiastiske medarbeidere som elsker å arbeide med tekstiler.
-            Vårt skredderteam består av både faglærte og svært erfarne håndverkere, som sammen sikrer høy kvalitet i alt vi gjør.
-            Vi har også et sterkt nettverk av samarbeidspartnere i utlandet, som gir oss tilgang til førsteklasses stoffer til både festantrekk og arbeidsklær.
+        <div className="flex flex-col mb-8">
+            <h2 className="text-2xl font-bold mb-2">Vårt team</h2>
+            <p className="mb-2">
+              Bak LUGA står et sammensveiset team på 11 entusiastiske medarbeidere som elsker å arbeide med tekstiler.
+              Vårt skredderteam består av både faglærte og svært erfarne håndverkere, som sammen sikrer høy kvalitet i alt vi gjør.
+              Vi har også et sterkt nettverk av samarbeidspartnere i utlandet, som gir oss tilgang til førsteklasses stoffer til både festantrekk og arbeidsklær.
             </p>
             <p>
             LUGA ledes av en daglig leder med mastergrad innen økonomi og ledelse, samt over 20 års erfaring innen forretningsutvikling og salg.
             </p>
-          </div>
         </div>
 
-        <div className="grid md:grid-cols-2 gap-8 mb-12">
-          <div>
-            <h2 className="text-2xl font-bold mb-4">Vår reise</h2>
-            <p className="mb-4">
+        <div className="flex flex-col mb-8">
+            <h2 className="text-2xl font-bold mb-2">Vår reise</h2>
+            <p className="mb-2">
             LUGAs reise startet i det små, med justeringer av klær på kjøkkenet hjemme hos vår daglige leder.
             Gjennombruddet kom da vi åpnet vår første butikk, med eget skredderverksted og alt av nødvendig utstyr.
             Dette ga oss friheten til å utvikle egne tjenester og tilby skreddersøm og tilpasning direkte til kundene.
             Siden den gang har vi vokst jevnt, bygget sterke partnerskap, og aldri sett oss tilbake.
             </p>
-          </div>
-          <div className="relative h-[300px]">
-            <Image
-              src="/placeholder.svg"
-              alt="About Us"
-              fill
-              className="object-cover rounded-lg"
-            />
-          </div>
         </div>
-        <div className="grid md:grid-cols-2 gap-8 mb-12">
-          <div className="relative h-[300px]">
-            <Image
-              src="/placeholder.svg"
-              alt="About Us"
-              fill
-              className="object-cover rounded-lg"
-            />
-          </div>
-          <div>
-            <h2 className="text-2xl font-bold mb-4">Innovasjon og bærekraft</h2>
-            <p className="mb-4">
+
+        <div className="flex flex-col mb-8">
+            <h2 className="text-2xl font-bold mb-2">Innovasjon og bærekraft</h2>
+            <p className="mb-2">
             Et av våre viktigste vekstområder de siste årene har vært samarbeidet med vekterbransjen i Oslo og Akershus.
             I stedet for å kaste skadet arbeidstøy, tilbyr vi en helhetlig løsning med henting, gjennomgang, rens og reparasjon.
             Dette har spart våre partnere for store kostnader og redusert miljøbelastningen.
             Alt tøy som ikke kan repareres sendes til Norsk Tekstilgjenvinning, slik at vi sikrer en bærekraftig håndtering.
             </p>
-            <p>
-              Denne satsningen har alene bidratt til over 10 % av vår omsetning det siste året.
-            </p>
-          </div>
+            <p>Denne satsningen har alene bidratt til over 10 % av vår omsetning det siste året.</p>
         </div>
-        <div className="grid md:grid-cols-2 gap-8 mb-12">
-          <div>
-            <h2 className="text-2xl font-bold mb-4">Vår filosofi</h2>
-            <p className="mb-4">
-            Hos LUGA handler det om mer enn klær.
-Vi tror på å forlenge plaggens liv, ta vare på ressurser, og gi kundene våre det beste innen skreddersøm, rens og tekstilpleie.
-Vi jobber hver dag for å levere kvalitet, personlig service og bærekraftige løsninger som gjør en forskjell.
+
+        <div className="flex flex-col mb-8">
+            <h2 className="text-2xl font-bold mb-2">Vår filosofi</h2>
+            <p className="mb-2">
+            Hos LUGA handler det om mer enn klær.<br/>
+            Vi tror på å forlenge plaggens liv, ta vare på ressurser, og gi kundene våre det beste innen skreddersøm, rens og tekstilpleie.
+            Vi jobber hver dag for å levere kvalitet, personlig service og bærekraftige løsninger som gjør en forskjell.
             </p>
             <p>Velkommen til LUGA AS. Vi ser frem til å ta vare på dine klær!</p>
-          </div>
-          <div className="relative h-[300px]">
-            <Image
-              src="/placeholder.svg"
-              alt="About Us"
-              fill
-              className="object-cover rounded-lg"
-            />
-          </div>
         </div>
-        <div className="grid md:grid-cols-3 gap-8 text-white">
-          <div className="p-6 bg-[#1a231a] rounded-lg">
-            <h3 className="text-xl font-bold mb-3">Our Mission</h3>
-            <p>To provide exceptional tailoring services that help our clients look and feel their best.</p>
-          </div>
-          <div className="p-6 bg-[#1a231a] rounded-lg">
-            <h3 className="text-xl font-bold mb-3">Our Vision</h3>
-            <p>To be the most trusted name in bespoke tailoring and garment services.</p>
-          </div>
-          <div className="p-6 bg-[#1a231a] rounded-lg">
-            <h3 className="text-xl font-bold mb-3">Our Values</h3>
-            <p>Quality, integrity, and customer satisfaction are at the heart of everything we do.</p>
-          </div>
-        </div>
+
+        
 
         {/* Photo Gallery Section */}
         <section className="my-24">

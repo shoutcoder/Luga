@@ -207,7 +207,7 @@ export default function ContactPage() {
           <h2 className="text-2xl font-bold mb-6 text-white">Find Us on Map</h2>
           <div className="w-full h-[400px] rounded-lg overflow-hidden shadow-xl border border-[#2d3c2d]/20">
             <iframe
-              src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3022.1!2d-73.935!3d40.7128!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zM0zCsDQyJzQ2LjEiTiA3M8KwNTYnMDYuMCJX!5e0!3m2!1sen!2sus!4v1234567890"
+              src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2000.2328826166604!2d10.7456638!3d59.91168229999999!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x46416ffd03cbee31%3A0x67c550d211736402!2sLUGA%20Skredderi%20%26%20Rens%20avd.%20Oslo!5e0!3m2!1sen!2sin!4v1746539669953!5m2!1sen!2sin"
               width="100%"
               height="100%"
               style={{ border: 0 }}
