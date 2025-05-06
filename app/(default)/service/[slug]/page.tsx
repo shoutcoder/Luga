@@ -200,10 +200,10 @@ export default function Service() {
                   <h3 className="text-2xl font-semibold uppercase text-[#333] mb-2">
                     {service.title}
                   </h3>
-                  <p className="text-gray-700 mb-6">
+                  {/* <p className="text-gray-700 mb-6">
                     We begin by gathering and analyzing critical data, including
                     commodity weights, financial info, and waste processes...
-                  </p>
+                  </p> */}
                   {
                     service.image &&
                     <Image
