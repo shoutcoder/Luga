@@ -11,7 +11,7 @@ export default async function PricingPage() {
       <div className="relative bg-gradient-to-b from-[#fffde5] to-[#f9f7df] py-16 mb-12">
         <div className="absolute inset-0 opacity-10 bg-[linear-gradient(30deg,_#4a5f4a_12%,_transparent_12.5%,_transparent_87%,_#4a5f4a_87.5%,_#4a5f4a_0),_linear-gradient(150deg,_#4a5f4a_12%,_transparent_12.5%,_transparent_87%,_#4a5f4a_87.5%,_#4a5f4a_0),_linear-gradient(30deg,_#4a5f4a_12%,_transparent_12.5%,_transparent_87%,_#4a5f4a_87.5%,_#4a5f4a_0),_linear-gradient(150deg,_#4a5f4a_12%,_transparent_12.5%,_transparent_87%,_#4a5f4a_87.5%,_#4a5f4a_0),_linear-gradient(60deg,_#4a5f4a77_25%,_transparent_25.5%,_transparent_75%,_#4a5f4a77_75%,_#4a5f4a77_0),_linear-gradient(60deg,_#4a5f4a77_25%,_transparent_25.5%,_transparent_75%,_#4a5f4a77_75%,_#4a5f4a77_0)] bg-[size:80px_140px]"></div>
         <div className="container mx-auto px-4 relative">
-          <h1 className="text-4xl md:text-5xl font-bold mb-4 text-center">PRICE-LIST</h1>
+          <h1 className="text-4xl md:text-5xl font-bold mb-4 text-center">PRISLISTE</h1>
           <p className="text-black/75 text-center max-w-2xl mx-auto">Priser er veiledende og kan variere fra plagg til plagg, omfanget av tjeneste, flekker/smuss. Kom gjerne innom for et mer presis estimat.</p>
         </div>
       </div>
