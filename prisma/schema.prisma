@@ -84,6 +84,7 @@ model Location {
   createdAt     DateTime @default(now())
   updatedAt     DateTime @updatedAt
   redirection   String   @default("/")
+  email         String?
 }
 
 model Faq {
@@ -162,6 +163,8 @@ model Contact {
   message   String
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
+  category  String?
+  phone     String?
 }
 
 enum Role {

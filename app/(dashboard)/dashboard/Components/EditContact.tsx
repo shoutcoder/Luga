@@ -11,6 +11,8 @@ interface Contacts {
   email: string;
   message: string;
   createdAt: Date;
+  phone: string| null;
+  category: string| null;
 }
 
 const EditContact = () => {
@@ -69,6 +71,8 @@ const EditContact = () => {
                 <p className="text-lg font-medium text-gray-800"><strong>Name:</strong> {contact.name}</p>
                 <p className="text-sm text-gray-600"><strong>Email:</strong> {contact.email}</p>
                 <p className="text-sm text-gray-600"><strong>Message:</strong> {contact.message}</p>
+                <p className="text-sm text-gray-500"><strong>Phone:</strong> {contact.phone}</p>
+                <p className="text-sm text-gray-500"><strong>Category:</strong> {contact.category}</p>
                 <p className="text-xs text-gray-500"><strong>Date:</strong> {contact.createdAt.toLocaleDateString()}</p>
               </div>
               <button

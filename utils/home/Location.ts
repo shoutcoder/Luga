@@ -10,6 +10,7 @@ interface Locations {
     saturdayHours: string
     phone: string
     redirection:string
+    email:string | null
 }
 export const LocationsDetails = async ():Promise<Locations[]>=>{
     try{
@@ -22,11 +23,13 @@ export const LocationsDetails = async ():Promise<Locations[]>=>{
                 saturdayHours:true,
                 phone:true,
                 redirection:true,
+                email:true,
             },
             orderBy:{
                 createdAt:"asc"
             }
         })
+        console.log("Locations",Locations)
         return Locations;
     }
     catch(err){
@@ -42,6 +45,7 @@ export const updateLocation = async (
       weekdayHours: string
       saturdayHours: string
       phone: string
+      email:string | null
       redirection:string,
 
     }
@@ -55,6 +59,7 @@ export const updateLocation = async (
           weekdayHours: data.weekdayHours,
           saturdayHours: data.saturdayHours,
           phone: data.phone,
+          email: data.email,
           redirection: data.redirection,
         },
       })
@@ -72,6 +77,7 @@ export const updateLocation = async (
     weekdayHours: string;
     saturdayHours: string;
     phone: string;
+    email:string | null
     redirection: string;
   }) => {
     try {
@@ -82,6 +88,7 @@ export const updateLocation = async (
           weekdayHours: data.weekdayHours,
           saturdayHours: data.saturdayHours,
           phone: data.phone,
+          email: data.email,
           redirection: data.redirection,
         },
       });

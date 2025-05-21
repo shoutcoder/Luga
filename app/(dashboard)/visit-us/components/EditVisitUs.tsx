@@ -2,7 +2,7 @@
 
 import { useEffect, useState } from "react"
 import Image from "next/image"
-import { MapPin, Phone, Plus,Trash2 } from "lucide-react"
+import { MapPin, Phone, Plus,Trash2,Mail } from "lucide-react"
 import EditVisitUsModal, { Location } from "./EditVisitUsModal"
 import { LocationsDetails, updateLocation, createLocation ,deleteLocation} from "@/utils"
 import Link from "next/link"
@@ -15,6 +15,7 @@ interface Locations {
   weekdayHours: string
   saturdayHours: string
   phone: string
+  email:string | null
   redirection: string
 }
 
@@ -55,6 +56,7 @@ export default function EditVisitUs() {
       saturdayHours: "",
       phone: "",
       redirection: "",
+      email :"",
     })
     setIsAddingNew(true)
     setIsModalOpen(true)
@@ -78,6 +80,7 @@ export default function EditVisitUs() {
         weekdayHours: edited.weekdayHours,
         saturdayHours: edited.saturdayHours,
         phone: edited.phone,
+        email: edited.email,
         redirection: edited.redirection,
       })
     }
@@ -142,6 +145,10 @@ export default function EditVisitUs() {
                 <div className="flex items-center justify-center mb-6">
                   <Phone className="w-4 h-4 mr-2" />
                   <p className="text-sm">{loc.phone}</p>
+                </div>
+                 <div className="flex items-center justify-center mb-6">
+                  <Mail className="w-4 h-4 mr-2" />
+                  <p className="text-sm">{loc.email}</p>
                 </div>
                 <div className="flex flex-col gap-4 justify-center items-center">
                   <Link

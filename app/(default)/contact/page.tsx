@@ -34,15 +34,17 @@ export default function ContactPage() {
     name: "",
     email: "",
     message: "",
+    phone: "",
+    category: ""
   });
 
   const [isPending, startTransition] = useTransition();
   const [success, setSuccess] = useState<boolean | null>(null);
   const [locations, setLocations] = useState<Locations[]>([]);
 
-  useEffect(()=>{
+  useEffect(() => {
     fetchLocation()
-  },[])
+  }, [])
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
 
@@ -50,7 +52,7 @@ export default function ContactPage() {
       const result = await CreateDetails(form);
       setSuccess(result);
       if (result) {
-        setForm({ name: "", email: "", message: "" });
+        setForm({ name: "", email: "", message: "", phone: "", category: "" });
       }
       setTimeout(() => {
         setSuccess(null);
@@ -77,61 +79,61 @@ export default function ContactPage() {
       </div>
       <div className="mx-auto">
         {/* Store Locations Grid */}
-             <section id="hours" className="py-16 bg-[#2d3c2d] text-white">
-                <div className="container mx-auto px-4">
-                  <div className="border border-white w-max mx-auto rounded-full flex items-center justify-center px-4 py-2 bg-[rgba(255, 255, 255, 0.05)]">
-                    <h2 className="text-xs text-center ">FINN DIN NÆRMESTE LOKASJON</h2>
+        <section id="hours" className="py-16 bg-[#2d3c2d] text-white">
+          <div className="container mx-auto px-4">
+            <div className="border border-white w-max mx-auto rounded-full flex items-center justify-center px-4 py-2 bg-[rgba(255, 255, 255, 0.05)]">
+              <h2 className="text-xs text-center ">FINN DIN NÆRMESTE LOKASJON</h2>
+            </div>
+            <h3 className="text-4xl font-bold mb-6 pt-4 text-center">
+              Besøk oss i nærheten
+            </h3>
+            <p className="text-center max-w-3xl mx-auto mb-12">
+              Opplev våre tjenester personlig på en av våre praktiske lokasjoner.
+              Vårt ekspertteam er klare til å ønske deg velkommen og hjelpe deg.
+            </p>
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+              {locations.map((location, index) => (
+                <div
+                  key={index}
+                  className="border border-white rounded-[10px] text-center p-6"
+                >
+                  <div className="flex items-center justify-center mb-4">
+                    <Image
+                      src={"/time.png"}
+                      width={100}
+                      height={100}
+                      alt="Location Image"
+                    />
                   </div>
-                  <h3 className="text-4xl font-bold mb-6 pt-4 text-center">
-                    Besøk oss i nærheten
-                  </h3>
-                  <p className="text-center max-w-3xl mx-auto mb-12">
-                    Opplev våre tjenester personlig på en av våre praktiske lokasjoner.
-                    Vårt ekspertteam er klare til å ønske deg velkommen og hjelpe deg.
-                  </p>
-                  <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-                    {locations.map((location, index) => (
-                      <div
-                        key={index}
-                        className="border border-white rounded-[10px] text-center p-6"
-                      >
-                        <div className="flex items-center justify-center mb-4">
-                          <Image
-                            src={"/time.png"}
-                            width={100}
-                            height={100}
-                            alt="Location Image"
-                          />
-                        </div>
-                        <h3 className="text-xl font-bold mb-4">Åpningstider</h3>
-                        <p className="mb-4 text-center">{location.area}</p>
-                        <div className="flex items-center justify-center mb-4">
-                          <MapPin className="w-5 h-5 mr-2" />
-                          <p className="text-sm">{location.address}</p>
-                        </div>
-                        <div className=" bg-[#608160] rounded-[15px] py-3 mb-4 w-70">
-                          <h4 className="text-sm font-bold mb-2">Åpningstider</h4>
-                          <p className="text-sm">
-                            Mandag-Fredag: {location.weekdayHours}
-                          </p>
-                          <p className="text-sm">Lørdag: {location.saturdayHours}</p>
-                        </div>
-                        <div className="flex items-center justify-center mb-6">
-                          <Phone className="w-4 h-4 mr-2" />
-                          <p className="text-sm">{location.phone}</p>
-                        </div>
-                        <Link
-                          href={location.redirection}
-                          target="_blank"
-                          className="w-max border border-white px-10 rounded-full py-2 text-sm"
-                        >
-                          Få veibeskrivelse
-                        </Link>
-                      </div>
-                    ))}
+                  <h3 className="text-xl font-bold mb-4">Åpningstider</h3>
+                  <p className="mb-4 text-center">{location.area}</p>
+                  <div className="flex items-center justify-center mb-4">
+                    <MapPin className="w-5 h-5 mr-2" />
+                    <p className="text-sm">{location.address}</p>
                   </div>
+                  <div className=" bg-[#608160] rounded-[15px] py-3 mb-4 w-70">
+                    <h4 className="text-sm font-bold mb-2">Åpningstider</h4>
+                    <p className="text-sm">
+                      Mandag-Fredag: {location.weekdayHours}
+                    </p>
+                    <p className="text-sm">Lørdag: {location.saturdayHours}</p>
+                  </div>
+                  <div className="flex items-center justify-center mb-6">
+                    <Phone className="w-4 h-4 mr-2" />
+                    <p className="text-sm">{location.phone}</p>
+                  </div>
+                  <Link
+                    href={location.redirection}
+                    target="_blank"
+                    className="w-max border border-white px-10 rounded-full py-2 text-sm"
+                  >
+                    Få veibeskrivelse
+                  </Link>
                 </div>
-              </section>
+              ))}
+            </div>
+          </div>
+        </section>
 
 
       </div>
@@ -163,6 +165,19 @@ export default function ContactPage() {
               />
             </div>
             <div>
+              <label className="block mb-2 text-gray-300">Phone</label>
+              <input
+                type="tel"
+                 pattern="\d*"
+                 inputMode="numeric"
+                className="w-full p-3 rounded-lg bg-[#2d3c2d]/50 border border-[#4a5f4a]/50 focus:border-[#6a8f6a] transition-colors outline-none text-white"
+                placeholder="1234-567-890"
+                required
+                value={form.phone}
+                onChange={(e) => setForm({ ...form, phone: e.target.value })}
+              />
+            </div>
+            <div>
               <label className="block mb-2 text-gray-300">Beskjed</label>
               <textarea
                 rows={4}
@@ -172,6 +187,23 @@ export default function ContactPage() {
                 value={form.message}
                 onChange={(e) => setForm({ ...form, message: e.target.value })}
               ></textarea>
+            </div>
+            <div>
+              <label className="block mb-2 text-gray-300">Vedrørende</label>
+              <select
+                className="w-full p-3 rounded-lg bg-[#2d3c2d]/50 border border-[#4a5f4a]/50 focus:border-[#6a8f6a] transition-colors outline-none text-white"
+                required
+                value={form.category}
+                onChange={(e) => setForm({ ...form, category: e.target.value })}
+              >
+                <option value="">Select Option</option>
+                <option value="General enquiry">General enquiry</option>
+                <option value="Uniformer">Uniformer</option>
+                <option value="Avdeling Sandvika">Avdeling Sandvika</option>
+                <option value="Avdeling Oslo">Avdeling Oslo</option>
+                <option value="Avdeling Strømmen">Avdeling Strømmen</option>
+                <option value="Avdeling Drammen">Avdeling Drammen</option>
+              </select>
             </div>
             <button
               type="submit"
@@ -201,7 +233,7 @@ export default function ContactPage() {
           </div>
         </div>
       </div>
-      
+
     </main>
   )
 }

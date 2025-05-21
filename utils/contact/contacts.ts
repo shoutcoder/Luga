@@ -8,11 +8,15 @@ interface Contacts {
     email: string,
     message: string,
     createdAt:Date;
+    phone:string | null;
+    category:string | null;
 }
 interface ContactInput {
     name: string;
     email: string;
     message: string;
+    phone:string | null;
+    category:string | null;
 }   
 export const ContactDetails = async ():Promise<Contacts[]>=>{
     try{
@@ -23,9 +27,11 @@ export const ContactDetails = async ():Promise<Contacts[]>=>{
                 email:true,
                 message:true,
                 createdAt:true,
+                phone:true,
+                category:true
             },
             orderBy:{
-                createdAt:"asc"
+                createdAt:"desc"
             }
         })
         return Contacts;
@@ -35,13 +41,15 @@ export const ContactDetails = async ():Promise<Contacts[]>=>{
     }
 }
 
-export const CreateDetails = async ({ name, email, message }: ContactInput): Promise<boolean> => {
+export const CreateDetails = async ({ name, email, message,phone,category }: ContactInput): Promise<boolean> => {
     try {
         const contact = await prisma.contact.create({
             data: {
                 name,
                 email,
                 message,
+                phone,
+                category
             },
         });
         return true;
