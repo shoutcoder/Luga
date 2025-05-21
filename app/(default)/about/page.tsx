@@ -63,10 +63,17 @@ export default async function AboutPage() {
         
 
         {/* Photo Gallery Section */}
-        <section className="my-24">
-          <h2 className="text-3xl font-bold mb-12 text-center">Our Gallary</h2>
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
-            {gallary.map((img, index) => (
+        <section className="my-12">
+          {/* <h2 className="text-3xl font-bold mb-12 text-center">Our Gallary</h2> */}
+          <div className="">
+            <Image
+              src="https://ik.imagekit.io/vv/Untitled%20design.png?updatedAt=1747809795624"
+              alt="Workshop image 1"
+              width={500}
+              height={500}
+              className="w-full h-full object-cover hover:opacity-90 transition-opacity"
+            />
+            {/* {gallary.map((img, index) => (
               <div key={index} className="relative h-[200px]">
                 <Image
                   src={img.imageUrl}
@@ -75,7 +82,7 @@ export default async function AboutPage() {
                   className="object-cover rounded-lg hover:opacity-90 transition-opacity"
                 />
               </div>
-            ))}
+            ))} */}
           </div>
         </section>
 

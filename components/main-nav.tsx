@@ -24,9 +24,9 @@ const socials = [
     //   },
     {
         href: "https://twitter.com",
-        Icon: X,
+        Icon: Linkedin,
         color: "hover:bg-black/10 text-black",
-        label: "X (Twitter)",
+        label: "LinkedIn",
     },
     {
         href: "https://instagram.com",
