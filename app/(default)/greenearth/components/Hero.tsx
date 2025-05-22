@@ -23,7 +23,7 @@ export  function Hero() {
       id="home"
       className="relative min-h-screen flex items-center justify-center overflow-hidden"
       style={{
-        backgroundImage: "url('https://images.pexels.com/photos/957024/forest-trees-perspective-bright-957024.jpeg')",
+        backgroundImage: "url('https://i.imgur.com/gO1E8E4.jpeg')",
         backgroundSize: "cover",
         backgroundPosition: "center",
       }}

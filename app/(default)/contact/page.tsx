@@ -118,9 +118,13 @@ export default function ContactPage() {
                     </p>
                     <p className="text-sm">Lørdag: {location.saturdayHours}</p>
                   </div>
-                  <div className="flex items-center justify-center mb-6">
+                  <div className="flex items-center justify-center mb-4">
                     <Phone className="w-4 h-4 mr-2" />
                     <p className="text-sm">{location.phone}</p>
+                  </div>
+                  <div className="flex items-center justify-center mb-8">
+                    <Mail className="w-4 h-4 mr-2" />
+                    <p className="text-sm">{location.email}</p>
                   </div>
                   <Link
                     href={location.redirection}
@@ -178,17 +182,6 @@ export default function ContactPage() {
               />
             </div>
             <div>
-              <label className="block mb-2 text-gray-300">Beskjed</label>
-              <textarea
-                rows={4}
-                className="w-full p-3 rounded-lg bg-[#2d3c2d]/50 border border-[#4a5f4a]/50 focus:border-[#6a8f6a] transition-colors outline-none text-white"
-                placeholder="Your message"
-                required
-                value={form.message}
-                onChange={(e) => setForm({ ...form, message: e.target.value })}
-              ></textarea>
-            </div>
-            <div>
               <label className="block mb-2 text-gray-300">Vedrørende</label>
               <select
                 className="w-full p-3 rounded-lg bg-[#2d3c2d]/50 border border-[#4a5f4a]/50 focus:border-[#6a8f6a] transition-colors outline-none text-white"
@@ -205,6 +198,18 @@ export default function ContactPage() {
                 <option value="Avdeling Drammen">Avdeling Drammen</option>
               </select>
             </div>
+            <div>
+              <label className="block mb-2 text-gray-300">Beskjed</label>
+              <textarea
+                rows={4}
+                className="w-full p-3 rounded-lg bg-[#2d3c2d]/50 border border-[#4a5f4a]/50 focus:border-[#6a8f6a] transition-colors outline-none text-white"
+                placeholder="Your message"
+                required
+                value={form.message}
+                onChange={(e) => setForm({ ...form, message: e.target.value })}
+              ></textarea>
+            </div>
+            
             <button
               type="submit"
               disabled={isPending}
