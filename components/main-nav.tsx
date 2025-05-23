@@ -82,7 +82,7 @@ export default function MainNav() {
 
       </div>
       <nav
-        className={`bg-[#2d3c2d] z-50 flex items-center justify-between px-4 py-3 md:px-16 md:py-6 backdrop-blur-md ${
+        className={`bg-[#2d3c2d] z-50 flex items-center justify-between px-4 py-3 md:px-16 md:py-6 backdrop-blur-md relative ${
           isGreenEarth ? "bg-[#2d3c2d]" : isHome ? "" : "bg-[#2d3c2d]"
         }`}
       >
