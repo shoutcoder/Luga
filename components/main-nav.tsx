@@ -4,14 +4,14 @@ import Image from "next/image";
 import { usePathname } from "next/navigation";
 import MobileNav from "@/components/mobile-nav";
 import Role from "./dashboard/common/Role";
-import { Facebook, Twitter, Instagram, Linkedin, X } from "lucide-react";
+import { Facebook, Twitter, Instagram, Linkedin, X, Youtube } from "lucide-react";
 import { FaWhatsapp } from "react-icons/fa";
 import { Mail, MapPin, Phone } from "lucide-react"
 const iconStyles = " w-4 h-4 md:w-4 md:h-4 transition-transform duration-300";
 
 const socials = [
     {
-        href: "https://facebook.com",
+        href: "https://www.facebook.com/LugaNorge/",
         Icon: Facebook,
         color: "hover:bg-blue-100 text-black",
         label: "Facebook",
@@ -23,13 +23,13 @@ const socials = [
     //     label: "Twitter",
     //   },
     {
-        href: "https://twitter.com",
+        href: "https://www.linkedin.com/company/luga-skredderi-rens/",
         Icon: Linkedin,
         color: "hover:bg-black/10 text-black",
         label: "LinkedIn",
     },
     {
-        href: "https://instagram.com",
+        href: "https://www.instagram.com/luga_skredderi/",
         Icon: Instagram,
         color: "hover:bg-pink-100 text-black",
         label: "Instagram",
@@ -41,8 +41,9 @@ const socials = [
     //     label: "LinkedIn",
     //   },
     {
-        href: "https://wa.me/919999999999",
-        Icon: FaWhatsapp,
+        href: "https://youtube.com/@luganorge7683?si=Sm4_G1ehOQJxBN6o",
+        //Icon: FaWhatsapp,
+        Icon: Youtube,
         color: "hover:bg-green-100 text-black",
         label: "WhatsApp",
     }
