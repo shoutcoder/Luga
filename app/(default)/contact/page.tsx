@@ -120,11 +120,15 @@ export default function ContactPage() {
                   </div>
                   <div className="flex items-center justify-center mb-4">
                     <Phone className="w-4 h-4 mr-2" />
-                    <p className="text-sm">{location.phone}</p>
+                    <p className="text-sm">
+                      <Link href={`tel:${location.phone}`}>{location.phone}</Link>
+                    </p>
                   </div>
                   <div className="flex items-center justify-center mb-8">
                     <Mail className="w-4 h-4 mr-2" />
-                    <p className="text-sm">{location.email}</p>
+                    <p className="text-sm">
+                      <Link href={`mailto:${location.email}`}>{location.email}</Link>
+                    </p>
                   </div>
                   <Link
                     href={location.redirection}

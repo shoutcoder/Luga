@@ -87,7 +87,7 @@ export default function HeroSlider() {
               </h2>
               <p className="text-xs mb-6 md:text-lg">{slide.description}</p>
               <Link
-                href={"/" + slide.ctaLink || "/contact"}
+                href={slide.ctaLink || "/contact"}
                 className="inline-flex items-center py-3 text-white rounded-full font-medium mb-3"
               >
                 {slide.ctaButton || "Contact Now"}{" "}

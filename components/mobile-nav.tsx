@@ -22,7 +22,7 @@ export default function MobileNav() {
             <Link href="/" className="text-lg font-medium py-2 w-full block text-center" onClick={() => setIsOpen(false)}>
               Hjem
             </Link>
-            <Link href="#services" className="text-lg font-medium py-2 w-full block text-center" onClick={() => setIsOpen(false)}>
+            <Link href="/#services" className="text-lg font-medium py-2 w-full block text-center" onClick={() => setIsOpen(false)}>
               Tjenester
             </Link>
             <Link href="/pricing" className="text-lg font-medium py-2 w-full block text-center" onClick={() => setIsOpen(false)}>
