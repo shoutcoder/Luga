@@ -115,7 +115,7 @@ export default function MainNav() {
             Priser
           </Link>
           <Link href="/career" className="text-sm font-medium">
-            karriere
+            Karriere
           </Link>
           <Link href="/contact" className="text-sm font-medium">
             Kontakt

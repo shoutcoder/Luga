@@ -35,7 +35,7 @@ export default function MobileNav() {
               Om
             </Link>
             <Link href="/career" className="text-lg font-medium py-2 w-full block text-center" onClick={() => setIsOpen(false)}>
-              karriere
+              Karriere
             </Link>
             <Link href="/contact" className="text-lg font-medium py-2 w-full block text-center" onClick={() => setIsOpen(false)}>
               Kontakt
