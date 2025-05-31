@@ -44,11 +44,11 @@ export default function RootLayout({
                 <div className="flex flex-col md:flex-row justify-between items-center">
                   <p className="text-sm">Opphavsrett © 2025 Luga</p>
                   <div className="flex items-center space-x-4 mt-4 md:mt-0">
-                    <Link href="#" className="text-sm">
+                    <Link href="/purchase-terms" className="text-sm">
                       Vilkår for bruk
                     </Link>
                     <span className="w-1 h-1 bg-white rounded-full"></span>
-                    <Link href="#" className="text-sm">
+                    <Link href="/purchase-terms" className="text-sm">
                       Personvernerklæring
                     </Link>
                   </div>

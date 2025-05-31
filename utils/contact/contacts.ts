@@ -41,7 +41,9 @@ export const ContactDetails = async ():Promise<Contacts[]>=>{
     }
 }
 
-export const CreateDetails = async ({ name, email, message,phone,category }: ContactInput): Promise<boolean> => {
+import { sendContactNotification } from "../email/sendEmail";
+
+export const CreateDetails = async ({ name, email, message, phone, category }: ContactInput): Promise<boolean> => {
     try {
         const contact = await prisma.contact.create({
             data: {
@@ -52,6 +54,16 @@ export const CreateDetails = async ({ name, email, message,phone,category }: Con
                 category
             },
         });
+
+        // Send email notification
+        await sendContactNotification({
+            name,
+            email,
+            message,
+            phone,
+            category
+        });
+
         return true;
     } catch (err) {
         console.error("Error creating contact:", err);
