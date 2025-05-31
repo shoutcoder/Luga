@@ -41,12 +41,12 @@ const socials = [
     color: "hover:bg-black/10 text-black",
     label: "TikTok",
   },
-  {
-    href: "https://www.youtube.com/@luga_skredderi_rens",
-    Icon: Youtube,
-    color: "hover:bg-red-100 text-black",
-    label: "YouTube",
-  }
+  // {
+  //   href: "https://www.youtube.com/@luga_skredderi_rens",
+  //   Icon: Youtube,
+  //   color: "hover:bg-red-100 text-black",
+  //   label: "YouTube",
+  // }
 ];
 
 export default function MainNav() {
