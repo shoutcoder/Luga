@@ -142,17 +142,7 @@ export default function Service() {
             Premium skredderservice
           </span> */}
           <h1
-            className="text-5xl md:text-8xl tracking-widest font-extrabold font-Manrope mb-4 leading-tight text-transparent bg-clip-text"
-            style={{
-              backgroundImage: `
-      linear-gradient(to bottom, rgba(0,0,0,0.8), rgba(0,0,0,0.2)),
-      url('https://luganorge.no/wp-content/uploads/2022/01/rensogskredderi_bilde_bakgrunn.jpg')
-    `,
-              backgroundSize: "cover",
-              backgroundPosition: "center",
-              WebkitBackgroundClip: "text",
-              backgroundClip: "text",
-            }}
+            className="text-5xl md:text-8xl tracking-widest font-extrabold font-Manrope mb-4 leading-tight text-black" 
           >
             {features.title}
           </h1>

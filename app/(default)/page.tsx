@@ -146,7 +146,7 @@ export default function Home() {
             {testimonials.map((testimonial, index) => (
               <div key={index} className=" border bg-white p-6 rounded">
                 <div className="flex items-center mb-4">
-                  <div className="w-12 h-12 rounded-full overflow-hidden mr-4">
+                  {/* <div className="w-12 h-12 rounded-full overflow-hidden mr-4">
                     <Image
                       src={testimonial.avatar || "/placeholder.svg"}
                       alt={testimonial.name}
@@ -154,7 +154,7 @@ export default function Home() {
                       height={48}
                       className="object-cover"
                     />
-                  </div>
+                  </div> */}
                   <div>
                     <h4 className="font-medium text-black mb-1">
                       {testimonial.name}
@@ -262,11 +262,15 @@ export default function Home() {
                 </div>
                 <div className="flex items-center justify-center mb-4">
                   <Phone className="w-4 h-4 mr-2" />
-                  <p className="text-sm">{location.phone}</p>
+                  <p className="text-sm">
+                      <Link href={`tel:${location.phone}`}>{location.phone}</Link>
+                  </p>
                 </div>
                 <div className="flex items-center justify-center mb-8">
                   <Mail className="w-4 h-4 mr-2" />
-                  <p className="text-sm">{location.email}</p>
+                  <p className="text-sm">
+                      <Link href={`mailto:${location.email}`}>{location.email}</Link>
+                  </p>
                 </div>
                 <Link
                   href={location.redirection}

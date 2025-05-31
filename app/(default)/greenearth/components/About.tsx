@@ -46,7 +46,7 @@ export  function About() {
           >
             <div className="aspect-w-4 aspect-h-3 relative h-[500px]">
               <Image
-                src="https://images.pexels.com/photos/3059608/pexels-photo-3059608.jpeg"
+                src="https://ik.imagekit.io/vv/plant-8338691_1280.jpg?updatedAt=1748693559199"
                 alt="Team working on environmental project"
                 fill
                 className="object-cover rounded-2xl"
