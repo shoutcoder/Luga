@@ -114,6 +114,9 @@ export default function MainNav() {
           <Link href="/pricing" className="text-sm font-medium">
             Priser
           </Link>
+          <Link href="/career" className="text-sm font-medium">
+            karriere
+          </Link>
           <Link href="/contact" className="text-sm font-medium">
             Kontakt
           </Link>
