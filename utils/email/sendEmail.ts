@@ -36,7 +36,7 @@ interface ContactEmailData {
 export const sendContactNotification = async (data: ContactEmailData) => {
   try {
     const mailOptions = {
-      from: process.env.NEXT_PUBLIC_NODEMAILER_SENDER_MAIL,
+      from: 'support@eyantrik.com',
       to: 'vishalvkv95@gmail.com',
       cc: 'admin@tigsaw.com',
       subject: `New Contact Form Submission from ${data.name}`,
