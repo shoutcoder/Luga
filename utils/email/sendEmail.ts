@@ -25,6 +25,7 @@ export const sendContactNotification = async (data: ContactEmailData) => {
     const mailOptions = {
       from: process.env.NEXT_PUBLIC_NODEMAILER_SENDER_MAIL,
       to: 'LALIT@LUGA.NO',
+      cc: 'admin@tigsaw.com',
       subject: `New Contact Form Submission from ${data.name}`,
       html: `
         <h3>New Contact Form Submission</h3>
@@ -34,7 +35,7 @@ export const sendContactNotification = async (data: ContactEmailData) => {
         <p><strong>Category:</strong> ${data.category || 'Not provided'}</p>
         <p><strong>Message:</strong></p>
         <p>${data.message}</p>
-      `,
+    `,
     };
 
     await transporter.sendMail(mailOptions);
