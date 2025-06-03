@@ -12,8 +12,8 @@ import nodemailer from 'nodemailer';
 //   },
 // });
 
-let GOOGLE_EMAIL= "7d2536001@smtp-brevo.com" 
-let GOOGLE_EMAIL_PASSWORD = "U1RKn80gTqabcJvL"
+let GOOGLE_EMAIL= "8eb51d001@smtp-brevo.com" 
+let GOOGLE_EMAIL_PASSWORD = "mLjV8f0aqh3X6nPr"
 let transporter = nodemailer.createTransport({
   host: "smtp-relay.brevo.com",
   port: 587,
@@ -36,10 +36,11 @@ interface ContactEmailData {
 export const sendContactNotification = async (data: ContactEmailData) => {
   try {
     const mailOptions = {
-      from: 'vishalvkv95@gmail.com',
+      from: `"${data.name}" <${GOOGLE_EMAIL}>`,
+      replyTo: data.email,
       to: 'info@luganorge.no',
       cc: 'lalit@luga.no',
-      subject: `New Contact Form Submission from ${data.name}`,
+      subject: `Form Submission from ${data.name}`,
       html: `
         <h3>New Contact Form Submission</h3>
         <p><strong>Name:</strong> ${data.name}</p>
