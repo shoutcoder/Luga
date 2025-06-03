@@ -12,10 +12,10 @@ import nodemailer from 'nodemailer';
 //   },
 // });
 
-let GOOGLE_EMAIL= "support@eyantrik.com" 
-let GOOGLE_EMAIL_PASSWORD = "eYantrik@123"
+let GOOGLE_EMAIL= "7d2536001@smtp-brevo.com" 
+let GOOGLE_EMAIL_PASSWORD = "U1RKn80gTqabcJvL"
 let transporter = nodemailer.createTransport({
-  host: "smtp.ipage.com",
+  host: "smtp-relay.brevo.com",
   port: 587,
   secure: false,
   auth: {
@@ -36,9 +36,9 @@ interface ContactEmailData {
 export const sendContactNotification = async (data: ContactEmailData) => {
   try {
     const mailOptions = {
-      from: 'support@eyantrik.com',
-      to: 'vishalvkv95@gmail.com',
-      cc: 'admin@tigsaw.com',
+      from: 'vishalvkv95@gmail.com',
+      to: 'info@luganorge.no',
+      cc: 'lalit@luga.no',
       subject: `New Contact Form Submission from ${data.name}`,
       html: `
         <h3>New Contact Form Submission</h3>
