@@ -5,6 +5,7 @@ import { ThemeProvider } from "@/components/theme-provider";
 import MainNav from "@/components/main-nav";
 import Link from "next/link";
 import SocialMediaBar from "@/components/dashboard/common/SocialMediaBar";
+import CookieConsentBanner from "@/components/cookie-consent";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -69,6 +70,7 @@ export default function RootLayout({
               </div>
             </footer>
           </main>
+          <CookieConsentBanner />
         </ThemeProvider>
       </body>
     </html>
