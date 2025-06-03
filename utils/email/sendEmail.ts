@@ -36,7 +36,7 @@ interface ContactEmailData {
 export const sendContactNotification = async (data: ContactEmailData) => {
   try {
     const mailOptions = {
-      from: `"${data.name}" <${GOOGLE_EMAIL}>`,
+      from: `"Lalit" <no-reply@lugaskredderi.no>`,
       replyTo: data.email,
       to: 'info@luganorge.no',
       cc: 'lalit@luga.no',

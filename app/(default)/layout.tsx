@@ -18,6 +18,11 @@ export const metadata = {
   description:
     "Professional tailoring and dry cleaning services with over 25 years of experience.",
   generator: "v0.dev",
+  icons: {
+    icon: "https://www.lugaskredderi.no/logo.png",
+    shortcut: "https://www.lugaskredderi.no/logo.png",
+    apple: "https://www.lugaskredderi.no/logo.png",
+  },
 };
 
 export default function RootLayout({
@@ -27,6 +32,14 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
+      <head>
+        <link
+          rel="icon"
+          type="image/png"
+          sizes="32x32"
+          href="https://www.lugaskredderi.no/logo.png"
+        />
+      </head>
       <body className={poppins.className}>
         <ThemeProvider
           attribute="class"
