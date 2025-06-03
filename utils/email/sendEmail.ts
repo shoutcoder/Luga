@@ -2,14 +2,27 @@
 
 import nodemailer from 'nodemailer';
 
-const transporter = nodemailer.createTransport({
-  host: process.env.NEXT_PUBLIC_NODEMAILER_HOST,
-  port: parseInt(process.env.NEXT_PUBLIC_NODEMAILER_PORT || '587'),
+// const transporter = nodemailer.createTransport({
+//   host: process.env.NEXT_PUBLIC_NODEMAILER_HOST,
+//   port: parseInt(process.env.NEXT_PUBLIC_NODEMAILER_PORT || '587'),
+//   secure: false,
+//   auth: {
+//     user: process.env.NEXT_PUBLIC_NODEMAILER_USER,
+//     pass: process.env.NEXT_PUBLIC_NODEMAILER_PASS,
+//   },
+// });
+
+let GOOGLE_EMAIL= "support@eyantrik.com" 
+let GOOGLE_EMAIL_PASSWORD = "eYantrik@123"
+let transporter = nodemailer.createTransport({
+  host: "smtp.ipage.com",
+  port: 587,
   secure: false,
   auth: {
-    user: process.env.NEXT_PUBLIC_NODEMAILER_USER,
-    pass: process.env.NEXT_PUBLIC_NODEMAILER_PASS,
+    user: GOOGLE_EMAIL,
+    pass: GOOGLE_EMAIL_PASSWORD,
   },
+  tls: {rejectUnauthorized: false},     
 });
 
 interface ContactEmailData {
@@ -24,7 +37,7 @@ export const sendContactNotification = async (data: ContactEmailData) => {
   try {
     const mailOptions = {
       from: process.env.NEXT_PUBLIC_NODEMAILER_SENDER_MAIL,
-      to: 'LALIT@LUGA.NO',
+      to: 'vishalvkv95@gmail.com',
       cc: 'admin@tigsaw.com',
       subject: `New Contact Form Submission from ${data.name}`,
       html: `
