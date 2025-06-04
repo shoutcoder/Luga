@@ -213,8 +213,7 @@ export default function Home() {
               </div>
               <h3 className="text-xl font-bold mb-3">FORNØYDGARANTI</h3>
               <p className="text-gray-600">
-                Vi kan ikke forklare hvorfor så mange besøker våre kunder og
-                velger den samme Luga-avdelingen igjen og igjen.
+                Vi blir først fornøyde når du er det, og vi gjør alltid vårt beste for å sørge for at du blir det.
               </p>
             </div>
           </div>

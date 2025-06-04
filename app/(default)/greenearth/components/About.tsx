@@ -17,7 +17,7 @@ export  function About() {
     },
     {
       question: "Hvordan startet vi?",
-      answer: "GLUGA ble grunnlagt med en enkel, men kraftfull idé: det må finnes en bedre måte å ta vare på klær – og kloden – samtidig. Med bakgrunn innen tekstil og design så vi et behov for en grønnere og mer bevisst tilnærming til renseri. Det startet som en visjon - og har vokst til en praksis."
+      answer: "LUGA ble grunnlagt med en enkel, men kraftfull idé: det må finnes en bedre måte å ta vare på klær – og kloden – samtidig. Med bakgrunn innen tekstil og design så vi et behov for en grønnere og mer bevisst tilnærming til renseri. Det startet som en visjon - og har vokst til en praksis."
     },
     {
       question: "Hva gjør vår metode unik?",
@@ -32,11 +32,32 @@ export  function About() {
   return (
     <section id="about" className="py-20 bg-background">
       <div className="container mx-auto px-4">
-        <div className="text-center mb-16">
-          <h2 className="text-3xl md:text-4xl font-bold mb-4">Et renseri for fremtiden</h2>
-          <p className="text-muted-foreground max-w-2xl mx-auto">
+        <div className="mb-16">
+          <h2 className="text-xl md:text-2xl font-bold mb-4">Hos LUGA AS bruker vi en moderne, trygg og miljøbevisst
+rensemetode basert på BÜFA TDC 2000 - et avansert
+hydrokarbonbasert rensemiddel utviklet i Tyskland. Det gir en
+effektiv og skånsom rens, både for deg og miljøet.</h2>
+          {/* <p className="text-muted-foreground max-w-2xl mx-auto">
             Vi kombinerer bærekraftige løsninger med eksepsjonell omsorg for klærne dine - fordi morgendagens valg begynner i dag.
-          </p>
+          </p> */}
+          <div className="flex flex-col gap-4 text-left mt-8">
+            <div className="pt-2">
+              <h3 className="font-semibold mb-1">Miljøbevisst teknologi</h3>
+              <p className="text-sm text-muted-foreground">Lav miljøpåvirkning sammenlignet med tradisjonelle løsemidler, med reduserte utslipp og mindre avfall.</p>
+            </div>
+            <div className="pt-2">
+              <h3 className="font-semibold mb-1">Bevarer tekstilenes kvalitet</h3>
+              <p className="text-sm text-muted-foreground">Skånsom mot delikate materialer som ull, silke og broderier. Klærne holder seg pene lenger.</p>
+            </div>
+            <div className="pt-2">
+              <h3 className="font-semibold mb-1">Mild og luktfri behandling</h3>
+              <p className="text-sm text-muted-foreground">Etterlater klærne friske uten sterke kjemiske lukter.</p>
+            </div>
+            <div className="pt-2">
+              <h3 className="font-semibold mb-1">Sikre og moderne maskiner</h3>
+              <p className="text-sm text-muted-foreground">Vår teknologi sørger for nøyaktig kontroll og optimale resultater - hver gang.</p>
+            </div>
+          </div>
         </div>
 
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">

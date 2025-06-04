@@ -11,7 +11,7 @@ export default async function AboutPage() {
         <p className="text-center mb-12">Skredderi og renseri med fokus på kvalitet, bærekraft og personlig service</p>
         
         <div>
-          <p className="mb-5">LUGA AS er en veletablert aktør innen skredderi og renseri, med avdelinger i Oslo, Sandvika, Strømmen og Drammen.
+          <p className="mb-5">LUGA er en veletablert aktør innen skredderi og renseri, med avdelinger i Oslo, Sandvika, Strømmen og Drammen.
           Med over 15 000 reparasjoner og tilpasninger i året, har vi bygget en solid posisjon i tekstilbransjen, drevet av en sterk lidenskap for kvalitet, håndverk og bærekraft.</p>
           <p className="mb-5">Hos oss kan du få forlenget levetiden på dine klær, tilpasset plagg etter perfekt passform, renset alt fra hverdagsklær til bunader og skinn, samt produsert skreddersydde dresser, skjorter og kjoler etter dine mål.
           Vi tilbyr også spesialtilpasning av arbeidstøy og produksjon av mindre kleskolleksjoner, perfekt for lokale designere.</p>

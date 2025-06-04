@@ -49,7 +49,7 @@ export  function Hero() {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.2 }}
           >
-            Miljøvennlig rens, luksuriøs omsorg
+            Vår Miljøvennlige Renseløsning
           </motion.h1>
           
           <motion.p 
@@ -58,7 +58,8 @@ export  function Hero() {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.4 }}
           >
-            Oppdag hvordan moderne rens kan være både skånsom for klærne dine og ansvarlig for planeten vår – der bærekraft møter skjønnhet, og hvor hvert valg du tar bidrar til en grønnere fremtid.
+            Skånsom Kvalitetsrens Med
+Omtanke for Klær og Miljø
           </motion.p>
           
           <motion.div 
