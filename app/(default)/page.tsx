@@ -350,53 +350,41 @@ export default function Home() {
 
 const clients = [
   {
-    name: "",
-    logo: "https://ik.imagekit.io/vv/lugaP6.png?updatedAt=1746023673999",
-  },
-  {
-    name: "",
+    name: "volt",
     logo: "https://ik.imagekit.io/vv/lugaP1.png?updatedAt=1746023673994",
   },
   {
-    name: "",
+    name: "sessa",
     logo: "https://ik.imagekit.io/vv/lugaP3.png?updatedAt=1746023673864",
   },
   {
-    name: "",
+    name: "jhohn",
     logo: "https://ik.imagekit.io/vv/lugaP2.png?updatedAt=1746023673859",
   },
   {
-    name: "",
+    name: "vic",
     logo: "https://ik.imagekit.io/vv/lugaP5.png?updatedAt=1746023673940",
   },
   {
-    name: "",
+    name: "kiman",
     logo: "https://ik.imagekit.io/vv/lugaP4.png?updatedAt=1746023673943",
   },
   {
-    name: "",
-    logo: "https://ik.imagekit.io/vv/lugaP6.png?updatedAt=1746023673999",
+    name: "ambiente",
+    logo: "https://ik.imagekit.io/vv/Ambiente%20Karl%20Johan.png?updatedAt=1749142930787",
   },
   {
-    name: "",
-    logo: "https://ik.imagekit.io/vv/lugaP1.png?updatedAt=1746023673994",
+    name: "bernton",
+    logo: "https://ik.imagekit.io/vv/Bertoni%20(1).png?updatedAt=1749143089564",
   },
   {
-    name: "",
-    logo: "https://ik.imagekit.io/vv/lugaP3.png?updatedAt=1746023673864",
+    name: "complete service",
+    logo: "https://ik.imagekit.io/vv/complete%20SERVICES%20(1).png?updatedAt=1749143221140",
   },
   {
-    name: "",
-    logo: "https://ik.imagekit.io/vv/lugaP2.png?updatedAt=1746023673859",
-  },
-  {
-    name: "",
-    logo: "https://ik.imagekit.io/vv/lugaP5.png?updatedAt=1746023673940",
-  },
-  {
-    name: "",
-    logo: "https://ik.imagekit.io/vv/lugaP4.png?updatedAt=1746023673943",
-  },
+    name: "Zone",
+    logo: "https://ik.imagekit.io/vv/ZONE.png?updatedAt=1749143365604",
+  }
 ];
 
 
