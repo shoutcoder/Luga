@@ -7,15 +7,92 @@ import Link from 'next/link';
 
 const CareerPage = () => {
   const [selectedDepartment, setSelectedDepartment] = useState('all');
+  const [formData, setFormData] = useState({
+    name: '',
+    email: '',
+    phone: '',
+    position: '',
+    message: '',
+    portfolio: '',
+    consent: false
+  });
+  const [file, setFile] = useState<File | null>(null);
+  const [coverLetter, setCoverLetter] = useState<File | null>(null);
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [submitStatus, setSubmitStatus] = useState<{
+    type: 'success' | 'error' | null;
+    message: string;
+  }>({ type: null, message: '' });
 
-  const departments = [
-    { id: 'engineering', name: 'Engineering', count: 5 },
-    { id: 'design', name: 'Design', count: 3 },
-    { id: 'marketing', name: 'Marketing', count: 2 },
-    { id: 'sales', name: 'Sales', count: 4 },
-  ];
+  const handleInputChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
+    const { name, value, type } = e.target;
+    setFormData(prev => ({
+      ...prev,
+      [name]: type === 'checkbox' ? (e.target as HTMLInputElement).checked : value
+    }));
+  };
 
-  
+  const handleFileChange = (e: React.ChangeEvent<HTMLInputElement>, type: 'cv' | 'coverLetter') => {
+    const file = e.target.files?.[0];
+    if (file) {
+      if (file.size > 10 * 1024 * 1024) { // 10MB limit
+        setSubmitStatus({
+          type: 'error',
+          message: 'Filen er for stor. Maksimal størrelse er 10MB.'
+        });
+        return;
+      }
+      if (type === 'cv') setFile(file);
+      else setCoverLetter(file);
+    }
+  };
+
+  const handleSubmit = async (e: React.FormEvent) => {
+    e.preventDefault();
+    setIsSubmitting(true);
+    setSubmitStatus({ type: null, message: '' });
+
+    try {
+      const formDataToSend = new FormData();
+      Object.entries(formData).forEach(([key, value]) => {
+        formDataToSend.append(key, value.toString());
+      });
+      if (file) formDataToSend.append('cv', file);
+      if (coverLetter) formDataToSend.append('coverLetter', coverLetter);
+
+      const response = await fetch('/api/career-apply', {
+        method: 'POST',
+        body: formDataToSend,
+      });
+
+      if (response.ok) {
+        setSubmitStatus({
+          type: 'success',
+          message: 'Takk for din søknad! Vi vil kontakte deg snart.'
+        });
+        setFormData({
+          name: '',
+          email: '',
+          phone: '',
+          position: '',
+          message: '',
+          portfolio: '',
+          consent: false
+        });
+        setFile(null);
+        setCoverLetter(null);
+      } else {
+        throw new Error('Kunne ikke sende søknaden');
+      }
+    } catch (error) {
+      setSubmitStatus({
+        type: 'error',
+        message: 'Beklager, noe gikk galt. Vennligst prøv igjen senere.'
+      });
+    } finally {
+      setIsSubmitting(false);
+    }
+  };
 
   return (
     <div className="min-h-screen bg-gradient-to-b from-gray-50 to-white">
@@ -89,17 +166,157 @@ const CareerPage = () => {
         </div>
       </section>
 
+      {/* Application Form Section */}
+      <section className="py-20 px-4">
+        <div className="max-w-3xl mx-auto bg-white rounded-lg shadow-xl p-8">
+          <h2 className="text-2xl font-bold mb-6 text-center">Søk hos LUGA Skredderi & Rens</h2>
+          <form onSubmit={handleSubmit} className="space-y-6">
+            <div>
+              <label htmlFor="name" className="block text-sm font-medium text-gray-700 mb-1">
+                Navn (Fornavn og etternavn) *
+              </label>
+              <input
+                type="text"
+                id="name"
+                name="name"
+                required
+                value={formData.name}
+                onChange={handleInputChange}
+                className="w-full px-4 py-2 border border-gray-300 rounded-md focus:ring-2 focus:ring-[#2d3c2d] focus:border-transparent"
+              />
+            </div>
 
-      {/* CTA Section */}
-      <section className="py-20 px-4 bg-gray-100 text-black">
-        <div className="max-w-4xl mx-auto text-center">
-          <h2 className="text-3xl font-bold mb-6">Ready to Join Our Team?</h2>
-          <p className="text-xl mb-8">
-            Don't see a position that matches your skills? Send us your resume anyway!
-          </p>
-          <Link href='#' className="px-8 py-3 bg-[#2d3c2d] text-white rounded-lg text-lg font-semibold transition-colors">
-            Submit Your Resume
-          </Link>
+            <div>
+              <label htmlFor="email" className="block text-sm font-medium text-gray-700 mb-1">
+                E-post *
+              </label>
+              <input
+                type="email"
+                id="email"
+                name="email"
+                required
+                value={formData.email}
+                onChange={handleInputChange}
+                className="w-full px-4 py-2 border border-gray-300 rounded-md focus:ring-2 focus:ring-[#2d3c2d] focus:border-transparent"
+              />
+            </div>
+
+            <div>
+              <label htmlFor="phone" className="block text-sm font-medium text-gray-700 mb-1">
+                Telefonnummer (Valgfritt)
+              </label>
+              <input
+                type="tel"
+                id="phone"
+                name="phone"
+                value={formData.phone}
+                onChange={handleInputChange}
+                className="w-full px-4 py-2 border border-gray-300 rounded-md focus:ring-2 focus:ring-[#2d3c2d] focus:border-transparent"
+              />
+            </div>
+
+            <div>
+              <label htmlFor="position" className="block text-sm font-medium text-gray-700 mb-1">
+                Hvilken stilling søker du? *
+              </label>
+              <input
+                type="text"
+                id="position"
+                name="position"
+                required
+                value={formData.position}
+                onChange={handleInputChange}
+                className="w-full px-4 py-2 border border-gray-300 rounded-md focus:ring-2 focus:ring-[#2d3c2d] focus:border-transparent"
+              />
+            </div>
+
+            <div>
+              <label htmlFor="cv" className="block text-sm font-medium text-gray-700 mb-1">
+                Last opp CV (PDF, maks 10 MB) *
+              </label>
+              <input
+                type="file"
+                id="cv"
+                name="cv"
+                accept=".pdf"
+                required
+                onChange={(e) => handleFileChange(e, 'cv')}
+                className="w-full px-4 py-2 border border-gray-300 rounded-md focus:ring-2 focus:ring-[#2d3c2d] focus:border-transparent"
+              />
+            </div>
+
+            <div>
+              <label htmlFor="coverLetter" className="block text-sm font-medium text-gray-700 mb-1">
+                Last opp søknadsbrev (Valgfritt, PDF eller DOCX)
+              </label>
+              <input
+                type="file"
+                id="coverLetter"
+                name="coverLetter"
+                accept=".pdf,.docx"
+                onChange={(e) => handleFileChange(e, 'coverLetter')}
+                className="w-full px-4 py-2 border border-gray-300 rounded-md focus:ring-2 focus:ring-[#2d3c2d] focus:border-transparent"
+              />
+            </div>
+
+            <div>
+              <label htmlFor="portfolio" className="block text-sm font-medium text-gray-700 mb-1">
+                Lenke til portefølje/LinkedIn (Valgfritt)
+              </label>
+              <input
+                type="url"
+                id="portfolio"
+                name="portfolio"
+                value={formData.portfolio}
+                onChange={handleInputChange}
+                className="w-full px-4 py-2 border border-gray-300 rounded-md focus:ring-2 focus:ring-[#2d3c2d] focus:border-transparent"
+              />
+            </div>
+
+            <div>
+              <label htmlFor="message" className="block text-sm font-medium text-gray-700 mb-1">
+                Hvorfor ønsker du å jobbe hos oss? (Maks 500 tegn)
+              </label>
+              <textarea
+                id="message"
+                name="message"
+                maxLength={500}
+                value={formData.message}
+                onChange={handleInputChange}
+                rows={4}
+                className="w-full px-4 py-2 border border-gray-300 rounded-md focus:ring-2 focus:ring-[#2d3c2d] focus:border-transparent"
+              />
+            </div>
+
+            <div className="flex items-start">
+              <input
+                type="checkbox"
+                id="consent"
+                name="consent"
+                required
+                checked={formData.consent}
+                onChange={handleInputChange}
+                className="mt-1 mr-2"
+              />
+              <label htmlFor="consent" className="text-sm text-gray-600">
+                Jeg godkjenner at mine opplysninger lagres og behandles i henhold til LUGA sin personvernerklæring. *
+              </label>
+            </div>
+
+            {submitStatus.message && (
+              <div className={`p-4 rounded-md ${submitStatus.type === 'success' ? 'bg-green-100 text-green-800' : 'bg-red-100 text-red-800'}`}>
+                {submitStatus.message}
+              </div>
+            )}
+
+            <button
+              type="submit"
+              disabled={isSubmitting}
+              className="w-full px-6 py-3 bg-[#2d3c2d] text-white rounded-md font-medium hover:bg-[#1a231a] transition-colors disabled:bg-gray-400"
+            >
+              {isSubmitting ? 'Sender...' : 'Send inn søknad'}
+            </button>
+          </form>
         </div>
       </section>
     </div>
