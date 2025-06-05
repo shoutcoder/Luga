@@ -32,7 +32,7 @@ export default async function AboutPage() {
         <div className="flex flex-col mb-8">
             <h2 className="text-2xl font-bold mb-2">Vår reise</h2>
             <p className="mb-2">
-            LUGA reise startet i det små, med justeringer av klær på kjøkkenet hjemme hos vår daglige leder.
+            LUGA sin reise startet i det små, med justeringer av klær på kjøkkenet hjemme hos vår daglige leder.
             Gjennombruddet kom da vi åpnet vår første butikk, med eget skredderverksted og alt av nødvendig utstyr.
             Dette ga oss friheten til å utvikle egne tjenester og tilby skreddersøm og tilpasning direkte til kundene.
             Siden den gang har vi vokst jevnt, bygget sterke partnerskap, og aldri sett oss tilbake.

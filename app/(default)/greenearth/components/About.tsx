@@ -32,7 +32,16 @@ export  function About() {
   return (
     <section id="about" className="py-20 bg-background">
       <div className="container mx-auto px-4">
+        
         <div className="mb-16">
+          {/* <Image
+                src="https://ik.imagekit.io/vv/plant-8338691_1280.jpg?updatedAt=1748693559199"
+                alt="Team working on environmental project"
+                width={500}
+                height={500}
+                className="w-50 h-auto object-cover rounded-2xl mb-6"
+                sizes="(max-width: 768px) 100%, 500px"
+              /> */}
           <h2 className="text-xl md:text-2xl font-bold mb-4">
             Hos LUGA bruker vi en moderne, trygg og miljøbevisst
           rensemetode basert på BÜFA TDC 2000 - et avansert

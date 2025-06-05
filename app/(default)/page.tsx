@@ -384,6 +384,14 @@ const clients = [
   {
     name: "Zone",
     logo: "https://ik.imagekit.io/vv/ZONE.png?updatedAt=1749143365604",
+  },
+  {
+    name: "Zone",
+    logo: "https://ik.imagekit.io/vv/WhatsApp%20Image%202025-06-05%20at%2010.33.45%20PM.png?updatedAt=1749147904949",
+  },
+  {
+    name: "Zone",
+    logo: "https://ik.imagekit.io/vv/WhatsApp%20Image%202025-06-05%20at%2010.33.51%20PM.png?updatedAt=1749147905044",
   }
 ];
 
