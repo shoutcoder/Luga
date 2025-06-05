@@ -27,6 +27,19 @@ const nextConfig = {
     parallelServerBuildTraces: true,
     parallelServerCompiles: true,
   },
+  async headers() {
+    return [
+      {
+        source: '/(.*)', // applies to all routes
+        headers: [
+          {
+            key: 'Cache-Control',
+            value: 's-maxage=86400, stale-while-revalidate', // cache for 1 day
+          },
+        ],
+      },
+    ];
+  },
 }
 
 if (userConfig) {
