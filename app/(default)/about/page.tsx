@@ -32,7 +32,7 @@ export default async function AboutPage() {
         <div className="flex flex-col mb-8">
             <h2 className="text-2xl font-bold mb-2">Vår reise</h2>
             <p className="mb-2">
-            LUGAs reise startet i det små, med justeringer av klær på kjøkkenet hjemme hos vår daglige leder.
+            LUGA reise startet i det små, med justeringer av klær på kjøkkenet hjemme hos vår daglige leder.
             Gjennombruddet kom da vi åpnet vår første butikk, med eget skredderverksted og alt av nødvendig utstyr.
             Dette ga oss friheten til å utvikle egne tjenester og tilby skreddersøm og tilpasning direkte til kundene.
             Siden den gang har vi vokst jevnt, bygget sterke partnerskap, og aldri sett oss tilbake.
@@ -57,7 +57,7 @@ export default async function AboutPage() {
             Vi tror på å forlenge plaggens liv, ta vare på ressurser, og gi kundene våre det beste innen skreddersøm, rens og tekstilpleie.
             Vi jobber hver dag for å levere kvalitet, personlig service og bærekraftige løsninger som gjør en forskjell.
             </p>
-            <p>Velkommen til LUGA AS. Vi ser frem til å ta vare på dine klær!</p>
+            <p>Velkommen til LUGA. Vi ser frem til å ta vare på dine klær!</p>
         </div>
 
         

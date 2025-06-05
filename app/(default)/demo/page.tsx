@@ -285,8 +285,7 @@ export default function Demo() {
                 FORNØYDGARANTI
               </h3>
               <p className="text-gray-600 leading-relaxed">
-                Vi kan ikke forklare hvorfor så mange besøker våre kunder og
-                velger den samme Luga-avdelingen igjen og igjen.
+                Vi blir først fornøyde når du er det, og vi gjør alltid vårt beste for å sørge for at du blir det.
               </p>
             </div>
           </div>
