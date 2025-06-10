@@ -212,7 +212,7 @@ export default function Home() {
                 <ThumbsUp className="w-10 h-10" fill="#2d3c2d" />
               </div>
               <h3 className="text-xl font-bold mb-3">FORNØYDGARANTI</h3>
-              <p className="text-gray-600">
+              <p className="text-gray-600 text-sm">
                 Vi blir først fornøyde når du er det, og vi gjør alltid vårt beste for å sørge for at du blir det.
               </p>
             </div>
