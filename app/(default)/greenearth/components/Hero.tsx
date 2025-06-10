@@ -38,10 +38,10 @@ export  function Hero() {
           transition={{ duration: 0.8 }}
           className="max-w-3xl mx-auto text-center"
         >
-          <div className="inline-flex items-center justify-center px-4 py-1 mb-6 rounded-full bg-white/10 backdrop-blur-sm border border-white/20">
+          {/* <div className="inline-flex items-center justify-center px-4 py-1 mb-6 rounded-full bg-white/10 backdrop-blur-sm border border-white/20">
             <Leaf className="w-4 h-4 mr-2 text-teal-500" />
             <span className="text-sm font-medium text-white">Green Earth Cleaning</span>
-          </div>
+          </div> */}
           
           <motion.h1 
             className="text-4xl md:text-5xl lg:text-6xl font-bold text-white mb-6"
