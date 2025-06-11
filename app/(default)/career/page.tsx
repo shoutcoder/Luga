@@ -109,27 +109,27 @@ const CareerPage = () => {
           <div className="absolute inset-0 bg-black/50" />
         </div>
         <div className="relative z-10 text-center text-white max-w-4xl mx-auto px-4">
-          <motion.h1 
+          {/* <motion.h1 
             className="text-5xl font-bold mb-6"
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6 }}
           >
             Join Our Team
-          </motion.h1>
+          </motion.h1> */}
           <motion.p 
             className="text-xl mb-8"
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, delay: 0.2 }}
           >
-            Be part of something extraordinary. We're looking for talented individuals who want to make an impact.
+            Vil du bli en del av LUGA Skredderi & Rens? Fyll ut skjemaet nedenfor, så tar vi kontakt med deg!
           </motion.p>
         </div>
       </section>
 
       {/* Culture Section */}
-      <section className="py-20 px-4">
+      {/* <section className="py-20 px-4">
         <div className="max-w-6xl mx-auto">
           <h2 className="text-3xl font-bold text-center mb-12">Our Culture</h2>
           <div className="grid md:grid-cols-3 gap-8">
@@ -164,7 +164,7 @@ const CareerPage = () => {
             ))}
           </div>
         </div>
-      </section>
+      </section> */}
 
       {/* Application Form Section */}
       <section className="py-20 px-4">
