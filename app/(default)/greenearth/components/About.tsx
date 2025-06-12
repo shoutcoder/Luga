@@ -12,20 +12,12 @@ export  function About() {
 
   const questions = [
     {
-      question: "Hva er vårt oppdrag?",
-      answer: "Vårt oppdrag er å forene luksus med ansvar. Vi ønsker å gi kundene våre muligheten til å ta miljøvennlige valg uten å ofre kvalitet eller komfort. Hos oss handler det ikke bare om å rense klær, men å inspirere til en livsstil hvor bærekraft, estetikk og ansvar går hånd i hånd."
+      question: "Hva betyr dette for deg som kunde?",
+      answer: "Klærne dine får lengre levetid, Ingen skadelige rester eller sterke lukter, Skånsom behandling - perfekt for plagg med høy affeksjonsverdi, Et trygt valg for deg, dine klær og planeten"
     },
     {
-      question: "Hvordan startet vi?",
-      answer: "LUGA ble grunnlagt med en enkel, men kraftfull idé: det må finnes en bedre måte å ta vare på klær – og kloden – samtidig. Med bakgrunn innen tekstil og design så vi et behov for en grønnere og mer bevisst tilnærming til renseri. Det startet som en visjon - og har vokst til en praksis."
-    },
-    {
-      question: "Hva gjør vår metode unik?",
-      answer: "Det handler ikke bare om teknologien, men om holdningen bak. Vi kombinerer tradisjonelt håndverk med moderne løsninger, og behandler hvert plagg med respekt – som om det var vårt eget. Vår bruk av flytende silikon som rensemiddel setter oss i en egen klasse når det gjelder mildhet, effektivitet og miljøbevissthet."
-    },
-    {
-      question: "Hvordan kan du være med?",
-      answer: "Å være en del av LUGA-familien betyr å velge med hjertet og handle med omtanke. Du kan støtte vårt arbeid ved å: Velge oss som ditt faste renseri, Dele vår historie med venner og familie, Engasjere deg i våre bærekraftsinitiativer og kundeevents, Følge oss på sosiale medier og hjelpe oss å spre budskapet."
+      question: "Vil du vite mer?",
+      answer: "Vi deler gjerne mer informasjon om hvordan vi tar vare på klærne dine med moderne og ansvarlig tekstilpleie. Besøk oss gjerne eller kontakt oss for spørsmål!"
     }
   ];
 
@@ -34,15 +26,15 @@ export  function About() {
       <div className="container mx-auto px-4">
         
         <div className="mb-16">
-          {/* <Image
+          <Image
                 src="https://ik.imagekit.io/vv/plant-8338691_1280.jpg?updatedAt=1748693559199"
                 alt="Team working on environmental project"
                 width={500}
                 height={500}
-                className="w-50 h-auto object-cover rounded-2xl mb-6"
+                className="w-full h-auto object-cover rounded-2xl mb-6"
                 sizes="(max-width: 768px) 100%, 500px"
-              /> */}
-          <h2 className="text-xl md:text-2xl font-bold mb-4">
+              />
+          <h2 className="text-lg font-bold mb-4">
             Hos LUGA bruker vi en moderne, trygg og miljøbevisst
           rensemetode basert på BÜFA TDC 2000 - et avansert
           hydrokarbonbasert rensemiddel utviklet i Tyskland. Det gir en
@@ -51,7 +43,7 @@ export  function About() {
           {/* <p className="text-muted-foreground max-w-2xl mx-auto">
             Vi kombinerer bærekraftige løsninger med eksepsjonell omsorg for klærne dine - fordi morgendagens valg begynner i dag.
           </p> */}
-          <h6 className="mt-12 text-2xl font-semibold">Fordeler m e d var renseprosess:</h6>
+          <h6 className="mt-12 text-xl font-semibold">Fordeler m e d var renseprosess:</h6>
           <div className="flex flex-col gap-4 text-left mt-4">
             <div className="pt-2">
               <h3 className="font-semibold mb-1">Miljøbevisst teknologi</h3>
