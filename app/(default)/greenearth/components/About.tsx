@@ -25,7 +25,7 @@ export  function About() {
     <section id="about" className="py-20 bg-background">
       <div className="container mx-auto px-4">
         
-        <div className="mb-16">
+        {/* <div className="mb-16">
           <Image
                 src="https://ik.imagekit.io/vv/plant-8338691_1280.jpg?updatedAt=1748693559199"
                 alt="Team working on environmental project"
@@ -40,9 +40,7 @@ export  function About() {
           hydrokarbonbasert rensemiddel utviklet i Tyskland. Det gir en
           effektiv og skånsom rens, både for deg og miljøet.
           </h2>
-          {/* <p className="text-muted-foreground max-w-2xl mx-auto">
-            Vi kombinerer bærekraftige løsninger med eksepsjonell omsorg for klærne dine - fordi morgendagens valg begynner i dag.
-          </p> */}
+        
           <h6 className="mt-12 text-xl font-semibold">Fordeler m e d var renseprosess:</h6>
           <div className="flex flex-col gap-4 text-left mt-4">
             <div className="pt-2">
@@ -62,9 +60,9 @@ export  function About() {
               <p className="text-sm text-muted-foreground">Vår teknologi sørger for nøyaktig kontroll og optimale resultater - hver gang.</p>
             </div>
           </div>
-        </div>
+        </div> */}
 
-        {/* <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center mb-12">
           <div 
             ref={ref}
             className="relative overflow-hidden rounded-2xl"
@@ -97,32 +95,35 @@ export  function About() {
               transition={{ duration: 0.5, delay: 0.2 }}
             >
                 <div className="">
-                  <h3 className="text-2xl font-bold mb-4">Bærekraft møter kvalitet hos LUGA</h3>
-                  <p className="text-muted-foreground mb-4">
-                    Hos LUGA Skredderi & Rens tror vi på mer enn bare rene klær vi tror på rene valg. Derfor bruker vi miljøvennlig teknologi for å beskytte både plaggene dine og planeten vår.
-                  </p>
-                  <p className="text-muted-foreground mb-4">
-                    Vi benytter en banebrytende metode som erstatter tradisjonelle, skadelige kjemikalier med flytende silikon, et trygt, luktfritt og skånsomt rensemiddel som er laget av naturlige elementer. Det er så mildt at det brukes i mange hudpleieprodukter, men samtidig effektivt nok til å ta vare på alt fra silke og kasjmir til paljetter og blonder.
-                  </p>
-                  <h3 className="text-2xl font-bold my-4">Hvorfor velge LUGA og vår grønne rensemetode?</h3>
-                  <ul className="list-none list-inside space-y-2">
-                    <li>
-                    <strong>Skånsom pleie for klærne dine:</strong> Fargene holder seg klare, stoffene føles mykere, og selv de mest delikate materialene bevares lenger.
-                    </li>
-                    <li>
-                    <strong>Helt trygt og allergivennlig:</strong> Ingen sterke lukter, ingen irritasjoner – bare ren komfort.
-                    </li>
-                    <li>
-                    <strong>Et grønt valg for fremtiden:</strong> Vår rensemetode brytes ned til naturlige elementer uten å skade luft, jord eller vann. Det er bærekraft du faktisk kan kjenne.
-                    </li>
-                    <li>
-                    <strong>Redusert energiforbruk:</strong> Metoden bruker mindre energi og vann enn tradisjonelle renseløsninger.
-                    </li>
-                  </ul>
+            <h2 className="text-base md:text-xl font-bold mb-4">
+                    Hos LUGA bruker vi en moderne, trygg og miljøbevisst
+                    rensemetode basert på BÜFA TDC 2000 - et avansert
+                    hydrokarbonbasert rensemiddel utviklet i Tyskland. Det gir en
+                    effektiv og skånsom rens, både for deg og miljøet.
+                  </h2>
+          <h6 className="mt-12 text-base md:text-xl font-semibold">Fordeler m e d var renseprosess:</h6>
+          <div className="flex flex-col gap-4 text-left mt-4">
+            <div className="pt-2">
+              <h3 className="font-semibold mb-1">Miljøbevisst teknologi</h3>
+              <p className="text-sm text-muted-foreground">Lav miljøpåvirkning sammenlignet med tradisjonelle løsemidler, med reduserte utslipp og mindre avfall.</p>
+            </div>
+            <div className="pt-2">
+              <h3 className="font-semibold mb-1">Bevarer tekstilenes kvalitet</h3>
+              <p className="text-sm text-muted-foreground">Skånsom mot delikate materialer som ull, silke og broderier. Klærne holder seg pene lenger.</p>
+            </div>
+            <div className="pt-2">
+              <h3 className="font-semibold mb-1">Mild og luktfri behandling</h3>
+              <p className="text-sm text-muted-foreground">Etterlater klærne friske uten sterke kjemiske lukter.</p>
+            </div>
+            <div className="pt-2">
+              <h3 className="font-semibold mb-1">Sikre og moderne maskiner</h3>
+              <p className="text-sm text-muted-foreground">Vår teknologi sørger for nøyaktig kontroll og optimale resultater - hver gang.</p>
+            </div>
+          </div>
                 </div>
             </motion.div>
           </div>
-        </div> */}
+        </div>
         <Accordion type="single" collapsible className="w-full">
                 {questions.map((item, index) => (
                   <AccordionItem key={index} value={`item-${index}`}>
