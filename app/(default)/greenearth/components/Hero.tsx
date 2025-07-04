@@ -23,7 +23,7 @@ export  function Hero() {
       id="home"
       className="relative min-h-screen flex items-center justify-center overflow-hidden"
       style={{
-        backgroundImage: "url('https://i.imgur.com/gO1E8E4.jpeg')",
+        backgroundImage: "url('https://ik.imagekit.io/vv/SnapInsta.to_100710763_111661770392239_4532391363758202018_n.jpg?updatedAt=1746208740625')",
         backgroundSize: "cover",
         backgroundPosition: "center",
       }}
