@@ -79,7 +79,7 @@ export default function MainNav() {
                 <div className="hidden md:flex items-center space-x-2">
                   <Mail className="w-4 h-4 text-black" />
                   <p className="text-black text-xs">
-                    <Link href="mailto:info@luganorge.no">info@luganorge.no</Link>
+                    <Link href="mailto:hei@luga.no">hei@luga.no</Link>
                   </p>
                 </div>
               </div>
