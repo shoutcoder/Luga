@@ -12,15 +12,14 @@ import nodemailer from 'nodemailer';
 //   },
 // });
 
-let GOOGLE_EMAIL= "8eb51d001@smtp-brevo.com" 
-let GOOGLE_EMAIL_PASSWORD = "mLjV8f0aqh3X6nPr"
+
 let transporter = nodemailer.createTransport({
   host: "smtp-relay.brevo.com",
   port: 587,
   secure: false,
   auth: {
-    user: GOOGLE_EMAIL,
-    pass: GOOGLE_EMAIL_PASSWORD,
+    user: process.env.BREVO_EMAIL,
+    pass: process.env.BREVO_PASSWORD,
   },
   tls: {rejectUnauthorized: false},     
 });
