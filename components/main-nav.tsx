@@ -120,7 +120,7 @@ export default function MainNav() {
           <Link href="/contact" className="text-sm font-medium">
             Kontakt
           </Link>
-          <Link href="/bestill" className="text-sm font-medium bg-white text-black px-8 py-2 rounded hover:bg-gray-200 hover:text-black transition">
+          <Link href="https://repair.vandre.no/Luga/repair?language=no" className="text-sm font-medium bg-white text-black px-8 py-2 rounded hover:bg-gray-200 hover:text-black transition">
             Bestill
           </Link>
           <Role />

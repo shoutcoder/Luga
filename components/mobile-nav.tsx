@@ -9,9 +9,14 @@ export default function MobileNav() {
 
   return (
     <div className="md:hidden">
-      <button onClick={() => setIsOpen(!isOpen)} className="p-2" aria-label={isOpen ? "Close menu" : "Open menu"}>
-        {isOpen ? <X className="h-6 w-6" /> : <Menu className="h-6 w-6 text-white" />}
-      </button>
+      <div className="flex items-center justify-between">
+        <Link href="https://repair.vandre.no/Luga/repair?language=no" className="flex items-center text-sm font-medium bg-white text-black px-6 py-1 rounded hover:bg-gray-200 hover:text-black transition">
+            Bestill
+        </Link>
+        <button onClick={() => setIsOpen(!isOpen)} className="p-2" aria-label={isOpen ? "Close menu" : "Open menu"}>
+          {isOpen ? <X className="h-6 w-6" /> : <Menu className="h-6 w-6 text-white" />}
+        </button>
+      </div>
 
       {isOpen && (
         <div className="fixed inset-0 z-50">
